@@ -1,0 +1,3 @@
+[submodule "Hare-Engine"]
+	path = Hare-Engine
+	url = https://github.com/DesertHareStudios/Hare-Engine.git
