@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hare_Editor
-{
-    public partial class Welcome : Form
-    {
-        public Welcome()
-        {
+namespace Hare_Editor {
+
+    public partial class Welcome : Form {
+
+        public Welcome() {
             InitializeComponent();
         }
+
     }
+
 }
