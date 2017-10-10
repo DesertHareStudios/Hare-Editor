@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace HareEditor {
 
-    public partial class Welcome : Form {
+    public partial class Editor : Form {
 
-        public Welcome() {
-            Program.welcome = this;
+        public Editor() {
             InitializeComponent();
             switch (EditorPrefs.Instance.theme) {
                 case Theme.Light:
@@ -31,22 +30,7 @@ namespace HareEditor {
             }
         }
 
-        private void btnNew_Click(object sender, EventArgs e) {
-            //TODO Prompt project name
-            //Temporal code for testing...
-            this.Hide();
-            Program.editor.Show();
-        }
-
-        private void btnOpen_Click(object sender, EventArgs e) {
-            //TODO search for projects
-        }
-
-        private void Welcome_Load(object sender, EventArgs e) {
-            //TODO load recent projects
-        }
-
-        private void Welcome_FormClosed(object sender, FormClosedEventArgs e) {
+        private void Editor_FormClosed(object sender, FormClosedEventArgs e) {
             Application.Exit();
         }
     }
