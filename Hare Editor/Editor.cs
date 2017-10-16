@@ -33,6 +33,17 @@ namespace HareEditor {
         private void Editor_FormClosed(object sender, FormClosedEventArgs e) {
             Application.Exit();
         }
+
+        private void Editor_Resize(object sender, EventArgs e) {
+            int fw = wrapperPanel.Width;
+            int fh = wrapperPanel.Height;
+            dataPanel.Width = fw / 4;
+            inspectorPanel.Width = fw / 4;
+            hierarchyPanel.Height = fh / 2;
+            assetsPanel.Height = fh / 2;
+            gameViewPanel.Height = fh / 2;
+            scenePanel.Height = fh / 2;
+        }
     }
 
 }

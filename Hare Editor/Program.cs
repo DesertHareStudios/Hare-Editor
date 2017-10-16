@@ -25,6 +25,7 @@ namespace HareEditor {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            OpenTK.Toolkit.Init();
             Application.Run(new Welcome());
         }
 
@@ -37,6 +38,25 @@ namespace HareEditor {
                 );
         }
 
+        public static HareEngine.Color NETColorToHareColor(System.Drawing.Color color) {
+            return new HareEngine.Color(
+                    (float)color.R / 255f,
+                    (float)color.G / 255f,
+                    (float)color.B / 255f,
+                    (float)color.A / 255f
+                );
+        }
+
+    }
+
+    public class ProjectHolder {
+        public string Name;
+        public string Path;
+
+        public ProjectHolder(string name, string path) {
+            Name = name;
+            Path = path;
+        }
     }
 
 }

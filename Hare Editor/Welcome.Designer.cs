@@ -23,11 +23,13 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.Appbar = new System.Windows.Forms.Panel();
+            this.Appbar = new HareEditor.DBPanel();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.wrapperPanel = new HareEditor.DBPanel();
             this.Appbar.SuspendLayout();
+            this.wrapperPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Appbar
@@ -81,29 +83,41 @@
             this.label1.Text = "Projects";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // wrapperPanel
+            // 
+            this.wrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wrapperPanel.Location = new System.Drawing.Point(0, 56);
+            this.wrapperPanel.Name = "wrapperPanel";
+            this.wrapperPanel.Size = new System.Drawing.Size(584, 305);
+            this.wrapperPanel.TabIndex = 1;
+            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.wrapperPanel);
             this.Controls.Add(this.Appbar);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Welcome";
             this.Text = "Hare Editor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Welcome_FormClosed);
             this.Load += new System.EventHandler(this.Welcome_Load);
             this.Appbar.ResumeLayout(false);
+            this.wrapperPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel Appbar;
+        private DBPanel Appbar;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label label1;
+        private DBPanel wrapperPanel;
     }
 }
