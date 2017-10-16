@@ -33,15 +33,25 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataPanel = new HareEditor.DBPanel();
             this.assetsPanel = new HareEditor.DBPanel();
+            this.Assets = new HareEditor.Controls.Card();
             this.hierarchyPanel = new HareEditor.DBPanel();
+            this.Hierarchy = new HareEditor.Controls.Card();
             this.inspectorPanel = new HareEditor.DBPanel();
+            this.Inspector = new HareEditor.Controls.Card();
             this.renderPanel = new HareEditor.DBPanel();
             this.scenePanel = new HareEditor.DBPanel();
+            this.SceneView = new HareEditor.Controls.Card();
             this.gameViewPanel = new HareEditor.DBPanel();
+            this.GameView = new HareEditor.Controls.Card();
             this.wrapperPanel = new HareEditor.DBPanel();
             this.MenuStrip.SuspendLayout();
             this.dataPanel.SuspendLayout();
+            this.assetsPanel.SuspendLayout();
+            this.hierarchyPanel.SuspendLayout();
+            this.inspectorPanel.SuspendLayout();
             this.renderPanel.SuspendLayout();
+            this.scenePanel.SuspendLayout();
+            this.gameViewPanel.SuspendLayout();
             this.wrapperPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,64 +132,115 @@
             // assetsPanel
             // 
             this.assetsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.assetsPanel.Controls.Add(this.Assets);
             this.assetsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.assetsPanel.Location = new System.Drawing.Point(0, 241);
             this.assetsPanel.Name = "assetsPanel";
             this.assetsPanel.Size = new System.Drawing.Size(200, 240);
             this.assetsPanel.TabIndex = 1;
             // 
+            // Assets
+            // 
+            this.Assets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Assets.Location = new System.Drawing.Point(0, 0);
+            this.Assets.Name = "Assets";
+            this.Assets.Size = new System.Drawing.Size(200, 240);
+            this.Assets.TabIndex = 0;
+            this.Assets.Title = "Assets";
+            // 
             // hierarchyPanel
             // 
             this.hierarchyPanel.BackColor = System.Drawing.Color.Transparent;
+            this.hierarchyPanel.Controls.Add(this.Hierarchy);
             this.hierarchyPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.hierarchyPanel.Location = new System.Drawing.Point(0, 0);
             this.hierarchyPanel.Name = "hierarchyPanel";
             this.hierarchyPanel.Size = new System.Drawing.Size(200, 240);
             this.hierarchyPanel.TabIndex = 0;
             // 
+            // Hierarchy
+            // 
+            this.Hierarchy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Hierarchy.Location = new System.Drawing.Point(0, 0);
+            this.Hierarchy.Name = "Hierarchy";
+            this.Hierarchy.Size = new System.Drawing.Size(200, 240);
+            this.Hierarchy.TabIndex = 0;
+            this.Hierarchy.Title = "Hierarchy";
+            // 
             // inspectorPanel
             // 
             this.inspectorPanel.BackColor = System.Drawing.Color.Transparent;
+            this.inspectorPanel.Controls.Add(this.Inspector);
             this.inspectorPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.inspectorPanel.Location = new System.Drawing.Point(584, 0);
             this.inspectorPanel.Name = "inspectorPanel";
             this.inspectorPanel.Size = new System.Drawing.Size(200, 481);
             this.inspectorPanel.TabIndex = 3;
             // 
+            // Inspector
+            // 
+            this.Inspector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Inspector.Location = new System.Drawing.Point(0, 0);
+            this.Inspector.Name = "Inspector";
+            this.Inspector.Size = new System.Drawing.Size(200, 481);
+            this.Inspector.TabIndex = 1;
+            this.Inspector.Title = "Inspector";
+            // 
             // renderPanel
             // 
             this.renderPanel.Controls.Add(this.scenePanel);
             this.renderPanel.Controls.Add(this.gameViewPanel);
             this.renderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPanel.Location = new System.Drawing.Point(0, 0);
+            this.renderPanel.Location = new System.Drawing.Point(200, 0);
             this.renderPanel.Name = "renderPanel";
-            this.renderPanel.Size = new System.Drawing.Size(784, 481);
+            this.renderPanel.Size = new System.Drawing.Size(384, 481);
             this.renderPanel.TabIndex = 4;
             // 
             // scenePanel
             // 
             this.scenePanel.BackColor = System.Drawing.Color.Transparent;
+            this.scenePanel.Controls.Add(this.SceneView);
             this.scenePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.scenePanel.Location = new System.Drawing.Point(0, 241);
             this.scenePanel.Name = "scenePanel";
-            this.scenePanel.Size = new System.Drawing.Size(784, 240);
+            this.scenePanel.Size = new System.Drawing.Size(384, 240);
             this.scenePanel.TabIndex = 1;
+            // 
+            // SceneView
+            // 
+            this.SceneView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SceneView.Location = new System.Drawing.Point(0, 0);
+            this.SceneView.Name = "SceneView";
+            this.SceneView.Size = new System.Drawing.Size(384, 240);
+            this.SceneView.TabIndex = 0;
+            this.SceneView.Title = "Scene";
             // 
             // gameViewPanel
             // 
             this.gameViewPanel.BackColor = System.Drawing.Color.Transparent;
+            this.gameViewPanel.Controls.Add(this.GameView);
             this.gameViewPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.gameViewPanel.Location = new System.Drawing.Point(0, 0);
             this.gameViewPanel.Name = "gameViewPanel";
-            this.gameViewPanel.Size = new System.Drawing.Size(784, 240);
+            this.gameViewPanel.Size = new System.Drawing.Size(384, 240);
             this.gameViewPanel.TabIndex = 0;
+            // 
+            // GameView
+            // 
+            this.GameView.BackColor = System.Drawing.Color.Transparent;
+            this.GameView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GameView.Location = new System.Drawing.Point(0, 0);
+            this.GameView.Name = "GameView";
+            this.GameView.Size = new System.Drawing.Size(384, 240);
+            this.GameView.TabIndex = 0;
+            this.GameView.Title = "Game";
             // 
             // wrapperPanel
             // 
             this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
+            this.wrapperPanel.Controls.Add(this.renderPanel);
             this.wrapperPanel.Controls.Add(this.dataPanel);
             this.wrapperPanel.Controls.Add(this.inspectorPanel);
-            this.wrapperPanel.Controls.Add(this.renderPanel);
             this.wrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wrapperPanel.Location = new System.Drawing.Point(0, 80);
             this.wrapperPanel.Name = "wrapperPanel";
@@ -206,7 +267,12 @@
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.dataPanel.ResumeLayout(false);
+            this.assetsPanel.ResumeLayout(false);
+            this.hierarchyPanel.ResumeLayout(false);
+            this.inspectorPanel.ResumeLayout(false);
             this.renderPanel.ResumeLayout(false);
+            this.scenePanel.ResumeLayout(false);
+            this.gameViewPanel.ResumeLayout(false);
             this.wrapperPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -231,5 +297,10 @@
         private DBPanel scenePanel;
         private DBPanel gameViewPanel;
         private DBPanel wrapperPanel;
+        private Controls.Card Inspector;
+        private Controls.Card Assets;
+        private Controls.Card Hierarchy;
+        private Controls.Card SceneView;
+        private Controls.Card GameView;
     }
 }
