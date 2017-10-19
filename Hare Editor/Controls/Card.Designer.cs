@@ -42,6 +42,7 @@
             // 
             // content
             // 
+            this.content.BackColor = System.Drawing.Color.Transparent;
             this.content.Dock = System.Windows.Forms.DockStyle.Fill;
             this.content.Location = new System.Drawing.Point(0, 28);
             this.content.Name = "content";
@@ -52,6 +53,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.content);
             this.Controls.Add(this.title);
             this.DoubleBuffered = true;
