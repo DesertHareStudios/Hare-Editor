@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -8,8 +7,6 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 namespace HareEditor {
 
     public partial class Welcome : Form {
-
-        List<ProjectHolder> recentProjects = new List<ProjectHolder>();
 
         public Welcome() {
             Program.welcome = this;
@@ -30,31 +27,21 @@ namespace HareEditor {
             }
         }
 
-        private void btnNew_Click(object sender, EventArgs e) {
-            //TODO Prompt project name
-            //Temporal code for testing...
-            this.Hide();
-            Program.editor.Show();
-        }
-
-        private void btnOpen_Click(object sender, EventArgs e) {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
-                MessageBox.Show("You selected: " + dialog.FileName);
-                //TODO validate project and open it
-            }
-        }
-
-        private void Welcome_Load(object sender, EventArgs e) {
+        public void Init() {
             try {
-                string[] text = File.ReadAllLines(Environment.CurrentDirectory + "rpl.list");
-                for (int i = 0; i < text.Length - 1; i++) {
-                    recentProjects.Add(new ProjectHolder(text[i++], text[i]));
+                Program.recentProjects.Clear();
+                wrapperPanel.Controls.Clear();
+                string[] text = File.ReadAllLines(Environment.CurrentDirectory + "\\rpl.list");
+                for (int i = 0; i < text.Length; i++) {
+                    try {
+                        if (Directory.Exists(text[i + 1])) {
+                            Program.recentProjects.Add(new ProjectHolder(text[i++], text[i]));
+                        }
+                    } catch { }
                 }
             } catch { }
             bool isEmpty = true;
-            foreach (ProjectHolder ph in recentProjects) {
+            foreach (ProjectHolder ph in Program.recentProjects) {
                 isEmpty = false;
                 DBPanel panel;
                 Label path;
@@ -95,6 +82,30 @@ namespace HareEditor {
                 path.Text = ph.Path;
                 wrapperPanel.Controls.Add(panel);
                 panel.ResumeLayout(false);
+                panel.Click += (o, args) => {
+                    this.Hide();
+                    Program.editor.Project = ph;
+                    Program.editor.Init();
+                    Program.editor.Show();
+                };
+                name.Click += (o, args) => {
+                    this.Hide();
+                    Program.editor.Project = ph;
+                    Program.editor.Init();
+                    Program.editor.Show();
+                };
+                path.Click += (o, args) => {
+                    this.Hide();
+                    Program.editor.Project = ph;
+                    Program.editor.Init();
+                    Program.editor.Show();
+                };
+                btnDel.Click += (o, args) => {
+                    wrapperPanel.Controls.Remove(panel);
+                    Program.recentProjects.Remove(ph);
+                    Program.SaveProjectList();
+                    Init();
+                };
             }
             if (isEmpty) {
                 Label emptyLabel = new Label();
@@ -109,12 +120,54 @@ namespace HareEditor {
             }
         }
 
-        public void SaveProjectList() {
-            string text = "";
-            foreach (ProjectHolder ph in recentProjects) {
-                text += ph.Name + "\n" + ph.Path + "\n";
+        public void Sync(Form form) {
+            Location = form.Location;
+            Size = form.Size;
+            WindowState = form.WindowState;
+        }
+
+        private void btnNew_Click(object sender, EventArgs e) {
+            this.Hide();
+            Program.cProject.ClearData();
+            Program.cProject.Show();
+            Program.cProject.Sync(this);
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e) {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
+                bool valid = false;
+                string name = "";
+                if (Directory.Exists(dialog.FileName + "\\Assets")) {
+                    if (Directory.Exists(dialog.FileName + "\\ProjectSettings")) {
+                        name = Asset.ReadFromFile(dialog.FileName + "\\ProjectSettings\\Details.asset").GetString("name", "");
+                        if (name != "") {
+                            valid = true;
+                        }
+                    }
+                }
+                if (valid) {
+                    this.Hide();
+                    ProjectHolder project = new ProjectHolder(name, dialog.FileName);
+                    Program.recentProjects.Add(project);
+                    Program.SaveProjectList();
+                    Program.editor.Project = project;
+                    Program.editor.Init();
+                    Program.editor.Show();
+                } else {
+                    MessageBox.Show(
+                        "Selected folder is not a valid Hare Project",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                        );
+                }
             }
-            File.WriteAllText(Environment.CurrentDirectory + "rpl.list", text);
+        }
+
+        private void Welcome_Load(object sender, EventArgs e) {
+            Init();
         }
 
         private void Welcome_FormClosed(object sender, FormClosedEventArgs e) {

@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asset.cs" />
     <Compile Include="Controls\Card.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +72,12 @@
     </Compile>
     <Compile Include="Controls\DBPanel.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CreateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateProject.Designer.cs">
+      <DependentUpon>CreateProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Editor.cs">
       <SubType>Form</SubType>
@@ -89,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="Controls\Card.resx">
       <DependentUpon>Card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateProject.resx">
+      <DependentUpon>CreateProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor.resx">
       <DependentUpon>Editor.cs</DependentUpon>

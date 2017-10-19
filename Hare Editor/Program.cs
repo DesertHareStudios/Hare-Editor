@@ -1,7 +1,6 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HareEditor {
@@ -19,7 +18,20 @@ namespace HareEditor {
             }
         }
 
+        private static CreateProject _cProject;
+
+        public static CreateProject cProject {
+            get {
+                if (_cProject == null) {
+                    _cProject = new CreateProject();
+                }
+                return _cProject;
+            }
+        }
+
         public static Welcome welcome;
+
+        public static List<ProjectHolder> recentProjects = new List<ProjectHolder>();
 
         [STAThread]
         static void Main() {
@@ -27,6 +39,14 @@ namespace HareEditor {
             Application.SetCompatibleTextRenderingDefault(false);
             OpenTK.Toolkit.Init();
             Application.Run(new Welcome());
+        }
+
+        public static void SaveProjectList() {
+            string text = "";
+            foreach (ProjectHolder ph in Program.recentProjects) {
+                text += ph.Name + "\n" + ph.Path + "\n";
+            }
+            File.WriteAllText(Environment.CurrentDirectory + "\\rpl.list", text);
         }
 
         public static System.Drawing.Color HareColorToNETColor(HareEngine.Color color) {

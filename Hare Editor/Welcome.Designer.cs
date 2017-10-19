@@ -29,7 +29,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.wrapperPanel = new HareEditor.DBPanel();
             this.Appbar.SuspendLayout();
-            this.wrapperPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Appbar
@@ -46,6 +45,7 @@
             // 
             // btnNew
             // 
+            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -55,11 +55,12 @@
             this.btnNew.Size = new System.Drawing.Size(91, 56);
             this.btnNew.TabIndex = 2;
             this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnOpen
             // 
+            this.btnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnOpen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnOpen.FlatAppearance.BorderSize = 0;
             this.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -69,7 +70,7 @@
             this.btnOpen.Size = new System.Drawing.Size(91, 56);
             this.btnOpen.TabIndex = 1;
             this.btnOpen.Text = "Open";
-            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.UseVisualStyleBackColor = false;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // label1
@@ -85,6 +86,7 @@
             // 
             // wrapperPanel
             // 
+            this.wrapperPanel.AutoScroll = true;
             this.wrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wrapperPanel.Location = new System.Drawing.Point(0, 56);
             this.wrapperPanel.Name = "wrapperPanel";
@@ -107,7 +109,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Welcome_FormClosed);
             this.Load += new System.EventHandler(this.Welcome_Load);
             this.Appbar.ResumeLayout(false);
-            this.wrapperPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -6,6 +6,8 @@ namespace HareEditor {
 
     public partial class Editor : Form {
 
+        public ProjectHolder Project;
+
         public Editor() {
             InitializeComponent();
             switch (EditorPrefs.Instance.theme) {
@@ -22,6 +24,11 @@ namespace HareEditor {
                     Appbar.BackColor = Color.FromArgb(37, 37, 37);
                     break;
             }
+        }
+
+        public void Init() {
+            Text = "Hare Editor - " + Project.Name;
+            //TODO load project contents
         }
 
         private void Editor_FormClosed(object sender, FormClosedEventArgs e) {

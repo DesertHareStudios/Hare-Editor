@@ -227,7 +227,6 @@
             // 
             // GameView
             // 
-            this.GameView.BackColor = System.Drawing.Color.Transparent;
             this.GameView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GameView.Location = new System.Drawing.Point(0, 0);
             this.GameView.Name = "GameView";
