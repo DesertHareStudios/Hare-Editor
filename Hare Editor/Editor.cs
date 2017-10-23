@@ -1,33 +1,43 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
+using HareEngine;
 
 namespace HareEditor {
 
     public partial class Editor : Form {
 
         public ProjectHolder Project;
+        public Scene currentScene;
+        public GameObject SelectedGameObject;
 
         public Editor() {
             InitializeComponent();
-            switch (EditorPrefs.Instance.theme) {
-                case Theme.Light:
-                    BackColor = Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = Color.FromArgb(157, 157, 157);
-                    break;
-                case Theme.Dark:
-                    BackColor = Color.FromArgb(37, 37, 37);
-                    Appbar.BackColor = Color.FromArgb(15, 15, 15);
-                    break;
-                case Theme.Hybrid:
-                    BackColor = Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = Color.FromArgb(37, 37, 37);
-                    break;
-            }
         }
 
         public void Init() {
-            Text = "Hare Editor - " + Project.Name;
+            switch (EditorPrefs.Instance.theme) {
+                case Theme.Light:
+                    BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
+                    Appbar.BackColor = System.Drawing.Color.FromArgb(157, 157, 157);
+                    break;
+                case Theme.Dark:
+                    BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+                    Appbar.BackColor = System.Drawing.Color.FromArgb(15, 15, 15);
+                    break;
+                case Theme.Hybrid:
+                    BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
+                    Appbar.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+                    break;
+            }
+            if (currentScene == null) {
+                currentScene = new Scene("Untitled");
+                GameObject camera = new GameObject("Main Camera");
+                camera.AddBehaviour(new Camera(camera));
+                camera.AddBehaviour(new AudioListener(camera));
+                currentScene.gameObjects.Add(camera);
+            }
+            Text = "Hare Editor " + EditorPrefs.versionName + " - " +
+                currentScene.Name + " - " + Project.Name;
             //TODO load project contents
         }
 
@@ -44,6 +54,15 @@ namespace HareEditor {
             assetsPanel.Height = fh / 2;
             gameViewPanel.Height = fh / 2;
             scenePanel.Height = fh / 2;
+        }
+
+        private void Editor_FormClosing(object sender, FormClosingEventArgs e) {
+            e.Cancel = DialogResult.No == MessageBox.Show(
+                    "Do you really want to exit? Any unsaved changes will be lost.",
+                    "Warning",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
         }
     }
 

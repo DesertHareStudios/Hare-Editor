@@ -2,7 +2,7 @@
 
 namespace HareEditor {
 
-    class DBPanel : Panel {
+    public class DBPanel : Panel {
 
         public DBPanel() {
             DoubleBuffered = true;

@@ -2,7 +2,7 @@
 
 namespace HareEditor {
 
-    class EditorPrefs {
+    public class EditorPrefs {
 
         #region Singleton
         private static EditorPrefs instance;

@@ -64,13 +64,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset.cs" />
-    <Compile Include="Controls\Card.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Card.Designer.cs">
-      <DependentUpon>Card.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\DBPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Assets.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Game.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Inspector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Scene.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Hierarchy.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CreateProject.cs">
@@ -94,9 +103,6 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\Card.resx">
-      <DependentUpon>Card.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CreateProject.resx">
       <DependentUpon>CreateProject.cs</DependentUpon>
     </EmbeddedResource>

@@ -27,28 +27,15 @@
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveSceneAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataPanel = new HareEditor.DBPanel();
-            this.assetsPanel = new HareEditor.DBPanel();
-            this.Assets = new HareEditor.Controls.Card();
-            this.hierarchyPanel = new HareEditor.DBPanel();
-            this.Hierarchy = new HareEditor.Controls.Card();
-            this.inspectorPanel = new HareEditor.DBPanel();
-            this.Inspector = new HareEditor.Controls.Card();
-            this.renderPanel = new HareEditor.DBPanel();
-            this.scenePanel = new HareEditor.DBPanel();
-            this.SceneView = new HareEditor.Controls.Card();
-            this.gameViewPanel = new HareEditor.DBPanel();
-            this.GameView = new HareEditor.Controls.Card();
-            this.wrapperPanel = new HareEditor.DBPanel();
-            this.openSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,6 +63,24 @@
             this.dObjectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.audioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataPanel = new HareEditor.DBPanel();
+            this.assetsPanel = new HareEditor.DBPanel();
+            this.Assets = new HareEditor.Assets();
+            this.lblAssets = new System.Windows.Forms.Label();
+            this.hierarchyPanel = new HareEditor.DBPanel();
+            this.Hierarchy = new HareEditor.Hierarchy();
+            this.lblHierarchy = new System.Windows.Forms.Label();
+            this.inspectorPanel = new HareEditor.DBPanel();
+            this.Inspector = new HareEditor.Inspector();
+            this.lblInspector = new System.Windows.Forms.Label();
+            this.renderPanel = new HareEditor.DBPanel();
+            this.scenePanel = new HareEditor.DBPanel();
+            this.Scene = new HareEditor.Sceneview();
+            this.lblScene = new System.Windows.Forms.Label();
+            this.gameViewPanel = new HareEditor.DBPanel();
+            this.Gameview = new HareEditor.Game();
+            this.lblGame = new System.Windows.Forms.Label();
+            this.wrapperPanel = new HareEditor.DBPanel();
             this.MenuStrip.SuspendLayout();
             this.dataPanel.SuspendLayout();
             this.assetsPanel.SuspendLayout();
@@ -132,6 +137,13 @@
             this.newSceneToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.newSceneToolStripMenuItem.Text = "New Scene";
             // 
+            // openSceneToolStripMenuItem
+            // 
+            this.openSceneToolStripMenuItem.Name = "openSceneToolStripMenuItem";
+            this.openSceneToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openSceneToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.openSceneToolStripMenuItem.Text = "Open Scene";
+            // 
             // saveSceneToolStripMenuItem
             // 
             this.saveSceneToolStripMenuItem.Name = "saveSceneToolStripMenuItem";
@@ -151,160 +163,6 @@
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(217, 6);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripMenuItem4,
-            this.preferencesToolStripMenuItem,
-            this.toolStripMenuItem5,
-            this.playToolStripMenuItem,
-            this.pauseToolStripMenuItem,
-            this.toolStripMenuItem6,
-            this.projectSettingsToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // dataPanel
-            // 
-            this.dataPanel.Controls.Add(this.assetsPanel);
-            this.dataPanel.Controls.Add(this.hierarchyPanel);
-            this.dataPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataPanel.Location = new System.Drawing.Point(0, 0);
-            this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(200, 481);
-            this.dataPanel.TabIndex = 2;
-            // 
-            // assetsPanel
-            // 
-            this.assetsPanel.BackColor = System.Drawing.Color.Transparent;
-            this.assetsPanel.Controls.Add(this.Assets);
-            this.assetsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.assetsPanel.Location = new System.Drawing.Point(0, 241);
-            this.assetsPanel.Name = "assetsPanel";
-            this.assetsPanel.Size = new System.Drawing.Size(200, 240);
-            this.assetsPanel.TabIndex = 1;
-            // 
-            // Assets
-            // 
-            this.Assets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Assets.Location = new System.Drawing.Point(0, 0);
-            this.Assets.Name = "Assets";
-            this.Assets.Size = new System.Drawing.Size(200, 240);
-            this.Assets.TabIndex = 0;
-            this.Assets.Title = "Assets";
-            // 
-            // hierarchyPanel
-            // 
-            this.hierarchyPanel.BackColor = System.Drawing.Color.Transparent;
-            this.hierarchyPanel.Controls.Add(this.Hierarchy);
-            this.hierarchyPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hierarchyPanel.Location = new System.Drawing.Point(0, 0);
-            this.hierarchyPanel.Name = "hierarchyPanel";
-            this.hierarchyPanel.Size = new System.Drawing.Size(200, 240);
-            this.hierarchyPanel.TabIndex = 0;
-            // 
-            // Hierarchy
-            // 
-            this.Hierarchy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Hierarchy.Location = new System.Drawing.Point(0, 0);
-            this.Hierarchy.Name = "Hierarchy";
-            this.Hierarchy.Size = new System.Drawing.Size(200, 240);
-            this.Hierarchy.TabIndex = 0;
-            this.Hierarchy.Title = "Hierarchy";
-            // 
-            // inspectorPanel
-            // 
-            this.inspectorPanel.BackColor = System.Drawing.Color.Transparent;
-            this.inspectorPanel.Controls.Add(this.Inspector);
-            this.inspectorPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.inspectorPanel.Location = new System.Drawing.Point(584, 0);
-            this.inspectorPanel.Name = "inspectorPanel";
-            this.inspectorPanel.Size = new System.Drawing.Size(200, 481);
-            this.inspectorPanel.TabIndex = 3;
-            // 
-            // Inspector
-            // 
-            this.Inspector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Inspector.Location = new System.Drawing.Point(0, 0);
-            this.Inspector.Name = "Inspector";
-            this.Inspector.Size = new System.Drawing.Size(200, 481);
-            this.Inspector.TabIndex = 1;
-            this.Inspector.Title = "Inspector";
-            // 
-            // renderPanel
-            // 
-            this.renderPanel.Controls.Add(this.scenePanel);
-            this.renderPanel.Controls.Add(this.gameViewPanel);
-            this.renderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPanel.Location = new System.Drawing.Point(200, 0);
-            this.renderPanel.Name = "renderPanel";
-            this.renderPanel.Size = new System.Drawing.Size(384, 481);
-            this.renderPanel.TabIndex = 4;
-            // 
-            // scenePanel
-            // 
-            this.scenePanel.BackColor = System.Drawing.Color.Transparent;
-            this.scenePanel.Controls.Add(this.SceneView);
-            this.scenePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.scenePanel.Location = new System.Drawing.Point(0, 241);
-            this.scenePanel.Name = "scenePanel";
-            this.scenePanel.Size = new System.Drawing.Size(384, 240);
-            this.scenePanel.TabIndex = 1;
-            // 
-            // SceneView
-            // 
-            this.SceneView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SceneView.Location = new System.Drawing.Point(0, 0);
-            this.SceneView.Name = "SceneView";
-            this.SceneView.Size = new System.Drawing.Size(384, 240);
-            this.SceneView.TabIndex = 0;
-            this.SceneView.Title = "Scene";
-            // 
-            // gameViewPanel
-            // 
-            this.gameViewPanel.BackColor = System.Drawing.Color.Transparent;
-            this.gameViewPanel.Controls.Add(this.GameView);
-            this.gameViewPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gameViewPanel.Location = new System.Drawing.Point(0, 0);
-            this.gameViewPanel.Name = "gameViewPanel";
-            this.gameViewPanel.Size = new System.Drawing.Size(384, 240);
-            this.gameViewPanel.TabIndex = 0;
-            // 
-            // GameView
-            // 
-            this.GameView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GameView.Location = new System.Drawing.Point(0, 0);
-            this.GameView.Name = "GameView";
-            this.GameView.Size = new System.Drawing.Size(384, 240);
-            this.GameView.TabIndex = 0;
-            this.GameView.Title = "Game";
-            // 
-            // wrapperPanel
-            // 
-            this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
-            this.wrapperPanel.Controls.Add(this.renderPanel);
-            this.wrapperPanel.Controls.Add(this.dataPanel);
-            this.wrapperPanel.Controls.Add(this.inspectorPanel);
-            this.wrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wrapperPanel.Location = new System.Drawing.Point(0, 80);
-            this.wrapperPanel.Name = "wrapperPanel";
-            this.wrapperPanel.Size = new System.Drawing.Size(784, 481);
-            this.wrapperPanel.TabIndex = 0;
-            // 
-            // openSceneToolStripMenuItem
-            // 
-            this.openSceneToolStripMenuItem.Name = "openSceneToolStripMenuItem";
-            this.openSceneToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openSceneToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.openSceneToolStripMenuItem.Text = "Open Scene";
             // 
             // buildSettingsToolStripMenuItem
             // 
@@ -332,86 +190,114 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoToolStripMenuItem,
+            this.redoToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.preferencesToolStripMenuItem,
+            this.toolStripMenuItem5,
+            this.playToolStripMenuItem,
+            this.pauseToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.projectSettingsToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(153, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(175, 6);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(153, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(175, 6);
             // 
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(153, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(175, 6);
             // 
             // playToolStripMenuItem
             // 
             this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.playToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.playToolStripMenuItem.Text = "Play";
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pauseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.P)));
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(153, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(175, 6);
             // 
             // projectSettingsToolStripMenuItem
             // 
             this.projectSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.physicsToolStripMenuItem});
             this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
-            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.projectSettingsToolStripMenuItem.Text = "Project Settings";
             // 
             // physicsToolStripMenuItem
             // 
             this.physicsToolStripMenuItem.Name = "physicsToolStripMenuItem";
-            this.physicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.physicsToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.physicsToolStripMenuItem.Text = "Physics";
             // 
             // assetsToolStripMenuItem
@@ -476,32 +362,224 @@
             // createEmptyToolStripMenuItem
             // 
             this.createEmptyToolStripMenuItem.Name = "createEmptyToolStripMenuItem";
-            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.createEmptyToolStripMenuItem.Text = "Create Empty";
             // 
             // dObjectToolStripMenuItem
             // 
             this.dObjectToolStripMenuItem.Name = "dObjectToolStripMenuItem";
-            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem.Text = "3D Object";
             // 
             // dObjectToolStripMenuItem1
             // 
             this.dObjectToolStripMenuItem1.Name = "dObjectToolStripMenuItem1";
-            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem1.Text = "2D Object";
             // 
             // lightToolStripMenuItem
             // 
             this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            this.lightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.lightToolStripMenuItem.Text = "Light";
             // 
             // audioToolStripMenuItem
             // 
             this.audioToolStripMenuItem.Name = "audioToolStripMenuItem";
-            this.audioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.audioToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.audioToolStripMenuItem.Text = "Audio";
+            // 
+            // dataPanel
+            // 
+            this.dataPanel.Controls.Add(this.assetsPanel);
+            this.dataPanel.Controls.Add(this.hierarchyPanel);
+            this.dataPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataPanel.Location = new System.Drawing.Point(0, 0);
+            this.dataPanel.Name = "dataPanel";
+            this.dataPanel.Size = new System.Drawing.Size(200, 481);
+            this.dataPanel.TabIndex = 2;
+            // 
+            // assetsPanel
+            // 
+            this.assetsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.assetsPanel.Controls.Add(this.Assets);
+            this.assetsPanel.Controls.Add(this.lblAssets);
+            this.assetsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.assetsPanel.Location = new System.Drawing.Point(0, 241);
+            this.assetsPanel.Name = "assetsPanel";
+            this.assetsPanel.Size = new System.Drawing.Size(200, 240);
+            this.assetsPanel.TabIndex = 1;
+            // 
+            // Assets
+            // 
+            this.Assets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Assets.Location = new System.Drawing.Point(0, 28);
+            this.Assets.Name = "Assets";
+            this.Assets.Size = new System.Drawing.Size(200, 212);
+            this.Assets.TabIndex = 2;
+            // 
+            // lblAssets
+            // 
+            this.lblAssets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblAssets.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblAssets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAssets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblAssets.Location = new System.Drawing.Point(0, 0);
+            this.lblAssets.Name = "lblAssets";
+            this.lblAssets.Size = new System.Drawing.Size(200, 28);
+            this.lblAssets.TabIndex = 1;
+            this.lblAssets.Text = "Assets";
+            this.lblAssets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // hierarchyPanel
+            // 
+            this.hierarchyPanel.BackColor = System.Drawing.Color.Transparent;
+            this.hierarchyPanel.Controls.Add(this.Hierarchy);
+            this.hierarchyPanel.Controls.Add(this.lblHierarchy);
+            this.hierarchyPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.hierarchyPanel.Location = new System.Drawing.Point(0, 0);
+            this.hierarchyPanel.Name = "hierarchyPanel";
+            this.hierarchyPanel.Size = new System.Drawing.Size(200, 240);
+            this.hierarchyPanel.TabIndex = 0;
+            // 
+            // Hierarchy
+            // 
+            this.Hierarchy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Hierarchy.Location = new System.Drawing.Point(0, 28);
+            this.Hierarchy.Name = "Hierarchy";
+            this.Hierarchy.Size = new System.Drawing.Size(200, 212);
+            this.Hierarchy.TabIndex = 1;
+            // 
+            // lblHierarchy
+            // 
+            this.lblHierarchy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblHierarchy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblHierarchy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHierarchy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblHierarchy.Location = new System.Drawing.Point(0, 0);
+            this.lblHierarchy.Name = "lblHierarchy";
+            this.lblHierarchy.Size = new System.Drawing.Size(200, 28);
+            this.lblHierarchy.TabIndex = 0;
+            this.lblHierarchy.Text = "Hierarchy";
+            this.lblHierarchy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // inspectorPanel
+            // 
+            this.inspectorPanel.BackColor = System.Drawing.Color.Transparent;
+            this.inspectorPanel.Controls.Add(this.Inspector);
+            this.inspectorPanel.Controls.Add(this.lblInspector);
+            this.inspectorPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.inspectorPanel.Location = new System.Drawing.Point(584, 0);
+            this.inspectorPanel.Name = "inspectorPanel";
+            this.inspectorPanel.Size = new System.Drawing.Size(200, 481);
+            this.inspectorPanel.TabIndex = 3;
+            // 
+            // Inspector
+            // 
+            this.Inspector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Inspector.Location = new System.Drawing.Point(0, 28);
+            this.Inspector.Name = "Inspector";
+            this.Inspector.Size = new System.Drawing.Size(200, 453);
+            this.Inspector.TabIndex = 5;
+            // 
+            // lblInspector
+            // 
+            this.lblInspector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblInspector.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblInspector.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInspector.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblInspector.Location = new System.Drawing.Point(0, 0);
+            this.lblInspector.Name = "lblInspector";
+            this.lblInspector.Size = new System.Drawing.Size(200, 28);
+            this.lblInspector.TabIndex = 4;
+            this.lblInspector.Text = "Inspector";
+            this.lblInspector.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // renderPanel
+            // 
+            this.renderPanel.Controls.Add(this.scenePanel);
+            this.renderPanel.Controls.Add(this.gameViewPanel);
+            this.renderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPanel.Location = new System.Drawing.Point(200, 0);
+            this.renderPanel.Name = "renderPanel";
+            this.renderPanel.Size = new System.Drawing.Size(384, 481);
+            this.renderPanel.TabIndex = 4;
+            // 
+            // scenePanel
+            // 
+            this.scenePanel.BackColor = System.Drawing.Color.Transparent;
+            this.scenePanel.Controls.Add(this.Scene);
+            this.scenePanel.Controls.Add(this.lblScene);
+            this.scenePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.scenePanel.Location = new System.Drawing.Point(0, 241);
+            this.scenePanel.Name = "scenePanel";
+            this.scenePanel.Size = new System.Drawing.Size(384, 240);
+            this.scenePanel.TabIndex = 1;
+            // 
+            // Scene
+            // 
+            this.Scene.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Scene.Location = new System.Drawing.Point(0, 28);
+            this.Scene.Name = "Scene";
+            this.Scene.Size = new System.Drawing.Size(384, 212);
+            this.Scene.TabIndex = 3;
+            // 
+            // lblScene
+            // 
+            this.lblScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblScene.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblScene.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScene.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblScene.Location = new System.Drawing.Point(0, 0);
+            this.lblScene.Name = "lblScene";
+            this.lblScene.Size = new System.Drawing.Size(384, 28);
+            this.lblScene.TabIndex = 2;
+            this.lblScene.Text = "Scene";
+            this.lblScene.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // gameViewPanel
+            // 
+            this.gameViewPanel.BackColor = System.Drawing.Color.Transparent;
+            this.gameViewPanel.Controls.Add(this.Gameview);
+            this.gameViewPanel.Controls.Add(this.lblGame);
+            this.gameViewPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gameViewPanel.Location = new System.Drawing.Point(0, 0);
+            this.gameViewPanel.Name = "gameViewPanel";
+            this.gameViewPanel.Size = new System.Drawing.Size(384, 240);
+            this.gameViewPanel.TabIndex = 0;
+            // 
+            // Gameview
+            // 
+            this.Gameview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Gameview.Location = new System.Drawing.Point(0, 28);
+            this.Gameview.Name = "Gameview";
+            this.Gameview.Size = new System.Drawing.Size(384, 212);
+            this.Gameview.TabIndex = 4;
+            // 
+            // lblGame
+            // 
+            this.lblGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblGame.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblGame.Location = new System.Drawing.Point(0, 0);
+            this.lblGame.Name = "lblGame";
+            this.lblGame.Size = new System.Drawing.Size(384, 28);
+            this.lblGame.TabIndex = 3;
+            this.lblGame.Text = "Game";
+            this.lblGame.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // wrapperPanel
+            // 
+            this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
+            this.wrapperPanel.Controls.Add(this.renderPanel);
+            this.wrapperPanel.Controls.Add(this.dataPanel);
+            this.wrapperPanel.Controls.Add(this.inspectorPanel);
+            this.wrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wrapperPanel.Location = new System.Drawing.Point(0, 80);
+            this.wrapperPanel.Name = "wrapperPanel";
+            this.wrapperPanel.Size = new System.Drawing.Size(784, 481);
+            this.wrapperPanel.TabIndex = 0;
             // 
             // Editor
             // 
@@ -518,6 +596,7 @@
             this.Name = "Editor";
             this.Text = "Hare Editor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Editor_FormClosed);
             this.Resize += new System.EventHandler(this.Editor_Resize);
             this.MenuStrip.ResumeLayout(false);
@@ -553,11 +632,6 @@
         private DBPanel scenePanel;
         private DBPanel gameViewPanel;
         private DBPanel wrapperPanel;
-        private Controls.Card Inspector;
-        private Controls.Card Assets;
-        private Controls.Card Hierarchy;
-        private Controls.Card SceneView;
-        private Controls.Card GameView;
         private System.Windows.Forms.ToolStripMenuItem openSceneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildRunToolStripMenuItem;
@@ -590,5 +664,15 @@
         private System.Windows.Forms.ToolStripMenuItem dObjectToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem audioToolStripMenuItem;
+        private System.Windows.Forms.Label lblAssets;
+        private System.Windows.Forms.Label lblHierarchy;
+        private System.Windows.Forms.Label lblInspector;
+        private System.Windows.Forms.Label lblScene;
+        private System.Windows.Forms.Label lblGame;
+        private Assets Assets;
+        private Hierarchy Hierarchy;
+        private Inspector Inspector;
+        private Sceneview Scene;
+        private Game Gameview;
     }
 }
