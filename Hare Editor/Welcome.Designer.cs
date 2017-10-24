@@ -28,12 +28,15 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.wrapperPanel = new HareEditor.DBPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Appbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Appbar
             // 
             this.Appbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.Appbar.Controls.Add(this.pictureBox1);
             this.Appbar.Controls.Add(this.btnNew);
             this.Appbar.Controls.Add(this.btnOpen);
             this.Appbar.Controls.Add(this.label1);
@@ -75,9 +78,8 @@
             // 
             // label1
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Location = new System.Drawing.Point(59, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 56);
             this.label1.TabIndex = 0;
@@ -92,6 +94,18 @@
             this.wrapperPanel.Name = "wrapperPanel";
             this.wrapperPanel.Size = new System.Drawing.Size(584, 305);
             this.wrapperPanel.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // Welcome
             // 
@@ -109,6 +123,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Welcome_FormClosed);
             this.Load += new System.EventHandler(this.Welcome_Load);
             this.Appbar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -120,5 +135,6 @@
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label label1;
         private DBPanel wrapperPanel;
-    }
+    private System.Windows.Forms.PictureBox pictureBox1;
+  }
 }
