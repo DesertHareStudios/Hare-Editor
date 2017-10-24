@@ -24,28 +24,31 @@
         /// </summary>
         private void InitializeComponent() {
             this.Appbar = new HareEditor.DBPanel();
-            this.lblNewProject = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.lblNewProject = new System.Windows.Forms.Label();
             this.pnlProjectName = new HareEditor.DBPanel();
+            this.lblProjectName = new System.Windows.Forms.Label();
             this.tbxProjectName = new System.Windows.Forms.TextBox();
             this.Wrapper = new HareEditor.DBPanel();
-            this.lblProjectName = new System.Windows.Forms.Label();
             this.pnlDirectory = new HareEditor.DBPanel();
             this.lblDirectory = new System.Windows.Forms.Label();
-            this.tbxDirectory = new System.Windows.Forms.TextBox();
             this.pnlDirectoryTbx = new HareEditor.DBPanel();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.tbxDirectory = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Appbar.SuspendLayout();
             this.pnlProjectName.SuspendLayout();
             this.Wrapper.SuspendLayout();
             this.pnlDirectory.SuspendLayout();
             this.pnlDirectoryTbx.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Appbar
             // 
             this.Appbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            this.Appbar.Controls.Add(this.pictureBox1);
             this.Appbar.Controls.Add(this.btnBack);
             this.Appbar.Controls.Add(this.btnCreate);
             this.Appbar.Controls.Add(this.lblNewProject);
@@ -54,32 +57,6 @@
             this.Appbar.Name = "Appbar";
             this.Appbar.Size = new System.Drawing.Size(584, 56);
             this.Appbar.TabIndex = 0;
-            // 
-            // lblNewProject
-            // 
-            this.lblNewProject.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblNewProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lblNewProject.Location = new System.Drawing.Point(0, 0);
-            this.lblNewProject.Name = "lblNewProject";
-            this.lblNewProject.Size = new System.Drawing.Size(123, 56);
-            this.lblNewProject.TabIndex = 0;
-            this.lblNewProject.Text = "New Project";
-            this.lblNewProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnCreate.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCreate.FlatAppearance.BorderSize = 0;
-            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnCreate.Location = new System.Drawing.Point(493, 0);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(91, 56);
-            this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = false;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnBack
             // 
@@ -96,6 +73,31 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnCreate
+            // 
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCreate.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCreate.FlatAppearance.BorderSize = 0;
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnCreate.Location = new System.Drawing.Point(493, 0);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(91, 56);
+            this.btnCreate.TabIndex = 1;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // lblNewProject
+            // 
+            this.lblNewProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblNewProject.Location = new System.Drawing.Point(59, 0);
+            this.lblNewProject.Name = "lblNewProject";
+            this.lblNewProject.Size = new System.Drawing.Size(123, 56);
+            this.lblNewProject.TabIndex = 0;
+            this.lblNewProject.Text = "New Project";
+            this.lblNewProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // pnlProjectName
             // 
             this.pnlProjectName.Controls.Add(this.lblProjectName);
@@ -105,6 +107,17 @@
             this.pnlProjectName.Name = "pnlProjectName";
             this.pnlProjectName.Size = new System.Drawing.Size(584, 56);
             this.pnlProjectName.TabIndex = 1;
+            // 
+            // lblProjectName
+            // 
+            this.lblProjectName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectName.Location = new System.Drawing.Point(0, 0);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Size = new System.Drawing.Size(584, 34);
+            this.lblProjectName.TabIndex = 1;
+            this.lblProjectName.Text = "Project Name";
+            this.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxProjectName
             // 
@@ -131,17 +144,6 @@
             this.Wrapper.Size = new System.Drawing.Size(584, 305);
             this.Wrapper.TabIndex = 2;
             // 
-            // lblProjectName
-            // 
-            this.lblProjectName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectName.Location = new System.Drawing.Point(0, 0);
-            this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(584, 34);
-            this.lblProjectName.TabIndex = 1;
-            this.lblProjectName.Text = "Project Name";
-            this.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // pnlDirectory
             // 
             this.pnlDirectory.Controls.Add(this.lblDirectory);
@@ -162,19 +164,6 @@
             this.lblDirectory.TabIndex = 1;
             this.lblDirectory.Text = "Directory";
             this.lblDirectory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tbxDirectory
-            // 
-            this.tbxDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tbxDirectory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxDirectory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tbxDirectory.Enabled = false;
-            this.tbxDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDirectory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.tbxDirectory.Location = new System.Drawing.Point(0, 0);
-            this.tbxDirectory.Name = "tbxDirectory";
-            this.tbxDirectory.Size = new System.Drawing.Size(485, 27);
-            this.tbxDirectory.TabIndex = 0;
             // 
             // pnlDirectoryTbx
             // 
@@ -201,6 +190,31 @@
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
+            // tbxDirectory
+            // 
+            this.tbxDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tbxDirectory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxDirectory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tbxDirectory.Enabled = false;
+            this.tbxDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDirectory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.tbxDirectory.Location = new System.Drawing.Point(0, 0);
+            this.tbxDirectory.Name = "tbxDirectory";
+            this.tbxDirectory.Size = new System.Drawing.Size(485, 27);
+            this.tbxDirectory.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // CreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +237,7 @@
             this.pnlDirectory.ResumeLayout(false);
             this.pnlDirectoryTbx.ResumeLayout(false);
             this.pnlDirectoryTbx.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,5 +257,6 @@
         private DBPanel pnlDirectoryTbx;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TextBox tbxDirectory;
-    }
+    private System.Windows.Forms.PictureBox pictureBox1;
+  }
 }

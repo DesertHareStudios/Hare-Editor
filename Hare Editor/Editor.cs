@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using HareEngine;
 
@@ -64,6 +64,12 @@ namespace HareEditor {
                     MessageBoxIcon.Question
                 );
         }
+
+    private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Hide();
+      Program.welcome.Show();
     }
+  }
 
 }

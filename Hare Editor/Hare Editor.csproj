@@ -143,5 +143,35 @@
       <Name>Hare Engine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DHSLogo[1].png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grab1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grab2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\directions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Transform.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
