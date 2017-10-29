@@ -2,6 +2,9 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
+//using HareEngine;
+//using HareEngine.SceneManagement;
+//using OpenTK;
 
 namespace HareEditor {
 
@@ -39,6 +42,26 @@ namespace HareEditor {
             Application.SetCompatibleTextRenderingDefault(false);
             OpenTK.Toolkit.Init();
             Application.Run(new Welcome());
+            //Hare.Init(400, 400, "Test");
+            //Scene scene = new Scene("Test");
+            //GameObject c = new GameObject("Camera");
+            //c.transform.position = new OpenTK.Vector3(0f, 0f, -10f);
+            //GameObject s = new GameObject("sprite");
+            //Camera cam = new Camera(c);
+            //cam.viewmode = Viewmode.Orthographic;
+            //c.AddBehaviour(cam);
+            //s.AddBehaviour(new SpriteRenderer(s));
+            //s.AddBehaviour(new TestBehaviour(s));
+            //c.transform.position = new OpenTK.Vector3(0f, 0f, -10f);
+            //scene.gameObjects.Add(c);
+            //scene.gameObjects.Add(s);
+            //scene.Preload = () => {
+            //    Texture t = new Texture(Environment.CurrentDirectory + "\\logo.png");
+            //    s.GetComponent<SpriteRenderer>().sprite = t;
+            //};
+            //SceneManager.AddScene(scene);
+            //SceneManager.LoadScene("Test");
+            //Hare.Run();
         }
 
         public static void SaveProjectList() {
@@ -68,6 +91,35 @@ namespace HareEditor {
         }
 
     }
+
+    //public class TestBehaviour : Behaviour {
+
+    //    private Vector3 target = new Vector3();
+
+    //    public TestBehaviour(GameObject gameObject) : base(gameObject) { }
+
+    //    public override void Update() {
+    //        if (Input.GetKeyDown(OpenTK.Input.Key.W)) {
+    //            target.Y += .5f;
+    //        }
+    //        if (Input.GetKeyDown(OpenTK.Input.Key.A)) {
+    //            target.X -= .5f;
+    //        }
+    //        if (Input.GetKeyDown(OpenTK.Input.Key.S)) {
+    //            target.Y -= .5f;
+    //        }
+    //        if (Input.GetKeyDown(OpenTK.Input.Key.D)) {
+    //            target.X += .5f;
+    //        }
+    //        if (Input.GetKeyDown(OpenTK.Input.Key.Q)) {
+    //            target.Z += .5f;
+    //        }
+    //        if (Input.GetKeyDown(OpenTK.Input.Key.E)) {
+    //            target.Z -= .5f;
+    //        }
+    //        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime);
+    //    }
+    //}
 
     public class ProjectHolder {
         public string Name;
