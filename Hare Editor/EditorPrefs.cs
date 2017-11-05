@@ -17,8 +17,6 @@ namespace HareEditor {
         }
         #endregion
 
-        public const string versionName = "prealpha 0.0.1";
-        public const int versionID = 0;
         public Color tint = new Color(0f, 0.618f, 0.618f);
 
         public Theme theme;

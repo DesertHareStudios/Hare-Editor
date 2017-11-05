@@ -60,6 +60,7 @@
             this.createEmptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dObjectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.audioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,15 +92,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.MenuStrip.SuspendLayout();
             this.wrapperPanel.SuspendLayout();
             this.renderPanel.SuspendLayout();
             this.scenePanel.SuspendLayout();
-            this.Scene.SuspendLayout();
             this.gameViewPanel.SuspendLayout();
-            this.Gameview.SuspendLayout();
             this.dataPanel.SuspendLayout();
             this.assetsPanel.SuspendLayout();
             this.hierarchyPanel.SuspendLayout();
@@ -197,7 +194,7 @@
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Text = "Close Project";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
@@ -374,6 +371,7 @@
             this.createEmptyToolStripMenuItem.Name = "createEmptyToolStripMenuItem";
             this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.createEmptyToolStripMenuItem.Text = "Create Empty";
+            this.createEmptyToolStripMenuItem.Click += new System.EventHandler(this.createEmptyToolStripMenuItem_Click);
             // 
             // dObjectToolStripMenuItem
             // 
@@ -383,9 +381,18 @@
             // 
             // dObjectToolStripMenuItem1
             // 
+            this.dObjectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spriteToolStripMenuItem});
             this.dObjectToolStripMenuItem1.Name = "dObjectToolStripMenuItem1";
             this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem1.Text = "2D Object";
+            // 
+            // spriteToolStripMenuItem
+            // 
+            this.spriteToolStripMenuItem.Name = "spriteToolStripMenuItem";
+            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.spriteToolStripMenuItem.Text = "Sprite";
+            this.spriteToolStripMenuItem.Click += new System.EventHandler(this.spriteToolStripMenuItem_Click);
             // 
             // lightToolStripMenuItem
             // 
@@ -452,7 +459,7 @@
             // 
             // Scene
             // 
-            this.Scene.Controls.Add(this.button9);
+            this.Scene.BackColor = System.Drawing.Color.Black;
             this.Scene.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Scene.Location = new System.Drawing.Point(0, 28);
             this.Scene.Name = "Scene";
@@ -485,7 +492,7 @@
             // 
             // Gameview
             // 
-            this.Gameview.Controls.Add(this.button8);
+            this.Gameview.BackColor = System.Drawing.Color.Black;
             this.Gameview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Gameview.Location = new System.Drawing.Point(0, 28);
             this.Gameview.Name = "Gameview";
@@ -528,6 +535,7 @@
             // 
             // Assets
             // 
+            this.Assets.AutoScroll = true;
             this.Assets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Assets.Location = new System.Drawing.Point(0, 28);
             this.Assets.Name = "Assets";
@@ -560,6 +568,7 @@
             // 
             // Hierarchy
             // 
+            this.Hierarchy.AutoScroll = true;
             this.Hierarchy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Hierarchy.Location = new System.Drawing.Point(0, 28);
             this.Hierarchy.Name = "Hierarchy";
@@ -592,6 +601,7 @@
             // 
             // Inspector
             // 
+            this.Inspector.AutoScroll = true;
             this.Inspector.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Inspector.Location = new System.Drawing.Point(0, 28);
             this.Inspector.Name = "Inspector";
@@ -630,9 +640,12 @@
             // button7
             // 
             this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button7.BackgroundImage = global::HareEditor.Properties.Resources.pause;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.button7.FlatAppearance.BorderSize = 2;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Location = new System.Drawing.Point(368, 10);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.MaximumSize = new System.Drawing.Size(36, 36);
@@ -640,14 +653,17 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(36, 36);
             this.button7.TabIndex = 6;
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.UseVisualStyleBackColor = false;
             // 
             // button6
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button6.BackgroundImage = global::HareEditor.Properties.Resources.play;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.button6.FlatAppearance.BorderSize = 2;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Location = new System.Drawing.Point(332, 10);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.MaximumSize = new System.Drawing.Size(36, 36);
@@ -655,49 +671,61 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(36, 36);
             this.button6.TabIndex = 5;
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button5.BackgroundImage = global::HareEditor.Properties.Resources.Transform;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.button5.FlatAppearance.BorderSize = 2;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Location = new System.Drawing.Point(164, 10);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(36, 36);
             this.button5.TabIndex = 4;
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button4.BackgroundImage = global::HareEditor.Properties.Resources.resize;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.button4.FlatAppearance.BorderSize = 2;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Location = new System.Drawing.Point(128, 10);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(36, 36);
             this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button3.BackgroundImage = global::HareEditor.Properties.Resources.reload;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.button3.FlatAppearance.BorderSize = 2;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(93, 10);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(36, 36);
             this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button2.BackgroundImage = global::HareEditor.Properties.Resources.directions;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button2.Location = new System.Drawing.Point(57, 10);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
@@ -705,41 +733,22 @@
             this.button2.Size = new System.Drawing.Size(36, 36);
             this.button2.TabIndex = 1;
             this.button2.UseMnemonic = false;
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button1.BackgroundImage = global::HareEditor.Properties.Resources.grab2;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(21, 10);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(36, 36);
             this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Black;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(0, 0);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(384, 212);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Black;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(0, 0);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(384, 212);
-            this.button9.TabIndex = 1;
-            this.button9.Text = "button9";
-            this.button9.UseVisualStyleBackColor = false;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Editor
             // 
@@ -764,9 +773,7 @@
             this.wrapperPanel.ResumeLayout(false);
             this.renderPanel.ResumeLayout(false);
             this.scenePanel.ResumeLayout(false);
-            this.Scene.ResumeLayout(false);
             this.gameViewPanel.ResumeLayout(false);
-            this.Gameview.ResumeLayout(false);
             this.dataPanel.ResumeLayout(false);
             this.assetsPanel.ResumeLayout(false);
             this.hierarchyPanel.ResumeLayout(false);
@@ -832,22 +839,21 @@
         private System.Windows.Forms.Label lblInspector;
         private System.Windows.Forms.Label lblScene;
         private System.Windows.Forms.Label lblGame;
-        private Assets Assets;
-        private Hierarchy Hierarchy;
-        private Inspector Inspector;
-        private Sceneview Scene;
-        private Game Gameview;
-    private System.Windows.Forms.Button button5;
-    private System.Windows.Forms.Button button4;
-    private System.Windows.Forms.Button button3;
-    private System.Windows.Forms.Button button2;
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.ToolStripMenuItem componentToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-    private System.Windows.Forms.Button button7;
-    private System.Windows.Forms.Button button6;
-    private System.Windows.Forms.Button button9;
-    private System.Windows.Forms.Button button8;
-  }
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem componentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ToolStripMenuItem spriteToolStripMenuItem;
+        public Inspector Inspector;
+        public Sceneview Scene;
+        public Game Gameview;
+        public Assets Assets;
+        public Hierarchy Hierarchy;
+    }
 }

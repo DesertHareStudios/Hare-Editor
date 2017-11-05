@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Deployment.Application;
+using System.Reflection;
 //using HareEngine;
 //using HareEngine.SceneManagement;
 //using OpenTK;
@@ -70,6 +72,14 @@ namespace HareEditor {
                 text += ph.Name + "\n" + ph.Path + "\n";
             }
             File.WriteAllText(Environment.CurrentDirectory + "\\rpl.list", text);
+        }
+
+        public static string CurrentVersion {
+            get {
+                return ApplicationDeployment.IsNetworkDeployed
+                       ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString()
+                       : Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
         }
 
         public static System.Drawing.Color HareColorToNETColor(HareEngine.Color color) {
