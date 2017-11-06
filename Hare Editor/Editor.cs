@@ -114,6 +114,6 @@ namespace HareEditor {
                 currentScene.gameObjects.Add(sprite);
             }
         }
-    }
+  }
 
 }

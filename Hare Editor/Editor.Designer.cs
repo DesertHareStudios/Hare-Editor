@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,6 +93,27 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.HierarchyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
+            this.createEmptyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dObjectToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dObjectToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.audioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cameraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.sphereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cubeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sphereToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cubeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spriteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.wrapperPanel.SuspendLayout();
             this.renderPanel.SuspendLayout();
@@ -102,6 +124,8 @@
             this.hierarchyPanel.SuspendLayout();
             this.inspectorPanel.SuspendLayout();
             this.Appbar.SuspendLayout();
+            this.HierarchyMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuStrip
@@ -361,7 +385,8 @@
             this.dObjectToolStripMenuItem,
             this.dObjectToolStripMenuItem1,
             this.lightToolStripMenuItem,
-            this.audioToolStripMenuItem});
+            this.audioToolStripMenuItem,
+            this.cameraToolStripMenuItem1});
             this.gameObjectToolStripMenuItem.Name = "gameObjectToolStripMenuItem";
             this.gameObjectToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.gameObjectToolStripMenuItem.Text = "GameObject";
@@ -375,8 +400,11 @@
             // 
             // dObjectToolStripMenuItem
             // 
+            this.dObjectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sphereToolStripMenuItem,
+            this.cubeToolStripMenuItem});
             this.dObjectToolStripMenuItem.Name = "dObjectToolStripMenuItem";
-            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dObjectToolStripMenuItem.Text = "3D Object";
             // 
             // dObjectToolStripMenuItem1
@@ -569,6 +597,7 @@
             // Hierarchy
             // 
             this.Hierarchy.AutoScroll = true;
+            this.Hierarchy.ContextMenuStrip = this.HierarchyMenu;
             this.Hierarchy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Hierarchy.Location = new System.Drawing.Point(0, 28);
             this.Hierarchy.Name = "Hierarchy";
@@ -624,6 +653,7 @@
             // Appbar
             // 
             this.Appbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.Appbar.Controls.Add(this.pictureBox1);
             this.Appbar.Controls.Add(this.button7);
             this.Appbar.Controls.Add(this.button6);
             this.Appbar.Controls.Add(this.button5);
@@ -750,6 +780,155 @@
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // HierarchyMenu
+            // 
+            this.HierarchyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem1,
+            this.pateToolStripMenuItem,
+            this.toolStripMenuItem9,
+            this.renameToolStripMenuItem,
+            this.duplicateToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.toolStripMenuItem10,
+            this.createEmptyToolStripMenuItem1,
+            this.dObjectToolStripMenuItem2,
+            this.dObjectToolStripMenuItem3,
+            this.lightToolStripMenuItem1,
+            this.audioToolStripMenuItem1,
+            this.cameraToolStripMenuItem});
+            this.HierarchyMenu.Name = "contextMenuStrip1";
+            this.HierarchyMenu.Size = new System.Drawing.Size(146, 258);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pictureBox1.Location = new System.Drawing.Point(731, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.copyToolStripMenuItem1.Text = "Copy";
+            // 
+            // pateToolStripMenuItem
+            // 
+            this.pateToolStripMenuItem.Name = "pateToolStripMenuItem";
+            this.pateToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.pateToolStripMenuItem.Text = "Paste";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(142, 6);
+            // 
+            // renameToolStripMenuItem
+            // 
+            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.renameToolStripMenuItem.Text = "Rename";
+            // 
+            // duplicateToolStripMenuItem
+            // 
+            this.duplicateToolStripMenuItem.Name = "duplicateToolStripMenuItem";
+            this.duplicateToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.duplicateToolStripMenuItem.Text = "Duplicate";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(142, 6);
+            // 
+            // createEmptyToolStripMenuItem1
+            // 
+            this.createEmptyToolStripMenuItem1.Name = "createEmptyToolStripMenuItem1";
+            this.createEmptyToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.createEmptyToolStripMenuItem1.Text = "Create Empty";
+            // 
+            // dObjectToolStripMenuItem2
+            // 
+            this.dObjectToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sphereToolStripMenuItem1,
+            this.cubeToolStripMenuItem1});
+            this.dObjectToolStripMenuItem2.Name = "dObjectToolStripMenuItem2";
+            this.dObjectToolStripMenuItem2.Size = new System.Drawing.Size(145, 22);
+            this.dObjectToolStripMenuItem2.Text = "3D Object";
+            // 
+            // dObjectToolStripMenuItem3
+            // 
+            this.dObjectToolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spriteToolStripMenuItem1});
+            this.dObjectToolStripMenuItem3.Name = "dObjectToolStripMenuItem3";
+            this.dObjectToolStripMenuItem3.Size = new System.Drawing.Size(145, 22);
+            this.dObjectToolStripMenuItem3.Text = "2D Object";
+            // 
+            // lightToolStripMenuItem1
+            // 
+            this.lightToolStripMenuItem1.Name = "lightToolStripMenuItem1";
+            this.lightToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.lightToolStripMenuItem1.Text = "Light";
+            // 
+            // audioToolStripMenuItem1
+            // 
+            this.audioToolStripMenuItem1.Name = "audioToolStripMenuItem1";
+            this.audioToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.audioToolStripMenuItem1.Text = "Audio";
+            // 
+            // cameraToolStripMenuItem
+            // 
+            this.cameraToolStripMenuItem.Name = "cameraToolStripMenuItem";
+            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.cameraToolStripMenuItem.Text = "Camera";
+            // 
+            // cameraToolStripMenuItem1
+            // 
+            this.cameraToolStripMenuItem1.Name = "cameraToolStripMenuItem1";
+            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cameraToolStripMenuItem1.Text = "Camera";
+            // 
+            // sphereToolStripMenuItem
+            // 
+            this.sphereToolStripMenuItem.Name = "sphereToolStripMenuItem";
+            this.sphereToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sphereToolStripMenuItem.Text = "Sphere";
+            // 
+            // cubeToolStripMenuItem
+            // 
+            this.cubeToolStripMenuItem.Name = "cubeToolStripMenuItem";
+            this.cubeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cubeToolStripMenuItem.Text = "Cube";
+            // 
+            // sphereToolStripMenuItem1
+            // 
+            this.sphereToolStripMenuItem1.Name = "sphereToolStripMenuItem1";
+            this.sphereToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.sphereToolStripMenuItem1.Text = "Sphere";
+            // 
+            // cubeToolStripMenuItem1
+            // 
+            this.cubeToolStripMenuItem1.Name = "cubeToolStripMenuItem1";
+            this.cubeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cubeToolStripMenuItem1.Text = "Cube";
+            // 
+            // spriteToolStripMenuItem1
+            // 
+            this.spriteToolStripMenuItem1.Name = "spriteToolStripMenuItem1";
+            this.spriteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.spriteToolStripMenuItem1.Text = "Sprite";
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -779,6 +958,8 @@
             this.hierarchyPanel.ResumeLayout(false);
             this.inspectorPanel.ResumeLayout(false);
             this.Appbar.ResumeLayout(false);
+            this.HierarchyMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -855,5 +1036,26 @@
         public Game Gameview;
         public Assets Assets;
         public Hierarchy Hierarchy;
-    }
+    private System.Windows.Forms.ContextMenuStrip HierarchyMenu;
+    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem pateToolStripMenuItem;
+    private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
+    private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+    private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
+    private System.Windows.Forms.ToolStripMenuItem createEmptyToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem dObjectToolStripMenuItem2;
+    private System.Windows.Forms.ToolStripMenuItem dObjectToolStripMenuItem3;
+    private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem audioToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem sphereToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem cubeToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem sphereToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem cubeToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem spriteToolStripMenuItem1;
+  }
 }
