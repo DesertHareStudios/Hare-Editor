@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HareEditor.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAgAAAAAhAAAAAAEAAAAAgAAAAAAgAAAAAJAAAAIA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.ProjectHolder">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Welcome">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAQASAAABCABACAAAACIAAIAAgAAAACAABEAAA=</HashCode>
+      <FileName>Welcome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.EditorPrefs">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAABAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>EditorPrefs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.TypeSwitch">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAQAAAAAIAAAAAAoAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TypeSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Asset">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAIgACBAAQAAAAAABAAAAAAAAAAAAAQUAACAAAA=</HashCode>
+      <FileName>Asset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.AssetProperty">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Asset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.CreateProject">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBAAQEAAACRQAAKAAAGAAIAiAAAAQAJCBICAAABEAAA=</HashCode>
+      <FileName>CreateProject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Editor">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DQ2QAAAiIGAUhAlqxISEjAICSMp7IBhjqgCiFHKEAIA=</HashCode>
+      <FileName>Editor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Assets">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAEAAA=</HashCode>
+      <FileName>Controls\Assets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.DBPanel" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\DBPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Game">
+    <Position X="9" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Hierarchy">
+    <Position X="9" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAACAAAAAAAAAAAAAABAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Hierarchy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Inspector">
+    <Position X="9" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAIAAAAAAA=</HashCode>
+      <FileName>Controls\Inspector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HareEditor.Sceneview">
+    <Position X="7.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Scene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="HareEditor.Theme">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAgAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>EditorPrefs.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
