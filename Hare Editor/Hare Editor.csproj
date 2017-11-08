@@ -91,9 +91,6 @@
     <Compile Include="Controls\Inspector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Scene.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\Hierarchy.cs">
       <SubType>Component</SubType>
     </Compile>

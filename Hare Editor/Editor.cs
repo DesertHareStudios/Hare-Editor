@@ -73,8 +73,7 @@ namespace HareEditor {
             inspectorPanel.Width = fw / 4;
             hierarchyPanel.Height = fh / 2;
             assetsPanel.Height = fh / 2;
-            gameViewPanel.Height = fh / 2;
-            scenePanel.Height = fh / 2;
+            gameViewPanel.Height = fh;
         }
 
         private void Editor_FormClosing(object sender, FormClosingEventArgs e) {
@@ -114,6 +113,45 @@ namespace HareEditor {
                 currentScene.gameObjects.Add(sprite);
             }
         }
+
+    private void CopyMenu_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void PasteMenu_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void NewSceneMenu_Click(object sender, EventArgs e)
+    {
+      Scene newScene = new Scene("Untitled");
+      GameObject camera = new GameObject("Main Camera");
+      camera.AddBehaviour(new Camera(camera));
+      camera.AddBehaviour(new AudioListener(camera));
+      newScene.gameObjects.Add(camera);
+      currentScene = newScene;
+      Init();
+    }
+
+    private void lightToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+      EditorPrefs.Instance.theme = Theme.Light;
+      Init();
+    }
+
+    private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      EditorPrefs.Instance.theme = Theme.Dark;
+      Init();
+    }
+
+    private void hybridToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      EditorPrefs.Instance.theme = Theme.Hybrid;
+      Init();
+    }
   }
 
 }
