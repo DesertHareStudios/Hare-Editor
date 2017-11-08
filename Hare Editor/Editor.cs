@@ -60,6 +60,7 @@ namespace HareEditor {
             Hierarchy.Reload();
             Assets.Reload();
             Inspector.Reload();
+            Gameview.Init();
         }
 
         private void Editor_FormClosed(object sender, FormClosedEventArgs e) {
@@ -114,44 +115,38 @@ namespace HareEditor {
             }
         }
 
-    private void CopyMenu_Click(object sender, EventArgs e)
-    {
+        private void CopyMenu_Click(object sender, EventArgs e) {
 
+        }
+
+        private void PasteMenu_Click(object sender, EventArgs e) {
+
+        }
+
+        private void NewSceneMenu_Click(object sender, EventArgs e) {
+            Scene newScene = new Scene("Untitled");
+            GameObject camera = new GameObject("Main Camera");
+            camera.AddBehaviour(new Camera(camera));
+            camera.AddBehaviour(new AudioListener(camera));
+            newScene.gameObjects.Add(camera);
+            currentScene = newScene;
+            Init();
+        }
+
+        private void lightToolStripMenuItem1_Click(object sender, EventArgs e) {
+            EditorPrefs.Instance.theme = Theme.Light;
+            Init();
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e) {
+            EditorPrefs.Instance.theme = Theme.Dark;
+            Init();
+        }
+
+        private void hybridToolStripMenuItem_Click(object sender, EventArgs e) {
+            EditorPrefs.Instance.theme = Theme.Hybrid;
+            Init();
+        }
     }
-
-    private void PasteMenu_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void NewSceneMenu_Click(object sender, EventArgs e)
-    {
-      Scene newScene = new Scene("Untitled");
-      GameObject camera = new GameObject("Main Camera");
-      camera.AddBehaviour(new Camera(camera));
-      camera.AddBehaviour(new AudioListener(camera));
-      newScene.gameObjects.Add(camera);
-      currentScene = newScene;
-      Init();
-    }
-
-    private void lightToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-      EditorPrefs.Instance.theme = Theme.Light;
-      Init();
-    }
-
-    private void darkToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      EditorPrefs.Instance.theme = Theme.Dark;
-      Init();
-    }
-
-    private void hybridToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      EditorPrefs.Instance.theme = Theme.Hybrid;
-      Init();
-    }
-  }
 
 }
