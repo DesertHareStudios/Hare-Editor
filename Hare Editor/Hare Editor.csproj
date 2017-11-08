@@ -88,6 +88,9 @@
     <Compile Include="Controls\Game.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\HareGLControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\Inspector.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -135,6 +138,7 @@
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="GUIClassDiagram.cd" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
