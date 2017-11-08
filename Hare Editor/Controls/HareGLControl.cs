@@ -25,7 +25,7 @@ public class HareGLControl : GLControl {
     private List<MouseButton> mbd = new List<MouseButton>();
     private List<MouseButton> mbu = new List<MouseButton>();
 
-    public HareGLControl() : base(GraphicsMode.Default, 3, 0, GraphicsContextFlags.ForwardCompatible) {
+    public HareGLControl() : base() {
 
     }
 
@@ -38,7 +38,6 @@ public class HareGLControl : GLControl {
     protected override void OnLoad(EventArgs e) {
         base.OnLoad(e);
         GL.Enable(EnableCap.Blend);
-        KeyUp += OnKeyUp;
     }
 
     protected override void OnResize(EventArgs e) {
