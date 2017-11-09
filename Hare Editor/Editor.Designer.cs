@@ -69,6 +69,10 @@
             this.cameraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.componentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hybridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HierarchyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CopyMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,10 +100,6 @@
             this.OpenMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteAsstMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.RefreshMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lightToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hybridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wrapperPanel = new HareEditor.DBPanel();
             this.renderPanel = new HareEditor.DBPanel();
             this.gameViewPanel = new HareEditor.DBPanel();
@@ -340,7 +340,7 @@
             // physicsToolStripMenuItem
             // 
             this.physicsToolStripMenuItem.Name = "physicsToolStripMenuItem";
-            this.physicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.physicsToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.physicsToolStripMenuItem.Text = "Physics";
             // 
             // assetsToolStripMenuItem
@@ -406,7 +406,7 @@
             // createEmptyToolStripMenuItem
             // 
             this.createEmptyToolStripMenuItem.Name = "createEmptyToolStripMenuItem";
-            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.createEmptyToolStripMenuItem.Text = "Create Empty";
             this.createEmptyToolStripMenuItem.Click += new System.EventHandler(this.createEmptyToolStripMenuItem_Click);
             // 
@@ -416,7 +416,7 @@
             this.sphereToolStripMenuItem,
             this.cubeToolStripMenuItem});
             this.dObjectToolStripMenuItem.Name = "dObjectToolStripMenuItem";
-            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem.Text = "3D Object";
             // 
             // sphereToolStripMenuItem
@@ -436,7 +436,7 @@
             this.dObjectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteToolStripMenuItem});
             this.dObjectToolStripMenuItem1.Name = "dObjectToolStripMenuItem1";
-            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem1.Text = "2D Object";
             // 
             // spriteToolStripMenuItem
@@ -449,19 +449,19 @@
             // lightToolStripMenuItem
             // 
             this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            this.lightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.lightToolStripMenuItem.Text = "Light";
             // 
             // audioToolStripMenuItem
             // 
             this.audioToolStripMenuItem.Name = "audioToolStripMenuItem";
-            this.audioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.audioToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.audioToolStripMenuItem.Text = "Audio";
             // 
             // cameraToolStripMenuItem1
             // 
             this.cameraToolStripMenuItem1.Name = "cameraToolStripMenuItem1";
-            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.cameraToolStripMenuItem1.Text = "Camera";
             // 
             // componentToolStripMenuItem
@@ -477,6 +477,37 @@
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
             this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.windowToolStripMenuItem.Text = "Window";
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lightToolStripMenuItem1,
+            this.darkToolStripMenuItem,
+            this.hybridToolStripMenuItem});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // lightToolStripMenuItem1
+            // 
+            this.lightToolStripMenuItem1.Name = "lightToolStripMenuItem1";
+            this.lightToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+            this.lightToolStripMenuItem1.Text = "Light";
+            this.lightToolStripMenuItem1.Click += new System.EventHandler(this.lightToolStripMenuItem1_Click);
+            // 
+            // darkToolStripMenuItem
+            // 
+            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.darkToolStripMenuItem.Text = "Dark";
+            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
+            // 
+            // hybridToolStripMenuItem
+            // 
+            this.hybridToolStripMenuItem.Name = "hybridToolStripMenuItem";
+            this.hybridToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.hybridToolStripMenuItem.Text = "Hybrid";
+            this.hybridToolStripMenuItem.Click += new System.EventHandler(this.hybridToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -501,55 +532,56 @@
             this.AudioMenu,
             this.CameraMenu});
             this.HierarchyMenu.Name = "contextMenuStrip1";
-            this.HierarchyMenu.Size = new System.Drawing.Size(146, 258);
+            this.HierarchyMenu.Size = new System.Drawing.Size(153, 280);
             // 
             // CopyMenu
             // 
             this.CopyMenu.Name = "CopyMenu";
-            this.CopyMenu.Size = new System.Drawing.Size(145, 22);
+            this.CopyMenu.Size = new System.Drawing.Size(152, 22);
             this.CopyMenu.Text = "Copy";
             this.CopyMenu.Click += new System.EventHandler(this.CopyMenu_Click);
             // 
             // PasteMenu
             // 
             this.PasteMenu.Name = "PasteMenu";
-            this.PasteMenu.Size = new System.Drawing.Size(145, 22);
+            this.PasteMenu.Size = new System.Drawing.Size(152, 22);
             this.PasteMenu.Text = "Paste";
             this.PasteMenu.Click += new System.EventHandler(this.PasteMenu_Click);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(142, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(149, 6);
             // 
             // RenameMenu
             // 
             this.RenameMenu.Name = "RenameMenu";
-            this.RenameMenu.Size = new System.Drawing.Size(145, 22);
+            this.RenameMenu.Size = new System.Drawing.Size(152, 22);
             this.RenameMenu.Text = "Rename";
             // 
             // DuplicateMenu
             // 
             this.DuplicateMenu.Name = "DuplicateMenu";
-            this.DuplicateMenu.Size = new System.Drawing.Size(145, 22);
+            this.DuplicateMenu.Size = new System.Drawing.Size(152, 22);
             this.DuplicateMenu.Text = "Duplicate";
             // 
             // DeleteMenu
             // 
             this.DeleteMenu.Name = "DeleteMenu";
-            this.DeleteMenu.Size = new System.Drawing.Size(145, 22);
+            this.DeleteMenu.Size = new System.Drawing.Size(152, 22);
             this.DeleteMenu.Text = "Delete";
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(142, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(149, 6);
             // 
             // CreateEmptyMenu
             // 
             this.CreateEmptyMenu.Name = "CreateEmptyMenu";
-            this.CreateEmptyMenu.Size = new System.Drawing.Size(145, 22);
+            this.CreateEmptyMenu.Size = new System.Drawing.Size(152, 22);
             this.CreateEmptyMenu.Text = "Create Empty";
+            this.CreateEmptyMenu.Click += new System.EventHandler(this.CreateEmptyMenu_Click);
             // 
             // TObjectMenu
             // 
@@ -557,7 +589,7 @@
             this.SphereMenu,
             this.CubeMenu});
             this.TObjectMenu.Name = "TObjectMenu";
-            this.TObjectMenu.Size = new System.Drawing.Size(145, 22);
+            this.TObjectMenu.Size = new System.Drawing.Size(152, 22);
             this.TObjectMenu.Text = "3D Object";
             // 
             // SphereMenu
@@ -577,7 +609,7 @@
             this.TwObjectMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SpriteMenu});
             this.TwObjectMenu.Name = "TwObjectMenu";
-            this.TwObjectMenu.Size = new System.Drawing.Size(145, 22);
+            this.TwObjectMenu.Size = new System.Drawing.Size(152, 22);
             this.TwObjectMenu.Text = "2D Object";
             // 
             // SpriteMenu
@@ -589,20 +621,21 @@
             // LightMenu
             // 
             this.LightMenu.Name = "LightMenu";
-            this.LightMenu.Size = new System.Drawing.Size(145, 22);
+            this.LightMenu.Size = new System.Drawing.Size(152, 22);
             this.LightMenu.Text = "Light";
             // 
             // AudioMenu
             // 
             this.AudioMenu.Name = "AudioMenu";
-            this.AudioMenu.Size = new System.Drawing.Size(145, 22);
+            this.AudioMenu.Size = new System.Drawing.Size(152, 22);
             this.AudioMenu.Text = "Audio";
             // 
             // CameraMenu
             // 
             this.CameraMenu.Name = "CameraMenu";
-            this.CameraMenu.Size = new System.Drawing.Size(145, 22);
+            this.CameraMenu.Size = new System.Drawing.Size(152, 22);
             this.CameraMenu.Text = "Camera";
+            this.CameraMenu.Click += new System.EventHandler(this.CameraMenu_Click);
             // 
             // AssetsMenu
             // 
@@ -628,19 +661,19 @@
             // folderToolStripMenuItem
             // 
             this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
-            this.folderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.folderToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.folderToolStripMenuItem.Text = "Folder";
             // 
             // cScriptToolStripMenuItem
             // 
             this.cScriptToolStripMenuItem.Name = "cScriptToolStripMenuItem";
-            this.cScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cScriptToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.cScriptToolStripMenuItem.Text = "C# Script";
             // 
             // sceneToolStripMenuItem
             // 
             this.sceneToolStripMenuItem.Name = "sceneToolStripMenuItem";
-            this.sceneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sceneToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.sceneToolStripMenuItem.Text = "Scene";
             // 
             // ShwExpMenu
@@ -666,37 +699,6 @@
             this.RefreshMenu.Name = "RefreshMenu";
             this.RefreshMenu.Size = new System.Drawing.Size(161, 22);
             this.RefreshMenu.Text = "Refresh";
-            // 
-            // themeToolStripMenuItem
-            // 
-            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lightToolStripMenuItem1,
-            this.darkToolStripMenuItem,
-            this.hybridToolStripMenuItem});
-            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.themeToolStripMenuItem.Text = "Theme";
-            // 
-            // lightToolStripMenuItem1
-            // 
-            this.lightToolStripMenuItem1.Name = "lightToolStripMenuItem1";
-            this.lightToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
-            this.lightToolStripMenuItem1.Text = "Light";
-            this.lightToolStripMenuItem1.Click += new System.EventHandler(this.lightToolStripMenuItem1_Click);
-            // 
-            // darkToolStripMenuItem
-            // 
-            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.darkToolStripMenuItem.Text = "Dark";
-            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
-            // 
-            // hybridToolStripMenuItem
-            // 
-            this.hybridToolStripMenuItem.Name = "hybridToolStripMenuItem";
-            this.hybridToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.hybridToolStripMenuItem.Text = "Hybrid";
-            this.hybridToolStripMenuItem.Click += new System.EventHandler(this.hybridToolStripMenuItem_Click);
             // 
             // wrapperPanel
             // 

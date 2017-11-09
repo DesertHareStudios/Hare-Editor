@@ -147,6 +147,24 @@ namespace HareEditor {
             EditorPrefs.Instance.theme = Theme.Hybrid;
             Init();
         }
+
+    private void CameraMenu_Click(object sender, EventArgs e)
+    {
+      GameObject camera = new GameObject("Camera");
+      camera.AddBehaviour(new Camera(camera));
+      camera.AddBehaviour(new AudioListener(camera));
+      currentScene.gameObjects.Add(camera);
+      Init();
     }
+
+    private void CreateEmptyMenu_Click(object sender, EventArgs e)
+    {
+      if (currentScene != null)
+      {
+        currentScene.gameObjects.Add(new GameObject("New GameObject"));
+        Hierarchy.Reload();
+      }
+    }
+  }
 
 }
