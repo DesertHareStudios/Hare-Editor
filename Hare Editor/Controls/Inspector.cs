@@ -94,6 +94,7 @@ namespace HareEditor {
 
                 tbxPosX.Dock = DockStyle.Left;
                 tbxPosX.Width = 48;
+                tbxPosX.DecimalPlaces = 8;
                 tbxPosX.Minimum = decimal.MinValue;
                 tbxPosX.Maximum = decimal.MaxValue;
                 tbxPosX.Value = (decimal)Program.editor.SelectedGameObject.transform.position.X;
@@ -107,6 +108,7 @@ namespace HareEditor {
                 };
                 tbxPosY.Dock = DockStyle.Left;
                 tbxPosY.Width = 48;
+                tbxPosY.DecimalPlaces = 8;
                 tbxPosY.Minimum = decimal.MinValue;
                 tbxPosY.Maximum = decimal.MaxValue;
                 tbxPosY.Value = (decimal)Program.editor.SelectedGameObject.transform.position.Y;
@@ -120,6 +122,7 @@ namespace HareEditor {
                 };
                 tbxPosZ.Dock = DockStyle.Left;
                 tbxPosZ.Width = 48;
+                tbxPosZ.DecimalPlaces = 8;
                 tbxPosZ.Minimum = decimal.MinValue;
                 tbxPosZ.Maximum = decimal.MaxValue;
                 tbxPosZ.Value = (decimal)Program.editor.SelectedGameObject.transform.position.Z;
@@ -164,6 +167,7 @@ namespace HareEditor {
 
                 tbxRotX.Dock = DockStyle.Left;
                 tbxRotX.Width = 48;
+                tbxRotX.DecimalPlaces = 8;
                 tbxRotX.Minimum = decimal.MinValue;
                 tbxRotX.Maximum = decimal.MaxValue;
                 tbxRotX.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.X;
@@ -177,6 +181,7 @@ namespace HareEditor {
                 };
                 tbxRotY.Dock = DockStyle.Left;
                 tbxRotY.Width = 48;
+                tbxRotY.DecimalPlaces = 8;
                 tbxRotY.Minimum = decimal.MinValue;
                 tbxRotY.Maximum = decimal.MaxValue;
                 tbxRotY.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.Y;
@@ -190,6 +195,7 @@ namespace HareEditor {
                 };
                 tbxRotZ.Dock = DockStyle.Left;
                 tbxRotZ.Width = 48;
+                tbxRotZ.DecimalPlaces = 8;
                 tbxRotZ.Minimum = decimal.MinValue;
                 tbxRotZ.Maximum = decimal.MaxValue;
                 tbxRotZ.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.Z;
@@ -234,6 +240,7 @@ namespace HareEditor {
 
                 tbxScaleX.Dock = DockStyle.Left;
                 tbxScaleX.Width = 48;
+                tbxScaleX.DecimalPlaces = 8;
                 tbxScaleX.Minimum = decimal.MinValue;
                 tbxScaleX.Maximum = decimal.MaxValue;
                 tbxScaleX.Value = (decimal)Program.editor.SelectedGameObject.transform.scale.X;
@@ -247,6 +254,7 @@ namespace HareEditor {
                 };
                 tbxScaleY.Dock = DockStyle.Left;
                 tbxScaleY.Width = 48;
+                tbxScaleY.DecimalPlaces = 8;
                 tbxScaleY.Minimum = decimal.MinValue;
                 tbxScaleY.Maximum = decimal.MaxValue;
                 tbxScaleY.Value = (decimal)Program.editor.SelectedGameObject.transform.scale.Y;
@@ -260,6 +268,7 @@ namespace HareEditor {
                 };
                 tbxScaleZ.Dock = DockStyle.Left;
                 tbxScaleZ.Width = 48;
+                tbxScaleZ.DecimalPlaces = 8;
                 tbxScaleZ.Minimum = decimal.MinValue;
                 tbxScaleZ.Maximum = decimal.MaxValue;
                 tbxScaleZ.Value = (decimal)Program.editor.SelectedGameObject.transform.scale.Z;
@@ -367,6 +376,7 @@ namespace HareEditor {
                                 panel.Controls.Add(tbxValue);
                                 panel.Controls.Add(lblName);
                                 lblName.Text = prop.Name;
+                                tbxValue.DecimalPlaces = 8;
                                 tbxValue.Minimum = decimal.MinValue;
                                 tbxValue.Maximum = decimal.MaxValue;
                                 tbxValue.Value = (decimal)(float)prop.GetValue(b);
@@ -409,6 +419,7 @@ namespace HareEditor {
                                 panel.Controls.Add(tbxValue);
                                 panel.Controls.Add(lblName);
                                 lblName.Text = prop.Name;
+                                tbxValue.DecimalPlaces = 8;
                                 tbxValue.Minimum = decimal.MinValue;
                                 tbxValue.Maximum = decimal.MaxValue;
                                 tbxValue.Value = (decimal)(double)prop.GetValue(b);
@@ -419,6 +430,29 @@ namespace HareEditor {
                                 tbxValue.Dock = DockStyle.Fill;
                                 tbxValue.ValueChanged += (o, e) => {
                                     prop.SetValue(b, (double)tbxValue.Value);
+                                };
+                                toAdd.Add(panel);
+                            })
+                            .Case<HareEngine.Color>(() => {
+                                DBPanel panel = new DBPanel();
+                                panel.Height = 23;
+                                panel.Dock = DockStyle.Top;
+                                Label lblName = new Label();
+                                DBPanel dbpValue = new DBPanel();
+                                panel.Controls.Add(dbpValue);
+                                panel.Controls.Add(lblName);
+                                lblName.Text = prop.Name;
+                                dbpValue.BackColor = Program.HareColorToNETColor((HareEngine.Color)prop.GetValue(b));
+                                lblName.Dock = DockStyle.Left;
+                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                                lblName.AutoSize = true;
+                                dbpValue.Dock = DockStyle.Fill;
+                                dbpValue.Click += (o, e) => {
+                                    ColorSelector.Prompt(lblName.Text, dbpValue.BackColor, (color) => {
+                                        prop.SetValue(b, color);
+                                        dbpValue.BackColor = Program.HareColorToNETColor(color);
+                                    });
                                 };
                                 toAdd.Add(panel);
                             })

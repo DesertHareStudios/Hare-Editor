@@ -52,7 +52,7 @@ namespace HareEditor {
                 }
                 if (scene != null) {
                     scene.Preload = () => {
-                        Texture tex = new Texture(Directory.GetCurrentDirectory() + "\\logo.png");
+                        Texture tex = new Texture(Directory.GetCurrentDirectory() + "\\logo.png", "Hare");
                         scene.gameObjects[1].GetComponent<SpriteRenderer>().sprite = tex;
                     };
                     scene.Preload?.Invoke();
@@ -74,7 +74,6 @@ namespace HareEditor {
                             sw.Stop();
                             sleep = (1000 / 10) - delta;
                             GL.ClearColor(Hare.clearColor.r, Hare.clearColor.g, Hare.clearColor.b, Hare.clearColor.a);
-                            //GL.ClearColor(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value, 1f);
                             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
                             scene.Render();
                             glcontrol.SwapBuffers();
