@@ -9,9 +9,19 @@ namespace HareEditor {
 
         public ProjectHolder Project;
         public Scene currentScene;
-        public GameObject SelectedGameObject;
+        private GameObject selectedGameObject;
         public System.Drawing.Color FontColor1;
         public System.Drawing.Color FontColor2;
+
+        public GameObject SelectedGameObject {
+            get {
+                return selectedGameObject;
+            }
+            set {
+                selectedGameObject = value;
+                Inspector.Reload();
+            }
+        }
 
         public Editor() {
             InitializeComponent();
@@ -20,7 +30,7 @@ namespace HareEditor {
         public void Init() {
             switch (EditorPrefs.Instance.theme) {
                 case Theme.Light:
-                    BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
+                    BackColor = System.Drawing.Color.FromArgb(200, 200, 200);
                     Appbar.BackColor = System.Drawing.Color.FromArgb(157, 157, 157);
                     FontColor1 = System.Drawing.Color.FromArgb(15, 15, 15);
                     FontColor2 = System.Drawing.Color.FromArgb(240, 240, 240);
@@ -33,7 +43,7 @@ namespace HareEditor {
                     break;
                 case Theme.Hybrid:
                     BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+                    Appbar.BackColor = System.Drawing.Color.FromArgb(15, 15, 15);
                     FontColor1 = System.Drawing.Color.FromArgb(15, 15, 15);
                     FontColor2 = System.Drawing.Color.FromArgb(240, 240, 240);
                     break;
@@ -44,7 +54,7 @@ namespace HareEditor {
                 GameObject camera = new GameObject("Main Camera");
                 camera.AddBehaviour(new Camera(camera));
                 camera.AddBehaviour(new AudioListener(camera));
-                camera.transform.position = new Vector3(0f, 0f, -10f);
+                camera.transform.position = new Vector3(0f, 0f, -1f);
 
                 GameObject sprite = new GameObject("Sprite");
                 sprite.AddBehaviour(new SpriteRenderer(sprite));
@@ -57,10 +67,10 @@ namespace HareEditor {
             Text = "Hare Editor v" + Program.CurrentVersion + " - " +
                 currentScene.Name + " - " + Project.Name;
             //TODO load project contents
-            Hierarchy.Reload();
-            Assets.Reload();
-            Inspector.Reload();
             Gameview.Init();
+            Assets.Reload();
+            Hierarchy.Reload();
+            Inspector.Reload();
         }
 
         private void Editor_FormClosed(object sender, FormClosedEventArgs e) {
@@ -112,6 +122,7 @@ namespace HareEditor {
                 GameObject sprite = new GameObject("New Sprite");
                 sprite.AddBehaviour(new SpriteRenderer(sprite));
                 currentScene.gameObjects.Add(sprite);
+                Hierarchy.Reload();
             }
         }
 
@@ -130,7 +141,7 @@ namespace HareEditor {
             camera.AddBehaviour(new AudioListener(camera));
             newScene.gameObjects.Add(camera);
             currentScene = newScene;
-            Init();
+            Hierarchy.Reload();
         }
 
         private void lightToolStripMenuItem1_Click(object sender, EventArgs e) {
@@ -148,23 +159,20 @@ namespace HareEditor {
             Init();
         }
 
-    private void CameraMenu_Click(object sender, EventArgs e)
-    {
-      GameObject camera = new GameObject("Camera");
-      camera.AddBehaviour(new Camera(camera));
-      camera.AddBehaviour(new AudioListener(camera));
-      currentScene.gameObjects.Add(camera);
-      Init();
-    }
+        private void CameraMenu_Click(object sender, EventArgs e) {
+            GameObject camera = new GameObject("Camera");
+            camera.AddBehaviour(new Camera(camera));
+            camera.AddBehaviour(new AudioListener(camera));
+            currentScene.gameObjects.Add(camera);
+            Hierarchy.Reload();
+        }
 
-    private void CreateEmptyMenu_Click(object sender, EventArgs e)
-    {
-      if (currentScene != null)
-      {
-        currentScene.gameObjects.Add(new GameObject("New GameObject"));
-        Hierarchy.Reload();
-      }
+        private void CreateEmptyMenu_Click(object sender, EventArgs e) {
+            if (currentScene != null) {
+                currentScene.gameObjects.Add(new GameObject("New GameObject"));
+                Hierarchy.Reload();
+            }
+        }
     }
-  }
 
 }

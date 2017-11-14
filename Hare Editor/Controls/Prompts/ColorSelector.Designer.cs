@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.pnlBlue = new HareEditor.DBPanel();
-            this.tbxBlue = new System.Windows.Forms.NumericUpDown();
             this.lblBlue = new System.Windows.Forms.Label();
+            this.tbxBlue = new System.Windows.Forms.NumericUpDown();
             this.pnlGreen = new HareEditor.DBPanel();
             this.lblGreen = new System.Windows.Forms.Label();
             this.tbxGreen = new System.Windows.Forms.NumericUpDown();
@@ -35,6 +35,7 @@
             this.pnlAlpha = new HareEditor.DBPanel();
             this.lblAlpha = new System.Windows.Forms.Label();
             this.tbxAlpha = new System.Windows.Forms.NumericUpDown();
+            this.pnlColorPreview = new HareEditor.DBPanel();
             this.pnlBlue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).BeginInit();
             this.pnlGreen.SuspendLayout();
@@ -55,6 +56,16 @@
             this.pnlBlue.Size = new System.Drawing.Size(234, 20);
             this.pnlBlue.TabIndex = 0;
             // 
+            // lblBlue
+            // 
+            this.lblBlue.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblBlue.Location = new System.Drawing.Point(0, 0);
+            this.lblBlue.Name = "lblBlue";
+            this.lblBlue.Size = new System.Drawing.Size(103, 20);
+            this.lblBlue.TabIndex = 1;
+            this.lblBlue.Text = "Blue";
+            this.lblBlue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tbxBlue
             // 
             this.tbxBlue.Dock = System.Windows.Forms.DockStyle.Right;
@@ -68,16 +79,6 @@
             this.tbxBlue.Size = new System.Drawing.Size(125, 20);
             this.tbxBlue.TabIndex = 0;
             this.tbxBlue.ValueChanged += new System.EventHandler(this.ValueChanged);
-            // 
-            // lblBlue
-            // 
-            this.lblBlue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblBlue.Location = new System.Drawing.Point(0, 0);
-            this.lblBlue.Name = "lblBlue";
-            this.lblBlue.Size = new System.Drawing.Size(103, 20);
-            this.lblBlue.TabIndex = 1;
-            this.lblBlue.Text = "Blue";
-            this.lblBlue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlGreen
             // 
@@ -181,12 +182,21 @@
             this.tbxAlpha.TabIndex = 0;
             this.tbxAlpha.ValueChanged += new System.EventHandler(this.ValueChanged);
             // 
+            // pnlColorPreview
+            // 
+            this.pnlColorPreview.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlColorPreview.Location = new System.Drawing.Point(0, 253);
+            this.pnlColorPreview.Name = "pnlColorPreview";
+            this.pnlColorPreview.Size = new System.Drawing.Size(234, 28);
+            this.pnlColorPreview.TabIndex = 4;
+            // 
             // ColorSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(234, 361);
+            this.Controls.Add(this.pnlColorPreview);
             this.Controls.Add(this.pnlRed);
             this.Controls.Add(this.pnlGreen);
             this.Controls.Add(this.pnlBlue);
@@ -196,6 +206,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ColorSelector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ColorSelector";
             this.pnlBlue.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).EndInit();
@@ -223,5 +234,6 @@
         private DBPanel pnlAlpha;
         private System.Windows.Forms.Label lblAlpha;
         private System.Windows.Forms.NumericUpDown tbxAlpha;
+        private DBPanel pnlColorPreview;
     }
 }

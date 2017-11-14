@@ -173,10 +173,10 @@ namespace HareEditor {
                 tbxRotX.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.X;
                 tbxRotX.ValueChanged += (o, e) => {
                     Quaternion rot = Program.editor.SelectedGameObject.transform.rotation;
-                    Program.editor.SelectedGameObject.transform.rotation = new Quaternion(
+                    Program.editor.SelectedGameObject.transform.rotation = Quaternion.FromEulerAngles(
                         (float)tbxRotX.Value,
-                        rot.Y,
-                        rot.Z
+                        (float)tbxRotY.Value,
+                        (float)tbxRotZ.Value
                         );
                 };
                 tbxRotY.Dock = DockStyle.Left;
@@ -187,10 +187,10 @@ namespace HareEditor {
                 tbxRotY.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.Y;
                 tbxRotY.ValueChanged += (o, e) => {
                     Quaternion rot = Program.editor.SelectedGameObject.transform.rotation;
-                    Program.editor.SelectedGameObject.transform.rotation = new Quaternion(
-                        rot.X,
+                    Program.editor.SelectedGameObject.transform.rotation = Quaternion.FromEulerAngles(
+                        (float)tbxRotX.Value,
                         (float)tbxRotY.Value,
-                        rot.Z
+                        (float)tbxRotZ.Value
                         );
                 };
                 tbxRotZ.Dock = DockStyle.Left;
@@ -201,9 +201,9 @@ namespace HareEditor {
                 tbxRotZ.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.Z;
                 tbxRotZ.ValueChanged += (o, e) => {
                     Quaternion rot = Program.editor.SelectedGameObject.transform.rotation;
-                    Program.editor.SelectedGameObject.transform.rotation = new Quaternion(
-                        rot.X,
-                        rot.Y,
+                    Program.editor.SelectedGameObject.transform.rotation = Quaternion.FromEulerAngles(
+                        (float)tbxRotX.Value,
+                        (float)tbxRotY.Value,
                         (float)tbxRotZ.Value
                         );
                 };
@@ -433,7 +433,7 @@ namespace HareEditor {
                                 };
                                 toAdd.Add(panel);
                             })
-                            .Case<HareEngine.Color>(() => {
+                            .Case<Color>(() => {
                                 DBPanel panel = new DBPanel();
                                 panel.Height = 23;
                                 panel.Dock = DockStyle.Top;
@@ -442,7 +442,7 @@ namespace HareEditor {
                                 panel.Controls.Add(dbpValue);
                                 panel.Controls.Add(lblName);
                                 lblName.Text = prop.Name;
-                                dbpValue.BackColor = Program.HareColorToNETColor((HareEngine.Color)prop.GetValue(b));
+                                dbpValue.BackColor = Program.HareColorToNETColor((Color)prop.GetValue(b));
                                 lblName.Dock = DockStyle.Left;
                                 lblName.ForeColor = Program.editor.FontColor1;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -452,6 +452,42 @@ namespace HareEditor {
                                     ColorSelector.Prompt(lblName.Text, dbpValue.BackColor, (color) => {
                                         prop.SetValue(b, color);
                                         dbpValue.BackColor = Program.HareColorToNETColor(color);
+                                        Reload();
+                                    });
+                                };
+                                toAdd.Add(panel);
+                            })
+                            .Case<HareEngine.Texture>(() => {
+                                DBPanel panel = new DBPanel();
+                                panel.Height = 23;
+                                panel.Dock = DockStyle.Top;
+                                Label lblName = new Label();
+                                Label lblValue = new Label();
+                                panel.Controls.Add(lblValue);
+                                panel.Controls.Add(lblName);
+                                lblName.Text = prop.Name;
+                                lblName.Dock = DockStyle.Left;
+                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                                lblName.AutoSize = true;
+                                try {
+                                    lblValue.Text = ((Texture)prop.GetValue(b)).Name;
+                                } catch {
+                                    lblValue.Text = "None";
+                                }
+                                lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                                lblValue.BackColor = Program.HareColorToNETColor(new Color(0.5f, 0.5f, 0.5f, 0.5f));
+                                lblValue.Dock = DockStyle.Fill;
+                                lblValue.Click += (o, e) => {
+                                    ImagePrompt.Prompt(lblName.Text, (tex) => {
+                                        Texture texture = HareEngine.Asset.Get<Texture>(tex);
+                                        if (texture != null) {
+                                            prop.SetValue(b, texture);
+                                            lblValue.Text = texture.Name;
+                                            Reload();
+                                        } else {
+                                            MessageBox.Show(tex);
+                                        }
                                     });
                                 };
                                 toAdd.Add(panel);
@@ -459,8 +495,9 @@ namespace HareEditor {
                             .Default(() => {
                                 //TODO handle different types
                             });
-                        ts.Switch(prop.GetValue(b));
-                    } catch { }
+                        ts.Switch(prop.GetValue(b).GetType());
+                    } catch {
+                    }
                 }
             }
         }

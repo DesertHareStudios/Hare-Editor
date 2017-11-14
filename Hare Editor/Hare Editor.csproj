@@ -91,11 +91,23 @@
     <Compile Include="Controls\HareGLControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ImagePromptItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ImagePromptItem.Designer.cs">
+      <DependentUpon>ImagePromptItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Inspector.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Hierarchy.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Prompts\ImagePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Prompts\ImagePrompt.Designer.cs">
+      <DependentUpon>ImagePrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateProject.cs">
       <SubType>Form</SubType>
@@ -111,10 +123,10 @@
     </Compile>
     <Compile Include="EditorPrefs.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Prompts\ColorSelector.cs">
+    <Compile Include="Controls\Prompts\ColorSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prompts\ColorSelector.Designer.cs">
+    <Compile Include="Controls\Prompts\ColorSelector.Designer.cs">
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,13 +137,19 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\ImagePromptItem.resx">
+      <DependentUpon>ImagePromptItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Prompts\ImagePrompt.resx">
+      <DependentUpon>ImagePrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateProject.resx">
       <DependentUpon>CreateProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor.resx">
       <DependentUpon>Editor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Prompts\ColorSelector.resx">
+    <EmbeddedResource Include="Controls\Prompts\ColorSelector.resx">
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

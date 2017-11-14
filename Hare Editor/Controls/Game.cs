@@ -6,7 +6,6 @@ using HareEngine;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
-using System.IO;
 
 namespace HareEditor {
 
@@ -51,10 +50,6 @@ namespace HareEditor {
                     t.Abort();
                 }
                 if (scene != null) {
-                    scene.Preload = () => {
-                        Texture tex = new Texture(Directory.GetCurrentDirectory() + "\\logo.png", "Hare");
-                        scene.gameObjects[1].GetComponent<SpriteRenderer>().sprite = tex;
-                    };
                     scene.Preload?.Invoke();
                 }
                 t = new Thread(() => {

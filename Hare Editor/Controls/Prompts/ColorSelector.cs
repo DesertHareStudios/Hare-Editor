@@ -15,7 +15,7 @@ namespace HareEditor {
 
         public static void Prompt(string title, Color defaultColor, OnColorSelected listener) {
             ColorSelector cs = new ColorSelector();
-            cs.Show();
+            cs.pnlColorPreview.BackColor = defaultColor;
             cs.color = defaultColor;
             cs.ocs = listener;
             cs.Text = title;
@@ -23,13 +23,10 @@ namespace HareEditor {
             cs.tbxRed.Value = cs.color.R;
             cs.tbxGreen.Value = cs.color.G;
             cs.tbxBlue.Value = cs.color.B;
-            cs.Location = new Point(
-                    (Program.editor.Location.X + Program.editor.Width) / 2 - (cs.Width / 2),
-                    (Program.editor.Location.Y + Program.editor.Height) / 2 - (cs.Height / 2)
-                );
             cs.FormClosed += (o, e) => {
                 cs.ocs?.Invoke(Program.NETColorToHareColor(cs.color));
             };
+            cs.Show();
         }
 
         public delegate void OnColorSelected(HareEngine.Color color);
@@ -41,6 +38,7 @@ namespace HareEditor {
                     (int)tbxGreen.Value,
                     (int)tbxBlue.Value
                 );
+            pnlColorPreview.BackColor = color;
             ocs?.Invoke(Program.NETColorToHareColor(color));
         }
     }

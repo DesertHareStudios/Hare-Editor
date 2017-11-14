@@ -42,7 +42,6 @@ namespace HareEditor {
             label.Click += (o, e) => {
                 Program.editor.SelectedGameObject = go;
                 this.Reload();
-                Program.editor.Inspector.Reload();
             };
             if (Program.editor.SelectedGameObject != go) {
                 label.ForeColor = Program.editor.FontColor1;

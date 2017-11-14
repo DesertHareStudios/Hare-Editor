@@ -18,9 +18,9 @@ namespace HareEditor {
             return this;
         }
 
-        public void Switch(object x) {
-            if (matches.ContainsKey(x.GetType())) {
-                matches[x.GetType()]?.Invoke();
+        public void Switch(Type x) {
+            if (matches.ContainsKey(x)) {
+                matches[x]?.Invoke();
             } else {
                 def?.Invoke();
             }

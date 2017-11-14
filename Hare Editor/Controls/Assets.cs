@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using HareEngine;
 
 namespace HareEditor {
 
@@ -10,6 +11,7 @@ namespace HareEditor {
 
         public void Reload() {
             Controls.Clear();
+            HareEngine.Asset.Clear();
             string x = "";
             string path = Program.editor.Project.Path + "\\Assets\\";
             RecursiveFiles(path, x);
@@ -31,6 +33,25 @@ namespace HareEditor {
             foreach (string rs in files) {
                 string[] ss = rs.Split('\\');
                 string s = ss[ss.Length - 1];
+                string[] sParts = s.Split('.');
+                string extension = (sParts[sParts.Length - 1]).ToLower();
+                if (extension != "cs" && extension != "hscene") {
+                    switch (extension) {
+                        case "png":
+                        case "jpg":
+                        case "jpeg":
+                            HareEngine.Texture tex = new HareEngine.Texture(rs, s);
+                            break;
+                        case "ogg":
+                        case "mp3":
+                        case "wav":
+                            HareEngine.AudioClip clip = new HareEngine.AudioClip(rs, s);
+                            break;
+                        default:
+                            HareEngine.Asset a = new HareEngine.Asset(rs, s);
+                            break;
+                    }
+                }
                 Print(s, x);
             }
         }
