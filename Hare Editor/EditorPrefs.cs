@@ -1,4 +1,5 @@
-﻿using HareEngine;
+﻿using System.IO;
+using HareEngine;
 
 namespace HareEditor {
 
@@ -17,12 +18,23 @@ namespace HareEditor {
         }
         #endregion
 
-        public Color tint = new Color(0f, 0.618f, 0.618f);
+        private Asset data;
 
         public Theme theme;
 
-        private EditorPrefs() {
-            theme = Theme.Dark;
+        private EditorPrefs() { }
+
+        public void Save() {
+            if (data == null) {
+                data = new Asset();
+            }
+            data.PutInt("theme", (int)theme);
+            data.SaveToFile(Directory.GetCurrentDirectory() + "\\EditorPrefs.asset");
+        }
+
+        public void Load() {
+            data = Asset.ReadFromFile(Directory.GetCurrentDirectory() + "\\EditorPrefs.asset");
+            theme = (Theme)data.GetInt("theme", (int)Theme.Hybrid);
         }
 
     }

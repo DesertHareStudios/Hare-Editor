@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using OpenTK;
 using HareEngine;
+using System.Diagnostics;
 
 namespace HareEditor {
 
@@ -10,8 +11,6 @@ namespace HareEditor {
         public ProjectHolder Project;
         public Scene currentScene;
         private GameObject selectedGameObject;
-        public System.Drawing.Color FontColor1;
-        public System.Drawing.Color FontColor2;
 
         public GameObject SelectedGameObject {
             get {
@@ -28,26 +27,16 @@ namespace HareEditor {
         }
 
         public void Init() {
-            switch (EditorPrefs.Instance.theme) {
-                case Theme.Light:
-                    BackColor = System.Drawing.Color.FromArgb(200, 200, 200);
-                    Appbar.BackColor = System.Drawing.Color.FromArgb(157, 157, 157);
-                    FontColor1 = System.Drawing.Color.FromArgb(15, 15, 15);
-                    FontColor2 = System.Drawing.Color.FromArgb(240, 240, 240);
-                    break;
-                case Theme.Dark:
-                    BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
-                    Appbar.BackColor = System.Drawing.Color.FromArgb(15, 15, 15);
-                    FontColor1 = System.Drawing.Color.FromArgb(240, 240, 240);
-                    FontColor2 = System.Drawing.Color.FromArgb(15, 15, 15);
-                    break;
-                case Theme.Hybrid:
-                    BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = System.Drawing.Color.FromArgb(15, 15, 15);
-                    FontColor1 = System.Drawing.Color.FromArgb(15, 15, 15);
-                    FontColor2 = System.Drawing.Color.FromArgb(240, 240, 240);
-                    break;
-            }
+            BackColor = Program.colorSecondary;
+            Appbar.BackColor = Program.colorPrimary;
+            lblAssets.BackColor = Program.colorAccentDark;
+            lblAssets.ForeColor = Program.colorAccentFont;
+            lblHierarchy.BackColor = Program.colorAccentDark;
+            lblHierarchy.ForeColor = Program.colorAccentFont;
+            lblGame.BackColor = Program.colorAccentDark;
+            lblGame.ForeColor = Program.colorAccentFont;
+            lblInspector.BackColor = Program.colorAccentDark;
+            lblInspector.ForeColor = Program.colorAccentFont;
             if (currentScene == null) {
                 currentScene = new Scene("Untitled");
 
@@ -88,6 +77,7 @@ namespace HareEditor {
         }
 
         private void Editor_FormClosing(object sender, FormClosingEventArgs e) {
+            EditorPrefs.Instance.Save();
             if (Visible) {
                 e.Cancel = DialogResult.No == MessageBox.Show(
                         "Do you really want to exit? Any unsaved changes will be lost.",
@@ -146,16 +136,19 @@ namespace HareEditor {
 
         private void lightToolStripMenuItem1_Click(object sender, EventArgs e) {
             EditorPrefs.Instance.theme = Theme.Light;
+            Program.ReloadColors();
             Init();
         }
 
         private void darkToolStripMenuItem_Click(object sender, EventArgs e) {
             EditorPrefs.Instance.theme = Theme.Dark;
+            Program.ReloadColors();
             Init();
         }
 
         private void hybridToolStripMenuItem_Click(object sender, EventArgs e) {
             EditorPrefs.Instance.theme = Theme.Hybrid;
+            Program.ReloadColors();
             Init();
         }
 
@@ -172,6 +165,23 @@ namespace HareEditor {
                 currentScene.gameObjects.Add(new GameObject("New GameObject"));
                 Hierarchy.Reload();
             }
+        }
+
+        private void SpriteMenu_Click(object sender, EventArgs e) {
+            if (currentScene != null) {
+                GameObject sprite = new GameObject("New Sprite");
+                sprite.AddBehaviour(new SpriteRenderer(sprite));
+                currentScene.gameObjects.Add(sprite);
+                Hierarchy.Reload();
+            }
+        }
+
+        private void showInExplorerToolStripMenuItem_Click(object sender, EventArgs e) {
+            Process.Start("explorer.exe", Project.Path + "\\Assets");
+        }
+
+        private void RefreshMenu_Click(object sender, EventArgs e) {
+            Init();
         }
     }
 

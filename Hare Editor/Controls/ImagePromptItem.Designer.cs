@@ -44,7 +44,7 @@
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblName.Location = new System.Drawing.Point(64, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(186, 32);
+            this.lblName.Size = new System.Drawing.Size(136, 32);
             this.lblName.TabIndex = 1;
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -55,7 +55,7 @@
             this.lblSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.lblSize.Location = new System.Drawing.Point(64, 32);
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(186, 32);
+            this.lblSize.Size = new System.Drawing.Size(136, 32);
             this.lblSize.TabIndex = 2;
             this.lblSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -68,7 +68,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.pnlImage);
             this.Name = "ImagePromptItem";
-            this.Size = new System.Drawing.Size(250, 64);
+            this.Size = new System.Drawing.Size(200, 64);
             this.ResumeLayout(false);
 
         }

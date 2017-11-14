@@ -24,27 +24,39 @@
         /// </summary>
         private void InitializeComponent() {
             this.Appbar = new HareEditor.DBPanel();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.wrapperPanel = new HareEditor.DBPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Appbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // Appbar
             // 
             this.Appbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.Appbar.Controls.Add(this.pictureBox1);
+            this.Appbar.Controls.Add(this.pbxLogo);
             this.Appbar.Controls.Add(this.btnNew);
             this.Appbar.Controls.Add(this.btnOpen);
-            this.Appbar.Controls.Add(this.label1);
+            this.Appbar.Controls.Add(this.lblTitle);
             this.Appbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.Appbar.Location = new System.Drawing.Point(0, 0);
             this.Appbar.Name = "Appbar";
             this.Appbar.Size = new System.Drawing.Size(584, 56);
             this.Appbar.TabIndex = 0;
+            // 
+            // pbxLogo
+            // 
+            this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxLogo.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pbxLogo.Location = new System.Drawing.Point(9, 8);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(40, 40);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 3;
+            this.pbxLogo.TabStop = false;
             // 
             // btnNew
             // 
@@ -76,15 +88,15 @@
             this.btnOpen.UseVisualStyleBackColor = false;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(59, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 56);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Projects";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(58, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(88, 56);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Projects";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // wrapperPanel
             // 
@@ -94,18 +106,6 @@
             this.wrapperPanel.Name = "wrapperPanel";
             this.wrapperPanel.Size = new System.Drawing.Size(584, 305);
             this.wrapperPanel.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // Welcome
             // 
@@ -123,7 +123,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Welcome_FormClosed);
             this.Load += new System.EventHandler(this.Welcome_Load);
             this.Appbar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -133,8 +133,8 @@
         private DBPanel Appbar;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
         private DBPanel wrapperPanel;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.PictureBox pbxLogo;
   }
 }

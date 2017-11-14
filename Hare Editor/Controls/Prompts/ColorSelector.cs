@@ -11,6 +11,11 @@ namespace HareEditor {
 
         private ColorSelector() {
             InitializeComponent();
+            BackColor = Program.colorSecondary;
+            lblAlpha.ForeColor = Program.colorFont;
+            lblRed.ForeColor = Program.colorFont;
+            lblGreen.ForeColor = Program.colorFont;
+            lblBlue.ForeColor = Program.colorFont;
         }
 
         public static void Prompt(string title, Color defaultColor, OnColorSelected listener) {
@@ -19,13 +24,10 @@ namespace HareEditor {
             cs.color = defaultColor;
             cs.ocs = listener;
             cs.Text = title;
-            cs.tbxAlpha.Value = cs.color.A;
-            cs.tbxRed.Value = cs.color.R;
-            cs.tbxGreen.Value = cs.color.G;
-            cs.tbxBlue.Value = cs.color.B;
-            cs.FormClosed += (o, e) => {
-                cs.ocs?.Invoke(Program.NETColorToHareColor(cs.color));
-            };
+            cs.tbxAlpha.Value = defaultColor.A;
+            cs.tbxRed.Value = defaultColor.R;
+            cs.tbxGreen.Value = defaultColor.G;
+            cs.tbxBlue.Value = defaultColor.B;
             cs.Show();
         }
 

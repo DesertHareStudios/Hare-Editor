@@ -61,7 +61,7 @@ namespace HareEditor {
             label.Text = x + t;
             label.Dock = DockStyle.Top;
             label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            label.ForeColor = Program.editor.FontColor1;
+            label.ForeColor = Program.colorFont;
             label.BackColor = System.Drawing.Color.Transparent;
             label.Click += (o, e) => {
                 this.Reload();

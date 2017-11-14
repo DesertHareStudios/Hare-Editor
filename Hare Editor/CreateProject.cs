@@ -1,7 +1,6 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.IO;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace HareEditor {
@@ -17,20 +16,17 @@ namespace HareEditor {
         public CreateProject() {
             InitializeComponent();
             DoubleBuffered = true;
-            switch (EditorPrefs.Instance.theme) {
-                case Theme.Light:
-                    BackColor = Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = Color.FromArgb(157, 157, 157);
-                    break;
-                case Theme.Dark:
-                    BackColor = Color.FromArgb(37, 37, 37);
-                    Appbar.BackColor = Color.FromArgb(15, 15, 15);
-                    break;
-                case Theme.Hybrid:
-                    BackColor = Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = Color.FromArgb(37, 37, 37);
-                    break;
-            }
+            BackColor = Program.colorSecondary;
+            Appbar.BackColor = Program.colorPrimary;
+            btnBack.BackColor = Program.colorAccentDark;
+            btnBack.ForeColor = Program.colorAccentFont;
+            btnCreate.BackColor = Program.colorAccentDark;
+            btnCreate.ForeColor = Program.colorAccentFont;
+            btnBrowse.BackColor = Program.colorAccentDark;
+            btnBrowse.ForeColor = Program.colorAccentFont;
+            lblTitle.ForeColor = Program.colorAccentFont;
+            lblDirectory.ForeColor = Program.colorFont;
+            lblProjectName.ForeColor = Program.colorFont;
         }
 
         public void Sync(Form form) {

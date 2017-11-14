@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Deployment.Application;
 using System.Reflection;
-//using HareEngine;
-//using HareEngine.SceneManagement;
-//using OpenTK;
 
 namespace HareEditor {
 
@@ -38,32 +35,56 @@ namespace HareEditor {
 
         public static List<ProjectHolder> recentProjects = new List<ProjectHolder>();
 
+        public static System.Drawing.Color colorPrimary;
+        public static System.Drawing.Color colorSecondary;
+        public static System.Drawing.Color colorAccent;
+        public static System.Drawing.Color colorAccentDark {
+            get {
+                return System.Drawing.Color.FromArgb(255, (int)(colorAccent.R * 0.9f), (int)(colorAccent.G * 0.9f), (int)(colorAccent.B * 0.9f));
+            }
+        }
+        public static System.Drawing.Color colorAccentFont;
+        public static System.Drawing.Color colorFont;
+        public static System.Drawing.Color colorInvertedFont {
+            get {
+                return System.Drawing.Color.FromArgb(255, 255 - colorFont.R, 255 - colorFont.G, 255 - colorFont.B);
+            }
+        }
+
         [STAThread]
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             OpenTK.Toolkit.Init();
+            EditorPrefs.Instance.Load();
+            ReloadColors();
             Application.Run(new Welcome());
-            //Hare.Init(400, 400, "Test");
-            //Scene scene = new Scene("Test");
-            //GameObject c = new GameObject("Camera");
-            //c.transform.position = new OpenTK.Vector3(0f, 0f, -10f);
-            //GameObject s = new GameObject("sprite");
-            //Camera cam = new Camera(c);
-            //cam.viewmode = Viewmode.Orthographic;
-            //c.AddBehaviour(cam);
-            //s.AddBehaviour(new SpriteRenderer(s));
-            //s.AddBehaviour(new TestBehaviour(s));
-            //c.transform.position = new OpenTK.Vector3(0f, 0f, -10f);
-            //scene.gameObjects.Add(c);
-            //scene.gameObjects.Add(s);
-            //scene.Preload = () => {
-            //    Texture t = new Texture(Environment.CurrentDirectory + "\\logo.png");
-            //    s.GetComponent<SpriteRenderer>().sprite = t;
-            //};
-            //SceneManager.AddScene(scene);
-            //SceneManager.LoadScene("Test");
-            //Hare.Run();
+        }
+
+        public static void ReloadColors() {
+            switch (EditorPrefs.Instance.theme) {
+                case Theme.Light:
+                    colorSecondary = System.Drawing.Color.FromArgb(210, 210, 210);
+                    colorPrimary = System.Drawing.Color.LightSeaGreen;
+                    colorFont = System.Drawing.Color.FromArgb(15, 15, 15);
+                    colorAccent = System.Drawing.Color.LightSeaGreen;
+                    colorAccentFont = System.Drawing.Color.FromArgb(240, 240, 240);
+                    break;
+                case Theme.Dark:
+                    colorSecondary = System.Drawing.Color.FromArgb(37, 37, 37);
+                    colorPrimary = System.Drawing.Color.FromArgb(15, 15, 15);
+                    colorFont = System.Drawing.Color.FromArgb(240, 240, 240);
+                    colorAccent = System.Drawing.Color.LightSeaGreen;
+                    colorAccentFont = System.Drawing.Color.FromArgb(240, 240, 240);
+                    break;
+                case Theme.Hybrid:
+                    colorSecondary = System.Drawing.Color.FromArgb(200, 200, 200);
+                    colorPrimary = System.Drawing.Color.FromArgb(15, 15, 15);
+                    colorFont = System.Drawing.Color.FromArgb(15, 15, 15);
+                    colorAccent = System.Drawing.Color.LightSeaGreen;
+                    colorAccentFont = System.Drawing.Color.FromArgb(240, 240, 240);
+                    break;
+            }
         }
 
         public static void SaveProjectList() {

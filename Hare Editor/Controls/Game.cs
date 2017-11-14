@@ -33,12 +33,15 @@ namespace HareEditor {
 
         public void Init() {
             try {
+                Hare.Init(Width, Height, "Hare Editor");
                 OpenTK.Toolkit.Init();
                 Controls.Clear();
                 glcontrol = new GLControl(GraphicsMode.Default, 3, 0, GraphicsContextFlags.ForwardCompatible);
                 glcontrol.Dock = DockStyle.Fill;
                 glcontrol.MakeCurrent();
                 glcontrol.Resize += (o, e) => {
+                    Hare.window.Width = Width;
+                    Hare.window.Height = Height;
                     GL.Viewport(Location.X, Location.Y, Width, Height);
                     GL.Ortho(-glcontrol.Width / 2, glcontrol.Width / 2, -glcontrol.Height / 2, glcontrol.Height / 2, -1, 1);
                     glcontrol.SwapBuffers();
