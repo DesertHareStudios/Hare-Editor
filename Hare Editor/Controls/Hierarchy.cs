@@ -44,11 +44,11 @@ namespace HareEditor {
                 this.Reload();
             };
             if (Program.editor.SelectedGameObject != go) {
-                label.ForeColor = Program.editor.FontColor1;
+                label.ForeColor = Program.colorFont;
                 label.BackColor = System.Drawing.Color.Transparent;
             } else {
-                label.ForeColor = Program.editor.FontColor2;
-                label.BackColor = Program.editor.FontColor1;
+                label.ForeColor = Program.colorAccentFont;
+                label.BackColor = Program.colorAccent;
             }
             toAdd.Add(label);
         }

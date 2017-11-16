@@ -24,9 +24,13 @@ namespace HareEditor {
                             i.Selected = false;
                         }
                     }
-                    BackColor = Color.LightSeaGreen;
+                    BackColor = Program.colorAccent;
+                    lblName.ForeColor = Program.colorAccentFont;
+                    lblSize.ForeColor = Program.colorAccentFont;
                 } else {
                     BackColor = Color.Transparent;
+                    lblName.ForeColor = Program.colorFont;
+                    lblSize.ForeColor = Program.colorFont;
                 }
                 selected = value;
             }
@@ -37,7 +41,9 @@ namespace HareEditor {
             Bitmap img = new Bitmap(asset.FilePath);
             pnlImage.BackgroundImage = img;
             lblName.Text = asset.Name;
+            lblName.ForeColor = Program.colorFont;
             lblSize.Text = img.Width + "x" + img.Height;
+            lblSize.ForeColor = Program.colorFont;
             items.Add(this);
         }
 

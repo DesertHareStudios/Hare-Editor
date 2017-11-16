@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Collections.Generic;
 using OpenTK;
 using HareEngine;
@@ -73,7 +72,7 @@ namespace HareEditor {
                 lblTag.Size = new System.Drawing.Size(32, 20);
                 lblTag.Text = "Tag";
                 lblTag.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                lblTag.ForeColor = Program.editor.FontColor1;
+                lblTag.ForeColor = Program.colorFont;
 
                 tbxTag.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
                 tbxTag.Dock = DockStyle.Fill;
@@ -137,22 +136,22 @@ namespace HareEditor {
 
                 lblPos.Text = "Position";
                 lblPos.Dock = DockStyle.Top;
-                lblPos.ForeColor = Program.editor.FontColor1;
+                lblPos.ForeColor = Program.colorFont;
                 lblPos.Height = 20;
                 lblPos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblPosX.Text = "X:";
                 lblPosX.Dock = DockStyle.Left;
-                lblPosX.ForeColor = Program.editor.FontColor1;
+                lblPosX.ForeColor = Program.colorFont;
                 lblPosX.Width = 17;
                 lblPosX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblPosY.Text = "Y:";
                 lblPosY.Dock = DockStyle.Left;
-                lblPosY.ForeColor = Program.editor.FontColor1;
+                lblPosY.ForeColor = Program.colorFont;
                 lblPosY.Width = 17;
                 lblPosY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblPosZ.Text = "Z:";
                 lblPosZ.Dock = DockStyle.Left;
-                lblPosZ.ForeColor = Program.editor.FontColor1;
+                lblPosZ.ForeColor = Program.colorFont;
                 lblPosZ.Width = 17;
                 lblPosZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
@@ -210,22 +209,22 @@ namespace HareEditor {
 
                 lblRot.Text = "Rotation";
                 lblRot.Dock = DockStyle.Top;
-                lblRot.ForeColor = Program.editor.FontColor1;
+                lblRot.ForeColor = Program.colorFont;
                 lblRot.Height = 20;
                 lblRot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblRotX.Text = "X:";
                 lblRotX.Dock = DockStyle.Left;
-                lblRotX.ForeColor = Program.editor.FontColor1;
+                lblRotX.ForeColor = Program.colorFont;
                 lblRotX.Width = 17;
                 lblRotX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblRotY.Text = "Y:";
                 lblRotY.Dock = DockStyle.Left;
-                lblRotY.ForeColor = Program.editor.FontColor1;
+                lblRotY.ForeColor = Program.colorFont;
                 lblRotY.Width = 17;
                 lblRotY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblRotZ.Text = "Z:";
                 lblRotZ.Dock = DockStyle.Left;
-                lblRotZ.ForeColor = Program.editor.FontColor1;
+                lblRotZ.ForeColor = Program.colorFont;
                 lblRotZ.Width = 17;
                 lblRotZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
@@ -283,22 +282,22 @@ namespace HareEditor {
 
                 lblScale.Text = "Scale";
                 lblScale.Dock = DockStyle.Top;
-                lblScale.ForeColor = Program.editor.FontColor1;
+                lblScale.ForeColor = Program.colorFont;
                 lblScale.Height = 20;
                 lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblScaleX.Text = "X:";
                 lblScaleX.Dock = DockStyle.Left;
-                lblScaleX.ForeColor = Program.editor.FontColor1;
+                lblScaleX.ForeColor = Program.colorFont;
                 lblScaleX.Width = 17;
                 lblScaleX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblScaleY.Text = "Y:";
                 lblScaleY.Dock = DockStyle.Left;
-                lblScaleY.ForeColor = Program.editor.FontColor1;
+                lblScaleY.ForeColor = Program.colorFont;
                 lblScaleY.Width = 17;
                 lblScaleY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblScaleZ.Text = "Z:";
                 lblScaleZ.Dock = DockStyle.Left;
-                lblScaleZ.ForeColor = Program.editor.FontColor1;
+                lblScaleZ.ForeColor = Program.colorFont;
                 lblScaleZ.Width = 17;
                 lblScaleZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
@@ -316,8 +315,8 @@ namespace HareEditor {
             foreach (Behaviour b in Program.editor.SelectedGameObject.behaviours) {
                 Label label = new Label();
                 label.Text = b.GetType().Name;
-                label.ForeColor = Program.editor.FontColor1;
-                label.BackColor = System.Drawing.Color.FromArgb(79, 128, 128, 128);
+                label.ForeColor = Program.colorFont;
+                label.BackColor = Program.colorAccent;
                 label.Dock = DockStyle.Top;
                 label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 label.Height = 23;
@@ -336,7 +335,7 @@ namespace HareEditor {
                                 lblName.Text = prop.Name;
                                 tbxValue.Text = (string)prop.GetValue(b);
                                 lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.ForeColor = Program.colorFont;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 lblName.AutoSize = true;
                                 tbxValue.Dock = DockStyle.Fill;
@@ -358,7 +357,7 @@ namespace HareEditor {
                                 tbxValue.Maximum = int.MaxValue;
                                 tbxValue.Value = (int)prop.GetValue(b);
                                 lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.ForeColor = Program.colorFont;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 lblName.AutoSize = true;
                                 tbxValue.Dock = DockStyle.Fill;
@@ -381,7 +380,7 @@ namespace HareEditor {
                                 tbxValue.Maximum = decimal.MaxValue;
                                 tbxValue.Value = (decimal)(float)prop.GetValue(b);
                                 lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.ForeColor = Program.colorFont;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 lblName.AutoSize = true;
                                 tbxValue.Dock = DockStyle.Fill;
@@ -401,7 +400,7 @@ namespace HareEditor {
                                 lblName.Text = prop.Name;
                                 cbxValue.Checked = (bool)prop.GetValue(b);
                                 lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.ForeColor = Program.colorFont;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 lblName.AutoSize = true;
                                 cbxValue.Dock = DockStyle.Left;
@@ -424,7 +423,7 @@ namespace HareEditor {
                                 tbxValue.Maximum = decimal.MaxValue;
                                 tbxValue.Value = (decimal)(double)prop.GetValue(b);
                                 lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.ForeColor = Program.colorFont;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 lblName.AutoSize = true;
                                 tbxValue.Dock = DockStyle.Fill;
@@ -444,7 +443,7 @@ namespace HareEditor {
                                 lblName.Text = prop.Name;
                                 dbpValue.BackColor = Program.HareColorToNETColor((Color)prop.GetValue(b));
                                 lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.ForeColor = Program.colorFont;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 lblName.AutoSize = true;
                                 dbpValue.Dock = DockStyle.Fill;
@@ -467,7 +466,7 @@ namespace HareEditor {
                                 panel.Controls.Add(lblName);
                                 lblName.Text = prop.Name;
                                 lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.editor.FontColor1;
+                                lblName.ForeColor = Program.colorFont;
                                 lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 lblName.AutoSize = true;
                                 try {

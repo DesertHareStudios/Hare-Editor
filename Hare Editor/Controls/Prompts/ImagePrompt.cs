@@ -9,6 +9,7 @@ namespace HareEditor {
 
         private ImagePrompt() {
             InitializeComponent();
+            BackColor = Program.colorSecondary;
         }
 
         public static void Prompt(string title, OnImageSelected listener) {
@@ -47,6 +48,7 @@ namespace HareEditor {
                         }
                     };
                     ip.pnlWrapper.Controls.Add(ipi);
+                    ipi.Dock = DockStyle.Top;
                 } catch {
                     //Not an image asset
                 }

@@ -11,23 +11,16 @@ namespace HareEditor {
         public Welcome() {
             Program.welcome = this;
             InitializeComponent();
-            switch (EditorPrefs.Instance.theme) {
-                case Theme.Light:
-                    BackColor = Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = Color.FromArgb(157, 157, 157);
-                    break;
-                case Theme.Dark:
-                    BackColor = Color.FromArgb(37, 37, 37);
-                    Appbar.BackColor = Color.FromArgb(15, 15, 15);
-                    break;
-                case Theme.Hybrid:
-                    BackColor = Color.FromArgb(240, 240, 240);
-                    Appbar.BackColor = Color.FromArgb(37, 37, 37);
-                    break;
-            }
         }
 
         public void Init() {
+            BackColor = Program.colorSecondary;
+            Appbar.BackColor = Program.colorPrimary;
+            btnNew.BackColor = Program.colorAccentDark;
+            btnNew.ForeColor = Program.colorAccentFont;
+            btnOpen.BackColor = Program.colorAccentDark;
+            btnOpen.ForeColor = Program.colorAccentFont;
+            lblTitle.ForeColor = Program.colorAccentFont;
             try {
                 Program.recentProjects.Clear();
                 wrapperPanel.Controls.Clear();
@@ -62,7 +55,7 @@ namespace HareEditor {
                 btnDel.FlatAppearance.BorderSize = 0;
                 btnDel.FlatStyle = FlatStyle.Flat;
                 btnDel.Font = new Font("Microsoft Sans Serif", 20.25f, FontStyle.Regular, GraphicsUnit.Point, 0);
-                btnDel.ForeColor = Color.FromArgb(158, 158, 158);
+                btnDel.ForeColor = Program.colorFont;
                 btnDel.Location = new Point(528, 0);
                 btnDel.Name = "btnDel";
                 btnDel.Size = new Size(56, 56);
@@ -70,13 +63,14 @@ namespace HareEditor {
                 btnDel.UseVisualStyleBackColor = true;
                 name.Dock = DockStyle.Top;
                 name.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold, GraphicsUnit.Point, 0);
+                name.ForeColor = Program.colorFont;
                 name.Location = new Point(0, 0);
                 name.Size = new Size(528, 28);
                 name.Text = ph.Name;
                 name.TextAlign = ContentAlignment.BottomLeft;
                 path.Dock = DockStyle.Top;
                 path.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
-                path.ForeColor = Color.FromArgb(158, 158, 158);
+                path.ForeColor = Program.colorFont;
                 path.Location = new Point(0, 28);
                 path.Size = new Size(528, 28);
                 path.Text = ph.Path;
@@ -112,6 +106,7 @@ namespace HareEditor {
                 wrapperPanel.Controls.Add(emptyLabel);
                 emptyLabel.Dock = DockStyle.Top;
                 emptyLabel.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold, GraphicsUnit.Point, 0);
+                emptyLabel.ForeColor = Program.colorFont;
                 emptyLabel.Location = new Point(0, 0);
                 emptyLabel.Size = new Size(584, 112);
                 emptyLabel.Text = "Your project list is empty. Add a new project to begin.";

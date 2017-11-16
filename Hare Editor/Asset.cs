@@ -78,13 +78,15 @@ namespace HareEditor {
 
         public static Asset ReadFromFile(string path) {
             Asset output = new Asset();
-            string[] lines = File.ReadAllLines(path);
-            for (int i = 0; i < lines.Length; i++) {
-                try {
-                    string[] values = lines[i].Split('=');
-                    output.data.Add(new AssetProperty(values[0], values[1]));
-                } catch { }
-            }
+            try {
+                string[] lines = File.ReadAllLines(path);
+                for (int i = 0; i < lines.Length; i++) {
+                    try {
+                        string[] values = lines[i].Split('=');
+                        output.data.Add(new AssetProperty(values[0], values[1]));
+                    } catch { }
+                }
+            } catch { } //File does not exists
             return output;
         }
 

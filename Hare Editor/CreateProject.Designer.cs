@@ -1,4 +1,4 @@
-﻿namespace HareEditor {
+namespace HareEditor {
     partial class CreateProject {
         /// <summary>
         /// Required designer variable.
@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.Appbar = new HareEditor.DBPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.lblNewProject = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlProjectName = new HareEditor.DBPanel();
             this.lblProjectName = new System.Windows.Forms.Label();
             this.tbxProjectName = new System.Windows.Forms.TextBox();
@@ -38,7 +38,7 @@
             this.btnBrowse = new System.Windows.Forms.Button();
             this.tbxDirectory = new System.Windows.Forms.TextBox();
             this.Appbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.pnlProjectName.SuspendLayout();
             this.Wrapper.SuspendLayout();
             this.pnlDirectory.SuspendLayout();
@@ -48,27 +48,26 @@
             // Appbar
             // 
             this.Appbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.Appbar.Controls.Add(this.pictureBox1);
+            this.Appbar.Controls.Add(this.pbxLogo);
             this.Appbar.Controls.Add(this.btnBack);
             this.Appbar.Controls.Add(this.btnCreate);
-            this.Appbar.Controls.Add(this.lblNewProject);
+            this.Appbar.Controls.Add(this.lblTitle);
             this.Appbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.Appbar.Location = new System.Drawing.Point(0, 0);
             this.Appbar.Name = "Appbar";
             this.Appbar.Size = new System.Drawing.Size(584, 56);
             this.Appbar.TabIndex = 0;
+            // pbxLogo
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxLogo.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pbxLogo.Location = new System.Drawing.Point(8, 7);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(40, 40);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 4;
+            this.pbxLogo.TabStop = false;
             // 
             // btnBack
             // 
@@ -100,15 +99,15 @@
             this.btnCreate.UseVisualStyleBackColor = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // lblNewProject
+            // lblTitle
             // 
-            this.lblNewProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lblNewProject.Location = new System.Drawing.Point(59, 0);
-            this.lblNewProject.Name = "lblNewProject";
-            this.lblNewProject.Size = new System.Drawing.Size(123, 56);
-            this.lblNewProject.TabIndex = 0;
-            this.lblNewProject.Text = "New Project";
-            this.lblNewProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Location = new System.Drawing.Point(57, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(123, 56);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "New Project";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlProjectName
             // 
@@ -231,7 +230,7 @@
             this.Text = "Hare Editor - New Project";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateProject_FormClosed);
             this.Appbar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.pnlProjectName.ResumeLayout(false);
             this.pnlProjectName.PerformLayout();
             this.Wrapper.ResumeLayout(false);
@@ -245,7 +244,7 @@
         #endregion
 
         private DBPanel Appbar;
-        private System.Windows.Forms.Label lblNewProject;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnBack;
         private DBPanel pnlProjectName;
@@ -257,6 +256,6 @@
         private DBPanel pnlDirectoryTbx;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TextBox tbxDirectory;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.PictureBox pbxLogo;
   }
 }
