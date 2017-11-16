@@ -24,99 +24,63 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorSelector));
-            this.pnlBlue = new HareEditor.DBPanel();
-            this.lblBlue = new System.Windows.Forms.Label();
-            this.tbxBlue = new System.Windows.Forms.NumericUpDown();
-            this.pnlGreen = new HareEditor.DBPanel();
-            this.lblGreen = new System.Windows.Forms.Label();
-            this.tbxGreen = new System.Windows.Forms.NumericUpDown();
+            this.Alpha = new HareEditor.DBPanel();
+            this.Hue = new HareEditor.DBPanel();
+            this.MainColors = new HareEditor.DBPanel();
+            this.pnlColorPreview = new HareEditor.DBPanel();
             this.pnlRed = new HareEditor.DBPanel();
             this.lblRed = new System.Windows.Forms.Label();
             this.tbxRed = new System.Windows.Forms.NumericUpDown();
+            this.pnlGreen = new HareEditor.DBPanel();
+            this.lblGreen = new System.Windows.Forms.Label();
+            this.tbxGreen = new System.Windows.Forms.NumericUpDown();
+            this.pnlBlue = new HareEditor.DBPanel();
+            this.lblBlue = new System.Windows.Forms.Label();
+            this.tbxBlue = new System.Windows.Forms.NumericUpDown();
             this.pnlAlpha = new HareEditor.DBPanel();
             this.lblAlpha = new System.Windows.Forms.Label();
             this.tbxAlpha = new System.Windows.Forms.NumericUpDown();
-            this.pnlColorPreview = new HareEditor.DBPanel();
-            this.dbPanel1 = new HareEditor.DBPanel();
-            this.dbPanel2 = new HareEditor.DBPanel();
-            this.dbPanel3 = new HareEditor.DBPanel();
-            this.pnlBlue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).BeginInit();
-            this.pnlGreen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbxGreen)).BeginInit();
             this.pnlRed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbxRed)).BeginInit();
+            this.pnlGreen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbxGreen)).BeginInit();
+            this.pnlBlue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).BeginInit();
             this.pnlAlpha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbxAlpha)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnlBlue
+            // Alpha
             // 
-            this.pnlBlue.Controls.Add(this.lblBlue);
-            this.pnlBlue.Controls.Add(this.tbxBlue);
-            this.pnlBlue.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBlue.Location = new System.Drawing.Point(0, 321);
-            this.pnlBlue.Name = "pnlBlue";
-            this.pnlBlue.Size = new System.Drawing.Size(234, 20);
-            this.pnlBlue.TabIndex = 0;
+            this.Alpha.Location = new System.Drawing.Point(12, 163);
+            this.Alpha.Name = "Alpha";
+            this.Alpha.Size = new System.Drawing.Size(210, 56);
+            this.Alpha.TabIndex = 7;
+            this.Alpha.Paint += new System.Windows.Forms.PaintEventHandler(this.Alpha_Paint);
+            this.Alpha.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Alpha_MouseDown);
             // 
-            // lblBlue
+            // Hue
             // 
-            this.lblBlue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblBlue.Location = new System.Drawing.Point(0, 0);
-            this.lblBlue.Name = "lblBlue";
-            this.lblBlue.Size = new System.Drawing.Size(103, 20);
-            this.lblBlue.TabIndex = 1;
-            this.lblBlue.Text = "Blue";
-            this.lblBlue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Hue.Location = new System.Drawing.Point(159, 12);
+            this.Hue.Name = "Hue";
+            this.Hue.Size = new System.Drawing.Size(63, 121);
+            this.Hue.TabIndex = 6;
             // 
-            // tbxBlue
+            // MainColors
             // 
-            this.tbxBlue.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tbxBlue.Location = new System.Drawing.Point(109, 0);
-            this.tbxBlue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.tbxBlue.Name = "tbxBlue";
-            this.tbxBlue.Size = new System.Drawing.Size(125, 20);
-            this.tbxBlue.TabIndex = 0;
-            this.tbxBlue.ValueChanged += new System.EventHandler(this.ValueChanged);
+            this.MainColors.Location = new System.Drawing.Point(12, 12);
+            this.MainColors.Name = "MainColors";
+            this.MainColors.Size = new System.Drawing.Size(130, 121);
+            this.MainColors.TabIndex = 5;
+            this.MainColors.Paint += new System.Windows.Forms.PaintEventHandler(this.MainColors_Paint);
             // 
-            // pnlGreen
+            // pnlColorPreview
             // 
-            this.pnlGreen.Controls.Add(this.lblGreen);
-            this.pnlGreen.Controls.Add(this.tbxGreen);
-            this.pnlGreen.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlGreen.Location = new System.Drawing.Point(0, 301);
-            this.pnlGreen.Name = "pnlGreen";
-            this.pnlGreen.Size = new System.Drawing.Size(234, 20);
-            this.pnlGreen.TabIndex = 2;
-            // 
-            // lblGreen
-            // 
-            this.lblGreen.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblGreen.Location = new System.Drawing.Point(0, 0);
-            this.lblGreen.Name = "lblGreen";
-            this.lblGreen.Size = new System.Drawing.Size(103, 20);
-            this.lblGreen.TabIndex = 1;
-            this.lblGreen.Text = "Green";
-            this.lblGreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbxGreen
-            // 
-            this.tbxGreen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tbxGreen.Location = new System.Drawing.Point(109, 0);
-            this.tbxGreen.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.tbxGreen.Name = "tbxGreen";
-            this.tbxGreen.Size = new System.Drawing.Size(125, 20);
-            this.tbxGreen.TabIndex = 0;
-            this.tbxGreen.ValueChanged += new System.EventHandler(this.ValueChanged);
+            this.pnlColorPreview.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlColorPreview.Location = new System.Drawing.Point(0, 253);
+            this.pnlColorPreview.Name = "pnlColorPreview";
+            this.pnlColorPreview.Size = new System.Drawing.Size(234, 28);
+            this.pnlColorPreview.TabIndex = 4;
             // 
             // pnlRed
             // 
@@ -152,6 +116,74 @@
             this.tbxRed.TabIndex = 0;
             this.tbxRed.ValueChanged += new System.EventHandler(this.ValueChanged);
             // 
+            // pnlGreen
+            // 
+            this.pnlGreen.Controls.Add(this.lblGreen);
+            this.pnlGreen.Controls.Add(this.tbxGreen);
+            this.pnlGreen.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlGreen.Location = new System.Drawing.Point(0, 301);
+            this.pnlGreen.Name = "pnlGreen";
+            this.pnlGreen.Size = new System.Drawing.Size(234, 20);
+            this.pnlGreen.TabIndex = 2;
+            // 
+            // lblGreen
+            // 
+            this.lblGreen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblGreen.Location = new System.Drawing.Point(0, 0);
+            this.lblGreen.Name = "lblGreen";
+            this.lblGreen.Size = new System.Drawing.Size(103, 20);
+            this.lblGreen.TabIndex = 1;
+            this.lblGreen.Text = "Green";
+            this.lblGreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbxGreen
+            // 
+            this.tbxGreen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tbxGreen.Location = new System.Drawing.Point(109, 0);
+            this.tbxGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.tbxGreen.Name = "tbxGreen";
+            this.tbxGreen.Size = new System.Drawing.Size(125, 20);
+            this.tbxGreen.TabIndex = 0;
+            this.tbxGreen.ValueChanged += new System.EventHandler(this.ValueChanged);
+            // 
+            // pnlBlue
+            // 
+            this.pnlBlue.Controls.Add(this.lblBlue);
+            this.pnlBlue.Controls.Add(this.tbxBlue);
+            this.pnlBlue.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBlue.Location = new System.Drawing.Point(0, 321);
+            this.pnlBlue.Name = "pnlBlue";
+            this.pnlBlue.Size = new System.Drawing.Size(234, 20);
+            this.pnlBlue.TabIndex = 0;
+            // 
+            // lblBlue
+            // 
+            this.lblBlue.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblBlue.Location = new System.Drawing.Point(0, 0);
+            this.lblBlue.Name = "lblBlue";
+            this.lblBlue.Size = new System.Drawing.Size(103, 20);
+            this.lblBlue.TabIndex = 1;
+            this.lblBlue.Text = "Blue";
+            this.lblBlue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbxBlue
+            // 
+            this.tbxBlue.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tbxBlue.Location = new System.Drawing.Point(109, 0);
+            this.tbxBlue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.tbxBlue.Name = "tbxBlue";
+            this.tbxBlue.Size = new System.Drawing.Size(125, 20);
+            this.tbxBlue.TabIndex = 0;
+            this.tbxBlue.ValueChanged += new System.EventHandler(this.ValueChanged);
+            // 
             // pnlAlpha
             // 
             this.pnlAlpha.Controls.Add(this.lblAlpha);
@@ -186,44 +218,15 @@
             this.tbxAlpha.TabIndex = 0;
             this.tbxAlpha.ValueChanged += new System.EventHandler(this.ValueChanged);
             // 
-            // pnlColorPreview
-            // 
-            this.pnlColorPreview.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlColorPreview.Location = new System.Drawing.Point(0, 253);
-            this.pnlColorPreview.Name = "pnlColorPreview";
-            this.pnlColorPreview.Size = new System.Drawing.Size(234, 28);
-            this.pnlColorPreview.TabIndex = 4;
-            // 
-            // dbPanel1
-            // 
-            this.dbPanel1.Location = new System.Drawing.Point(12, 12);
-            this.dbPanel1.Name = "dbPanel1";
-            this.dbPanel1.Size = new System.Drawing.Size(130, 121);
-            this.dbPanel1.TabIndex = 5;
-            // 
-            // dbPanel2
-            // 
-            this.dbPanel2.Location = new System.Drawing.Point(159, 12);
-            this.dbPanel2.Name = "dbPanel2";
-            this.dbPanel2.Size = new System.Drawing.Size(63, 121);
-            this.dbPanel2.TabIndex = 6;
-            // 
-            // dbPanel3
-            // 
-            this.dbPanel3.Location = new System.Drawing.Point(12, 163);
-            this.dbPanel3.Name = "dbPanel3";
-            this.dbPanel3.Size = new System.Drawing.Size(210, 56);
-            this.dbPanel3.TabIndex = 7;
-            // 
             // ColorSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(234, 361);
-            this.Controls.Add(this.dbPanel3);
-            this.Controls.Add(this.dbPanel2);
-            this.Controls.Add(this.dbPanel1);
+            this.Controls.Add(this.Alpha);
+            this.Controls.Add(this.Hue);
+            this.Controls.Add(this.MainColors);
             this.Controls.Add(this.pnlColorPreview);
             this.Controls.Add(this.pnlRed);
             this.Controls.Add(this.pnlGreen);
@@ -237,12 +240,12 @@
             this.Name = "ColorSelector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ColorSelector";
-            this.pnlBlue.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).EndInit();
-            this.pnlGreen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbxGreen)).EndInit();
             this.pnlRed.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbxRed)).EndInit();
+            this.pnlGreen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbxGreen)).EndInit();
+            this.pnlBlue.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).EndInit();
             this.pnlAlpha.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbxAlpha)).EndInit();
             this.ResumeLayout(false);
@@ -264,8 +267,8 @@
         private System.Windows.Forms.Label lblAlpha;
         private System.Windows.Forms.NumericUpDown tbxAlpha;
         private DBPanel pnlColorPreview;
-    private DBPanel dbPanel1;
-    private DBPanel dbPanel2;
-    private DBPanel dbPanel3;
+    private DBPanel MainColors;
+    private DBPanel Hue;
+    private DBPanel Alpha;
   }
 }

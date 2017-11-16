@@ -105,10 +105,10 @@ namespace HareEditor {
 
         public static System.Drawing.Color HareColorToNETColor(HareEngine.Color color) {
             return System.Drawing.Color.FromArgb(
-                    (int)(color.a * 255),
-                    (int)(color.r * 255),
-                    (int)(color.g * 255),
-                    (int)(color.b * 255)
+                    (int)HareEngine.Mathf.Clamp(color.a * 255, 0, 255),
+                    (int)HareEngine.Mathf.Clamp(color.r * 255, 0, 255),
+                    (int)HareEngine.Mathf.Clamp(color.g * 255, 0, 255),
+                    (int)HareEngine.Mathf.Clamp(color.b * 255, 0, 255)
                 );
         }
 
