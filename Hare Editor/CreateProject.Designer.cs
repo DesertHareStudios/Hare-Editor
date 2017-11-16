@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.Appbar = new HareEditor.DBPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.lblNewProject = new System.Windows.Forms.Label();
@@ -36,13 +37,12 @@
             this.pnlDirectoryTbx = new HareEditor.DBPanel();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.tbxDirectory = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Appbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlProjectName.SuspendLayout();
             this.Wrapper.SuspendLayout();
             this.pnlDirectory.SuspendLayout();
             this.pnlDirectoryTbx.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Appbar
@@ -57,6 +57,18 @@
             this.Appbar.Name = "Appbar";
             this.Appbar.Size = new System.Drawing.Size(584, 56);
             this.Appbar.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // btnBack
             // 
@@ -203,18 +215,6 @@
             this.tbxDirectory.Size = new System.Drawing.Size(485, 27);
             this.tbxDirectory.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // CreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,13 +231,13 @@
             this.Text = "Hare Editor - New Project";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateProject_FormClosed);
             this.Appbar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlProjectName.ResumeLayout(false);
             this.pnlProjectName.PerformLayout();
             this.Wrapper.ResumeLayout(false);
             this.pnlDirectory.ResumeLayout(false);
             this.pnlDirectoryTbx.ResumeLayout(false);
             this.pnlDirectoryTbx.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
