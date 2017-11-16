@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorSelector));
             this.pnlBlue = new HareEditor.DBPanel();
             this.lblBlue = new System.Windows.Forms.Label();
             this.tbxBlue = new System.Windows.Forms.NumericUpDown();
@@ -36,6 +37,9 @@
             this.lblAlpha = new System.Windows.Forms.Label();
             this.tbxAlpha = new System.Windows.Forms.NumericUpDown();
             this.pnlColorPreview = new HareEditor.DBPanel();
+            this.dbPanel1 = new HareEditor.DBPanel();
+            this.dbPanel2 = new HareEditor.DBPanel();
+            this.dbPanel3 = new HareEditor.DBPanel();
             this.pnlBlue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).BeginInit();
             this.pnlGreen.SuspendLayout();
@@ -190,12 +194,36 @@
             this.pnlColorPreview.Size = new System.Drawing.Size(234, 28);
             this.pnlColorPreview.TabIndex = 4;
             // 
+            // dbPanel1
+            // 
+            this.dbPanel1.Location = new System.Drawing.Point(12, 12);
+            this.dbPanel1.Name = "dbPanel1";
+            this.dbPanel1.Size = new System.Drawing.Size(130, 121);
+            this.dbPanel1.TabIndex = 5;
+            // 
+            // dbPanel2
+            // 
+            this.dbPanel2.Location = new System.Drawing.Point(159, 12);
+            this.dbPanel2.Name = "dbPanel2";
+            this.dbPanel2.Size = new System.Drawing.Size(63, 121);
+            this.dbPanel2.TabIndex = 6;
+            // 
+            // dbPanel3
+            // 
+            this.dbPanel3.Location = new System.Drawing.Point(12, 163);
+            this.dbPanel3.Name = "dbPanel3";
+            this.dbPanel3.Size = new System.Drawing.Size(210, 56);
+            this.dbPanel3.TabIndex = 7;
+            // 
             // ColorSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(234, 361);
+            this.Controls.Add(this.dbPanel3);
+            this.Controls.Add(this.dbPanel2);
+            this.Controls.Add(this.dbPanel1);
             this.Controls.Add(this.pnlColorPreview);
             this.Controls.Add(this.pnlRed);
             this.Controls.Add(this.pnlGreen);
@@ -203,6 +231,7 @@
             this.Controls.Add(this.pnlAlpha);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ColorSelector";
@@ -235,5 +264,8 @@
         private System.Windows.Forms.Label lblAlpha;
         private System.Windows.Forms.NumericUpDown tbxAlpha;
         private DBPanel pnlColorPreview;
-    }
+    private DBPanel dbPanel1;
+    private DBPanel dbPanel2;
+    private DBPanel dbPanel3;
+  }
 }
