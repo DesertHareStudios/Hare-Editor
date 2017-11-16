@@ -88,9 +88,6 @@
     <Compile Include="Controls\Game.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\HareGLControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Controls\ImagePromptItem.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -123,35 +123,6 @@ namespace HareEditor {
 
     }
 
-    //public class TestBehaviour : Behaviour {
-
-    //    private Vector3 target = new Vector3();
-
-    //    public TestBehaviour(GameObject gameObject) : base(gameObject) { }
-
-    //    public override void Update() {
-    //        if (Input.GetKeyDown(OpenTK.Input.Key.W)) {
-    //            target.Y += .5f;
-    //        }
-    //        if (Input.GetKeyDown(OpenTK.Input.Key.A)) {
-    //            target.X -= .5f;
-    //        }
-    //        if (Input.GetKeyDown(OpenTK.Input.Key.S)) {
-    //            target.Y -= .5f;
-    //        }
-    //        if (Input.GetKeyDown(OpenTK.Input.Key.D)) {
-    //            target.X += .5f;
-    //        }
-    //        if (Input.GetKeyDown(OpenTK.Input.Key.Q)) {
-    //            target.Z += .5f;
-    //        }
-    //        if (Input.GetKeyDown(OpenTK.Input.Key.E)) {
-    //            target.Z -= .5f;
-    //        }
-    //        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime);
-    //    }
-    //}
-
     public class ProjectHolder {
         public string Name;
         public string Path;

@@ -71,7 +71,6 @@ namespace HareEditor {
                             int delta = (int)(((float)sw.ElapsedMilliseconds / 1000f) / 1000f);
                             sw.Stop();
                             sleep = (1000 / 10) - delta;
-                            GL.ClearColor(Hare.clearColor.r, Hare.clearColor.g, Hare.clearColor.b, Hare.clearColor.a);
                             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
                             scene.Render();
                             glcontrol.SwapBuffers();
