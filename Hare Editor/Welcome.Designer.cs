@@ -23,15 +23,25 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
+            this.wrapperPanel = new HareEditor.DBPanel();
             this.Appbar = new HareEditor.DBPanel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.wrapperPanel = new HareEditor.DBPanel();
             this.Appbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
+            // 
+            // wrapperPanel
+            // 
+            this.wrapperPanel.AutoScroll = true;
+            this.wrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wrapperPanel.Location = new System.Drawing.Point(0, 56);
+            this.wrapperPanel.Name = "wrapperPanel";
+            this.wrapperPanel.Size = new System.Drawing.Size(584, 305);
+            this.wrapperPanel.TabIndex = 1;
             // 
             // Appbar
             // 
@@ -98,15 +108,6 @@
             this.lblTitle.Text = "Projects";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // wrapperPanel
-            // 
-            this.wrapperPanel.AutoScroll = true;
-            this.wrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wrapperPanel.Location = new System.Drawing.Point(0, 56);
-            this.wrapperPanel.Name = "wrapperPanel";
-            this.wrapperPanel.Size = new System.Drawing.Size(584, 305);
-            this.wrapperPanel.TabIndex = 1;
-            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,6 +118,7 @@
             this.Controls.Add(this.Appbar);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Welcome";
             this.Text = "Hare Editor";

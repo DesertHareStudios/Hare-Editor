@@ -183,6 +183,16 @@ namespace HareEditor {
         private void RefreshMenu_Click(object sender, EventArgs e) {
             Init();
         }
+
+    private void PlayButton_Click(object sender, EventArgs e)
+    {
+
     }
+
+    private void PauseButton_Click(object sender, EventArgs e)
+    {
+
+    }
+  }
 
 }

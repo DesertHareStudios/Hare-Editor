@@ -65,23 +65,23 @@ namespace HareEditor {
             switch (EditorPrefs.Instance.theme) {
                 case Theme.Light:
                     colorSecondary = System.Drawing.Color.FromArgb(210, 210, 210);
-                    colorPrimary = System.Drawing.Color.LightSeaGreen;
+                    colorPrimary = System.Drawing.Color.FromArgb(155, 0, 158, 255);
                     colorFont = System.Drawing.Color.FromArgb(15, 15, 15);
-                    colorAccent = System.Drawing.Color.LightSeaGreen;
+                    colorAccent = System.Drawing.Color.FromArgb(155, 0, 158, 255);
                     colorAccentFont = System.Drawing.Color.FromArgb(240, 240, 240);
                     break;
                 case Theme.Dark:
                     colorSecondary = System.Drawing.Color.FromArgb(37, 37, 37);
                     colorPrimary = System.Drawing.Color.FromArgb(15, 15, 15);
                     colorFont = System.Drawing.Color.FromArgb(240, 240, 240);
-                    colorAccent = System.Drawing.Color.LightSeaGreen;
+                    colorAccent = System.Drawing.Color.FromArgb(155, 0, 158, 255);
                     colorAccentFont = System.Drawing.Color.FromArgb(240, 240, 240);
                     break;
                 case Theme.Hybrid:
                     colorSecondary = System.Drawing.Color.FromArgb(200, 200, 200);
                     colorPrimary = System.Drawing.Color.FromArgb(15, 15, 15);
                     colorFont = System.Drawing.Color.FromArgb(15, 15, 15);
-                    colorAccent = System.Drawing.Color.LightSeaGreen;
+                    colorAccent = System.Drawing.Color.FromArgb(155, 0, 158, 255);
                     colorAccentFont = System.Drawing.Color.FromArgb(240, 240, 240);
                     break;
             }
@@ -105,10 +105,10 @@ namespace HareEditor {
 
         public static System.Drawing.Color HareColorToNETColor(HareEngine.Color color) {
             return System.Drawing.Color.FromArgb(
-                    (int)(color.a * 255),
-                    (int)(color.r * 255),
-                    (int)(color.g * 255),
-                    (int)(color.b * 255)
+                    (int)HareEngine.Mathf.Clamp(color.a * 255, 0, 255),
+                    (int)HareEngine.Mathf.Clamp(color.r * 255, 0, 255),
+                    (int)HareEngine.Mathf.Clamp(color.g * 255, 0, 255),
+                    (int)HareEngine.Mathf.Clamp(color.b * 255, 0, 255)
                 );
         }
 
