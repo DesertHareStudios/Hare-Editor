@@ -23,6 +23,7 @@ namespace HareEditor {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateProject));
             this.Appbar = new HareEditor.DBPanel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@ namespace HareEditor {
             this.Appbar.Name = "Appbar";
             this.Appbar.Size = new System.Drawing.Size(584, 56);
             this.Appbar.TabIndex = 0;
+            // 
             // pbxLogo
             // 
             this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
@@ -225,6 +227,7 @@ namespace HareEditor {
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CreateProject";
             this.Text = "Hare Editor - New Project";
