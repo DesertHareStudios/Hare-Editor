@@ -119,6 +119,18 @@
     <Compile Include="Controls\Fields\TextureField.Designer.cs">
       <DependentUpon>TextureField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Fields\VectorField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\VectorField.Designer.cs">
+      <DependentUpon>VectorField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Fields\QuaternionField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\QuaternionField.Designer.cs">
+      <DependentUpon>QuaternionField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Game.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -185,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Fields\TextureField.resx">
       <DependentUpon>TextureField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\VectorField.resx">
+      <DependentUpon>VectorField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\QuaternionField.resx">
+      <DependentUpon>QuaternionField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ImagePromptItem.resx">
       <DependentUpon>ImagePromptItem.cs</DependentUpon>

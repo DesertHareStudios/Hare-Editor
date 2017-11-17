@@ -21,7 +21,7 @@ namespace HareEditor {
 
         public override string Text {
             get => lblText.Text;
-            set => lblText.Text = value;
+            set => lblText.Text = " " + value;
         }
 
         public Color FontColor {

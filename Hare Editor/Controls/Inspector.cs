@@ -14,295 +14,57 @@ namespace HareEditor {
         public void Reload() {
             Controls.Clear();
             if (Program.editor.SelectedGameObject != null) {
-                DBPanel pnlInfo = new DBPanel();
-                TextBox tbxName = new TextBox();
-                DBPanel pnlTag = new DBPanel();
-                Label lblTag = new Label();
-                TextBox tbxTag = new TextBox();
-                DBPanel pnlPosition = new DBPanel();
-                Label lblPos = new Label();
-                Label lblPosX = new Label();
-                NumericUpDown tbxPosX = new NumericUpDown();
-                Label lblPosY = new Label();
-                NumericUpDown tbxPosY = new NumericUpDown();
-                Label lblPosZ = new Label();
-                NumericUpDown tbxPosZ = new NumericUpDown();
-                DBPanel pnlRotation = new DBPanel();
-                Label lblRot = new Label();
-                Label lblRotX = new Label();
-                NumericUpDown tbxRotX = new NumericUpDown();
-                Label lblRotY = new Label();
-                NumericUpDown tbxRotY = new NumericUpDown();
-                Label lblRotZ = new Label();
-                NumericUpDown tbxRotZ = new NumericUpDown();
-                DBPanel pnlScale = new DBPanel();
-                Label lblScale = new Label();
-                Label lblScaleX = new Label();
-                NumericUpDown tbxScaleX = new NumericUpDown();
-                Label lblScaleY = new Label();
-                NumericUpDown tbxScaleY = new NumericUpDown();
-                Label lblScaleZ = new Label();
-                NumericUpDown tbxScaleZ = new NumericUpDown();
-                pnlInfo.BackColor = System.Drawing.Color.FromArgb(128, 128, 128, 128);
-                pnlInfo.Controls.Add(pnlScale);
-                pnlInfo.Controls.Add(lblScale);
-                pnlInfo.Controls.Add(pnlRotation);
-                pnlInfo.Controls.Add(lblRot);
-                pnlInfo.Controls.Add(pnlPosition);
-                pnlInfo.Controls.Add(lblPos);
-                pnlInfo.Controls.Add(pnlTag);
-                pnlInfo.Controls.Add(tbxName);
-                pnlInfo.Dock = DockStyle.Top;
-                pnlInfo.Size = new System.Drawing.Size(200, 160);
+                StringField name = new StringField();
+                StringField tag = new StringField();
+                VectorField position = new VectorField();
+                QuaternionField rotation = new QuaternionField();
+                VectorField scale = new VectorField();
 
-                tbxName.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
-                tbxName.Dock = DockStyle.Top;
-                tbxName.ForeColor = System.Drawing.Color.FromArgb(15, 15, 15);
-                tbxName.Text = Program.editor.SelectedGameObject.Name;
-                tbxName.TextChanged += (o, e) => {
-                    Program.editor.SelectedGameObject.Name = tbxName.Text;
-                    Program.editor.Hierarchy.Reload();
+                name.Dock = DockStyle.Top;
+                name.Value = Program.editor.SelectedGameObject.Name;
+                name.FontColor = Program.colorFont;
+                name.Text = "Name";
+                name.ValueChanged += (o, e) => {
+                    Program.editor.SelectedGameObject.Name = name.Value;
                 };
 
-                pnlTag.Dock = DockStyle.Top;
-                pnlTag.Size = new System.Drawing.Size(200, 20);
-                pnlTag.Controls.Add(tbxTag);
-                pnlTag.Controls.Add(lblTag);
-
-                lblTag.Dock = DockStyle.Left;
-                lblTag.Size = new System.Drawing.Size(32, 20);
-                lblTag.Text = "Tag";
-                lblTag.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                lblTag.ForeColor = Program.colorFont;
-
-                tbxTag.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
-                tbxTag.Dock = DockStyle.Fill;
-                tbxTag.ForeColor = System.Drawing.Color.FromArgb(15, 15, 15);
-                tbxTag.Text = Program.editor.SelectedGameObject.Tag;
-                tbxTag.TextChanged += (o, e) => {
-                    Program.editor.SelectedGameObject.Tag = tbxTag.Text;
+                tag.Dock = DockStyle.Top;
+                tag.Value = Program.editor.SelectedGameObject.Tag;
+                tag.FontColor = Program.colorFont;
+                tag.Text = "Tag";
+                tag.ValueChanged += (o, e) => {
+                    Program.editor.SelectedGameObject.Tag = tag.Value;
                 };
 
-                pnlPosition.Dock = DockStyle.Top;
-                pnlPosition.Height = 20;
-                pnlPosition.Controls.Add(tbxPosZ);
-                pnlPosition.Controls.Add(lblPosZ);
-                pnlPosition.Controls.Add(tbxPosY);
-                pnlPosition.Controls.Add(lblPosY);
-                pnlPosition.Controls.Add(tbxPosX);
-                pnlPosition.Controls.Add(lblPosX);
-
-                tbxPosX.Dock = DockStyle.Left;
-                tbxPosX.Width = 48;
-                tbxPosX.DecimalPlaces = 8;
-                tbxPosX.Minimum = decimal.MinValue;
-                tbxPosX.Maximum = decimal.MaxValue;
-                tbxPosX.Value = (decimal)Program.editor.SelectedGameObject.transform.position.X;
-                tbxPosX.ValueChanged += (o, e) => {
-                    Vector3 pos = Program.editor.SelectedGameObject.transform.position;
-                    Program.editor.SelectedGameObject.transform.position = new Vector3(
-                        (float)tbxPosX.Value,
-                        pos.Y,
-                        pos.Z
-                        );
-                };
-                tbxPosY.Dock = DockStyle.Left;
-                tbxPosY.Width = 48;
-                tbxPosY.DecimalPlaces = 8;
-                tbxPosY.Minimum = decimal.MinValue;
-                tbxPosY.Maximum = decimal.MaxValue;
-                tbxPosY.Value = (decimal)Program.editor.SelectedGameObject.transform.position.Y;
-                tbxPosY.ValueChanged += (o, e) => {
-                    Vector3 pos = Program.editor.SelectedGameObject.transform.position;
-                    Program.editor.SelectedGameObject.transform.position = new Vector3(
-                        pos.X,
-                        (float)tbxPosY.Value,
-                        pos.Z
-                        );
-                };
-                tbxPosZ.Dock = DockStyle.Left;
-                tbxPosZ.Width = 48;
-                tbxPosZ.DecimalPlaces = 8;
-                tbxPosZ.Minimum = decimal.MinValue;
-                tbxPosZ.Maximum = decimal.MaxValue;
-                tbxPosZ.Value = (decimal)Program.editor.SelectedGameObject.transform.position.Z;
-                tbxPosZ.ValueChanged += (o, e) => {
-                    Vector3 pos = Program.editor.SelectedGameObject.transform.position;
-                    Program.editor.SelectedGameObject.transform.position = new Vector3(
-                        pos.X,
-                        pos.Y,
-                        (float)tbxPosZ.Value
-                        );
+                position.Dock = DockStyle.Top;
+                position.Text = "Position";
+                position.FontColor = Program.colorFont;
+                position.Value = Program.editor.SelectedGameObject.transform.position;
+                position.ValueChanged += (o, e) => {
+                    Program.editor.SelectedGameObject.transform.position = position.Value;
                 };
 
-                lblPos.Text = "Position";
-                lblPos.Dock = DockStyle.Top;
-                lblPos.ForeColor = Program.colorFont;
-                lblPos.Height = 20;
-                lblPos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblPosX.Text = "X:";
-                lblPosX.Dock = DockStyle.Left;
-                lblPosX.ForeColor = Program.colorFont;
-                lblPosX.Width = 17;
-                lblPosX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblPosY.Text = "Y:";
-                lblPosY.Dock = DockStyle.Left;
-                lblPosY.ForeColor = Program.colorFont;
-                lblPosY.Width = 17;
-                lblPosY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblPosZ.Text = "Z:";
-                lblPosZ.Dock = DockStyle.Left;
-                lblPosZ.ForeColor = Program.colorFont;
-                lblPosZ.Width = 17;
-                lblPosZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
-                pnlRotation.Dock = DockStyle.Top;
-                pnlRotation.Height = 20;
-                pnlRotation.Controls.Add(tbxRotZ);
-                pnlRotation.Controls.Add(lblRotZ);
-                pnlRotation.Controls.Add(tbxRotY);
-                pnlRotation.Controls.Add(lblRotY);
-                pnlRotation.Controls.Add(tbxRotX);
-                pnlRotation.Controls.Add(lblRotX);
-
-                tbxRotX.Dock = DockStyle.Left;
-                tbxRotX.Width = 48;
-                tbxRotX.DecimalPlaces = 8;
-                tbxRotX.Minimum = decimal.MinValue;
-                tbxRotX.Maximum = decimal.MaxValue;
-                tbxRotX.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.X;
-                tbxRotX.ValueChanged += (o, e) => {
-                    Quaternion rot = Program.editor.SelectedGameObject.transform.rotation;
-                    Program.editor.SelectedGameObject.transform.rotation = Quaternion.FromEulerAngles(
-                        (float)tbxRotX.Value,
-                        (float)tbxRotY.Value,
-                        (float)tbxRotZ.Value
-                        );
-                };
-                tbxRotY.Dock = DockStyle.Left;
-                tbxRotY.Width = 48;
-                tbxRotY.DecimalPlaces = 8;
-                tbxRotY.Minimum = decimal.MinValue;
-                tbxRotY.Maximum = decimal.MaxValue;
-                tbxRotY.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.Y;
-                tbxRotY.ValueChanged += (o, e) => {
-                    Quaternion rot = Program.editor.SelectedGameObject.transform.rotation;
-                    Program.editor.SelectedGameObject.transform.rotation = Quaternion.FromEulerAngles(
-                        (float)tbxRotX.Value,
-                        (float)tbxRotY.Value,
-                        (float)tbxRotZ.Value
-                        );
-                };
-                tbxRotZ.Dock = DockStyle.Left;
-                tbxRotZ.Width = 48;
-                tbxRotZ.DecimalPlaces = 8;
-                tbxRotZ.Minimum = decimal.MinValue;
-                tbxRotZ.Maximum = decimal.MaxValue;
-                tbxRotZ.Value = (decimal)Program.editor.SelectedGameObject.transform.rotation.Z;
-                tbxRotZ.ValueChanged += (o, e) => {
-                    Quaternion rot = Program.editor.SelectedGameObject.transform.rotation;
-                    Program.editor.SelectedGameObject.transform.rotation = Quaternion.FromEulerAngles(
-                        (float)tbxRotX.Value,
-                        (float)tbxRotY.Value,
-                        (float)tbxRotZ.Value
-                        );
+                rotation.Dock = DockStyle.Top;
+                rotation.Text = "Rotation";
+                rotation.FontColor = Program.colorFont;
+                rotation.Value = Program.editor.SelectedGameObject.transform.rotation;
+                rotation.ValueChanged += (o, e) => {
+                    Program.editor.SelectedGameObject.transform.rotation = rotation.Value;
                 };
 
-                lblRot.Text = "Rotation";
-                lblRot.Dock = DockStyle.Top;
-                lblRot.ForeColor = Program.colorFont;
-                lblRot.Height = 20;
-                lblRot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblRotX.Text = "X:";
-                lblRotX.Dock = DockStyle.Left;
-                lblRotX.ForeColor = Program.colorFont;
-                lblRotX.Width = 17;
-                lblRotX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblRotY.Text = "Y:";
-                lblRotY.Dock = DockStyle.Left;
-                lblRotY.ForeColor = Program.colorFont;
-                lblRotY.Width = 17;
-                lblRotY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblRotZ.Text = "Z:";
-                lblRotZ.Dock = DockStyle.Left;
-                lblRotZ.ForeColor = Program.colorFont;
-                lblRotZ.Width = 17;
-                lblRotZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
-                pnlScale.Dock = DockStyle.Top;
-                pnlScale.Height = 20;
-                pnlScale.Controls.Add(tbxScaleZ);
-                pnlScale.Controls.Add(lblScaleZ);
-                pnlScale.Controls.Add(tbxScaleY);
-                pnlScale.Controls.Add(lblScaleY);
-                pnlScale.Controls.Add(tbxScaleX);
-                pnlScale.Controls.Add(lblScaleX);
-
-                tbxScaleX.Dock = DockStyle.Left;
-                tbxScaleX.Width = 48;
-                tbxScaleX.DecimalPlaces = 8;
-                tbxScaleX.Minimum = decimal.MinValue;
-                tbxScaleX.Maximum = decimal.MaxValue;
-                tbxScaleX.Value = (decimal)Program.editor.SelectedGameObject.transform.scale.X;
-                tbxScaleX.ValueChanged += (o, e) => {
-                    Vector3 scale = Program.editor.SelectedGameObject.transform.scale;
-                    Program.editor.SelectedGameObject.transform.scale = new Vector3(
-                        (float)tbxScaleX.Value,
-                        scale.Y,
-                        scale.Z
-                        );
-                };
-                tbxScaleY.Dock = DockStyle.Left;
-                tbxScaleY.Width = 48;
-                tbxScaleY.DecimalPlaces = 8;
-                tbxScaleY.Minimum = decimal.MinValue;
-                tbxScaleY.Maximum = decimal.MaxValue;
-                tbxScaleY.Value = (decimal)Program.editor.SelectedGameObject.transform.scale.Y;
-                tbxScaleY.ValueChanged += (o, e) => {
-                    Vector3 scale = Program.editor.SelectedGameObject.transform.scale;
-                    Program.editor.SelectedGameObject.transform.scale = new Vector3(
-                        scale.X,
-                        (float)tbxScaleY.Value,
-                        scale.Z
-                        );
-                };
-                tbxScaleZ.Dock = DockStyle.Left;
-                tbxScaleZ.Width = 48;
-                tbxScaleZ.DecimalPlaces = 8;
-                tbxScaleZ.Minimum = decimal.MinValue;
-                tbxScaleZ.Maximum = decimal.MaxValue;
-                tbxScaleZ.Value = (decimal)Program.editor.SelectedGameObject.transform.scale.Z;
-                tbxScaleZ.ValueChanged += (o, e) => {
-                    Vector3 scale = Program.editor.SelectedGameObject.transform.scale;
-                    Program.editor.SelectedGameObject.transform.scale = new Vector3(
-                        scale.X,
-                        scale.Y,
-                        (float)tbxScaleZ.Value
-                        );
+                scale.Dock = DockStyle.Top;
+                scale.Text = "Scale";
+                scale.FontColor = Program.colorFont;
+                scale.Value = Program.editor.SelectedGameObject.transform.scale;
+                scale.ValueChanged += (o, e) => {
+                    Program.editor.SelectedGameObject.transform.scale = scale.Value;
                 };
 
-                lblScale.Text = "Scale";
-                lblScale.Dock = DockStyle.Top;
-                lblScale.ForeColor = Program.colorFont;
-                lblScale.Height = 20;
-                lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblScaleX.Text = "X:";
-                lblScaleX.Dock = DockStyle.Left;
-                lblScaleX.ForeColor = Program.colorFont;
-                lblScaleX.Width = 17;
-                lblScaleX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblScaleY.Text = "Y:";
-                lblScaleY.Dock = DockStyle.Left;
-                lblScaleY.ForeColor = Program.colorFont;
-                lblScaleY.Width = 17;
-                lblScaleY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                lblScaleZ.Text = "Z:";
-                lblScaleZ.Dock = DockStyle.Left;
-                lblScaleZ.ForeColor = Program.colorFont;
-                lblScaleZ.Width = 17;
-                lblScaleZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
-                toAdd.Add(pnlInfo);
+                toAdd.Add(name);
+                toAdd.Add(tag);
+                toAdd.Add(position);
+                toAdd.Add(rotation);
+                toAdd.Add(scale);
                 PrintBehaviours();
             }
 
@@ -327,7 +89,6 @@ namespace HareEditor {
                         TypeSwitch ts = new TypeSwitch()
                             .Case<string>(() => {
                                 StringField panel = new StringField();
-                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
                                 panel.Text = prop.Name;
                                 panel.Value = (string)prop.GetValue(b);
@@ -339,7 +100,6 @@ namespace HareEditor {
                             })
                             .Case<int>(() => {
                                 NumberField panel = new NumberField();
-                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
                                 panel.Text = prop.Name;
                                 panel.Value = (int)prop.GetValue(b);
@@ -351,7 +111,6 @@ namespace HareEditor {
                             })
                             .Case<float>(() => {
                                 NumberField panel = new NumberField();
-                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
                                 panel.Text = prop.Name;
                                 panel.Value = (decimal)(float)prop.GetValue(b);
@@ -363,7 +122,6 @@ namespace HareEditor {
                             })
                             .Case<double>(() => {
                                 NumberField panel = new NumberField();
-                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
                                 panel.Text = prop.Name;
                                 panel.Value = (decimal)(double)prop.GetValue(b);
@@ -375,7 +133,6 @@ namespace HareEditor {
                             })
                             .Case<bool>(() => {
                                 DBPanel panel = new DBPanel();
-                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
                                 CheckBox cbxValue = new CheckBox();
                                 panel.Controls.Add(cbxValue);
@@ -407,7 +164,6 @@ namespace HareEditor {
                             })
                             .Case<HareEngine.Texture>(() => {
                                 TextureField panel = new TextureField();
-                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
                                 panel.Text = prop.Name;
                                 panel.FontColor = Program.colorFont;
@@ -425,11 +181,33 @@ namespace HareEditor {
                                 };
                                 toAdd.Add(panel);
                             })
+                            .Case<OpenTK.Vector3>(() => {
+                                VectorField panel = new VectorField();
+                                panel.Dock = DockStyle.Top;
+                                panel.Text = prop.Name;
+                                panel.FontColor = Program.colorFont;
+                                panel.Value = (OpenTK.Vector3)prop.GetValue(b);
+                                panel.ValueChanged += (o, e) => {
+                                    prop.SetValue(b, panel.Value);
+                                };
+                                toAdd.Add(panel);
+                            })
+                            .Case<OpenTK.Quaternion>(() => {
+                                QuaternionField panel = new QuaternionField();
+                                panel.Dock = DockStyle.Top;
+                                panel.Text = prop.Name;
+                                panel.FontColor = Program.colorFont;
+                                panel.Value = (OpenTK.Quaternion)prop.GetValue(b);
+                                panel.ValueChanged += (o, e) => {
+                                    prop.SetValue(b, panel.Value);
+                                };
+                                toAdd.Add(panel);
+                            })
                             .Default(() => {
                                 //TODO handle different types
                             });
                         ts.Switch(prop.GetValue(b).GetType());
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         Debug.Error(e.Message);
                     }
                 }
