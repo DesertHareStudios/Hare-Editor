@@ -39,6 +39,7 @@ namespace HareEditor {
                 glcontrol = new GLControl(GraphicsMode.Default, 3, 0, GraphicsContextFlags.ForwardCompatible);
                 glcontrol.Dock = DockStyle.Fill;
                 glcontrol.MakeCurrent();
+                Shader.LoadDefaultShaders();
                 glcontrol.Resize += (o, e) => {
                     Hare.window.Width = Width;
                     Hare.window.Height = Height;
@@ -71,18 +72,19 @@ namespace HareEditor {
                             int delta = (int)(((float)sw.ElapsedMilliseconds / 1000f) / 1000f);
                             sw.Stop();
                             sleep = (1000 / 10) - delta;
+                            GL.ClearColor(Hare.clearColor.r, Hare.clearColor.g, Hare.clearColor.b, 1f);
                             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
                             scene.Render();
                             glcontrol.SwapBuffers();
                         }
                     } catch (Exception ex) {
-                        Console.WriteLine(ex.Message);
+                        HareEngine.Debug.Error(ex.Message);
                     }
                 };
                 t.IsBackground = true;
                 t.Start();
             } catch (Exception e) {
-                Console.WriteLine(e.Message);
+                HareEngine.Debug.Error(e.Message);
             }
         }
 

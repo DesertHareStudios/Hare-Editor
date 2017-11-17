@@ -83,13 +83,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset.cs" />
+    <Compile Include="Console.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Console.Designer.cs">
+      <DependentUpon>Console.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DBPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Assets.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Fields\ColorField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\ColorField.Designer.cs">
+      <DependentUpon>ColorField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Fields\StringField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\StringField.Designer.cs">
+      <DependentUpon>StringField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Fields\NumberField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\NumberField.Designer.cs">
+      <DependentUpon>NumberField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Fields\TextureField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\TextureField.Designer.cs">
+      <DependentUpon>TextureField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Game.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\GrowLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ImagePromptItem.cs">
@@ -138,6 +171,21 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Console.resx">
+      <DependentUpon>Console.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\ColorField.resx">
+      <DependentUpon>ColorField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\StringField.resx">
+      <DependentUpon>StringField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\NumberField.resx">
+      <DependentUpon>NumberField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\TextureField.resx">
+      <DependentUpon>TextureField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ImagePromptItem.resx">
       <DependentUpon>ImagePromptItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,7 +214,6 @@
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="GUIClassDiagram.cd" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -233,5 +280,6 @@
   <ItemGroup>
     <Content Include="DHSLogo.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OpenTK;
 using HareEngine;
 using System.Reflection;
+using System;
 
 namespace HareEditor {
 
@@ -319,171 +320,104 @@ namespace HareEditor {
                 label.BackColor = Program.colorAccent;
                 label.Dock = DockStyle.Top;
                 label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                label.Height = 23;
+                label.Height = 24;
                 toAdd.Add(label);
                 foreach (FieldInfo prop in b.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public)) {
                     try {
                         TypeSwitch ts = new TypeSwitch()
                             .Case<string>(() => {
-                                DBPanel panel = new DBPanel();
-                                panel.Height = 23;
+                                StringField panel = new StringField();
+                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
-                                Label lblName = new Label();
-                                TextBox tbxValue = new TextBox();
-                                panel.Controls.Add(tbxValue);
-                                panel.Controls.Add(lblName);
-                                lblName.Text = prop.Name;
-                                tbxValue.Text = (string)prop.GetValue(b);
-                                lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.colorFont;
-                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblName.AutoSize = true;
-                                tbxValue.Dock = DockStyle.Fill;
-                                tbxValue.TextChanged += (o, e) => {
-                                    prop.SetValue(b, tbxValue.Text);
+                                panel.Text = prop.Name;
+                                panel.Value = (string)prop.GetValue(b);
+                                panel.FontColor = Program.colorFont;
+                                panel.ValueChanged += (o, e) => {
+                                    prop.SetValue(b, panel.Value);
                                 };
                                 toAdd.Add(panel);
                             })
                             .Case<int>(() => {
-                                DBPanel panel = new DBPanel();
-                                panel.Height = 23;
+                                NumberField panel = new NumberField();
+                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
-                                Label lblName = new Label();
-                                NumericUpDown tbxValue = new NumericUpDown();
-                                panel.Controls.Add(tbxValue);
-                                panel.Controls.Add(lblName);
-                                lblName.Text = prop.Name;
-                                tbxValue.Minimum = int.MinValue;
-                                tbxValue.Maximum = int.MaxValue;
-                                tbxValue.Value = (int)prop.GetValue(b);
-                                lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.colorFont;
-                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblName.AutoSize = true;
-                                tbxValue.Dock = DockStyle.Fill;
-                                tbxValue.ValueChanged += (o, e) => {
-                                    prop.SetValue(b, (int)tbxValue.Value);
+                                panel.Text = prop.Name;
+                                panel.Value = (int)prop.GetValue(b);
+                                panel.FontColor = Program.colorFont;
+                                panel.ValueChanged += (o, e) => {
+                                    prop.SetValue(b, (int)panel.Value);
                                 };
                                 toAdd.Add(panel);
                             })
                             .Case<float>(() => {
-                                DBPanel panel = new DBPanel();
-                                panel.Height = 23;
+                                NumberField panel = new NumberField();
+                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
-                                Label lblName = new Label();
-                                NumericUpDown tbxValue = new NumericUpDown();
-                                panel.Controls.Add(tbxValue);
-                                panel.Controls.Add(lblName);
-                                lblName.Text = prop.Name;
-                                tbxValue.DecimalPlaces = 8;
-                                tbxValue.Minimum = decimal.MinValue;
-                                tbxValue.Maximum = decimal.MaxValue;
-                                tbxValue.Value = (decimal)(float)prop.GetValue(b);
-                                lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.colorFont;
-                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblName.AutoSize = true;
-                                tbxValue.Dock = DockStyle.Fill;
-                                tbxValue.ValueChanged += (o, e) => {
-                                    prop.SetValue(b, (float)tbxValue.Value);
+                                panel.Text = prop.Name;
+                                panel.Value = (decimal)(float)prop.GetValue(b);
+                                panel.FontColor = Program.colorFont;
+                                panel.ValueChanged += (o, e) => {
+                                    prop.SetValue(b, (float)panel.Value);
+                                };
+                                toAdd.Add(panel);
+                            })
+                            .Case<double>(() => {
+                                NumberField panel = new NumberField();
+                                panel.Height = 24;
+                                panel.Dock = DockStyle.Top;
+                                panel.Text = prop.Name;
+                                panel.Value = (decimal)(double)prop.GetValue(b);
+                                panel.FontColor = Program.colorFont;
+                                panel.ValueChanged += (o, e) => {
+                                    prop.SetValue(b, (double)panel.Value);
                                 };
                                 toAdd.Add(panel);
                             })
                             .Case<bool>(() => {
                                 DBPanel panel = new DBPanel();
-                                panel.Height = 23;
+                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
-                                Label lblName = new Label();
                                 CheckBox cbxValue = new CheckBox();
                                 panel.Controls.Add(cbxValue);
-                                panel.Controls.Add(lblName);
-                                lblName.Text = prop.Name;
+                                cbxValue.Text = prop.Name;
                                 cbxValue.Checked = (bool)prop.GetValue(b);
-                                lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.colorFont;
-                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblName.AutoSize = true;
+                                cbxValue.AutoSize = false;
+                                cbxValue.Dock = DockStyle.Fill;
+                                cbxValue.ForeColor = Program.colorFont;
+                                cbxValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                                 cbxValue.Dock = DockStyle.Left;
                                 cbxValue.CheckedChanged += (o, e) => {
                                     prop.SetValue(b, cbxValue.Checked);
                                 };
                                 toAdd.Add(panel);
                             })
-                            .Case<double>(() => {
-                                DBPanel panel = new DBPanel();
-                                panel.Height = 23;
-                                panel.Dock = DockStyle.Top;
-                                Label lblName = new Label();
-                                NumericUpDown tbxValue = new NumericUpDown();
-                                panel.Controls.Add(tbxValue);
-                                panel.Controls.Add(lblName);
-                                lblName.Text = prop.Name;
-                                tbxValue.DecimalPlaces = 8;
-                                tbxValue.Minimum = decimal.MinValue;
-                                tbxValue.Maximum = decimal.MaxValue;
-                                tbxValue.Value = (decimal)(double)prop.GetValue(b);
-                                lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.colorFont;
-                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblName.AutoSize = true;
-                                tbxValue.Dock = DockStyle.Fill;
-                                tbxValue.ValueChanged += (o, e) => {
-                                    prop.SetValue(b, (double)tbxValue.Value);
-                                };
-                                toAdd.Add(panel);
-                            })
                             .Case<Color>(() => {
-                                DBPanel panel = new DBPanel();
-                                panel.Height = 23;
+                                ColorField panel = new ColorField();
                                 panel.Dock = DockStyle.Top;
-                                Label lblName = new Label();
-                                DBPanel dbpValue = new DBPanel();
-                                panel.Controls.Add(dbpValue);
-                                panel.Controls.Add(lblName);
-                                lblName.Text = prop.Name;
-                                dbpValue.BackColor = Program.HareColorToNETColor((Color)prop.GetValue(b));
-                                lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.colorFont;
-                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblName.AutoSize = true;
-                                dbpValue.Dock = DockStyle.Fill;
-                                dbpValue.Click += (o, e) => {
-                                    ColorSelector.Prompt(lblName.Text, dbpValue.BackColor, (color) => {
+                                panel.Text = prop.Name;
+                                panel.FontColor = Program.colorFont;
+                                panel.Color = Program.HareColorToNETColor((Color)prop.GetValue(b));
+                                panel.Click += (o, e) => {
+                                    ColorSelector.Prompt(panel.Text, panel.Color, (color) => {
                                         prop.SetValue(b, color);
-                                        dbpValue.BackColor = Program.HareColorToNETColor(color);
-                                        Reload();
+                                        panel.Color = Program.HareColorToNETColor(color);
                                     });
                                 };
                                 toAdd.Add(panel);
                             })
                             .Case<HareEngine.Texture>(() => {
-                                DBPanel panel = new DBPanel();
-                                panel.Height = 23;
+                                TextureField panel = new TextureField();
+                                panel.Height = 24;
                                 panel.Dock = DockStyle.Top;
-                                Label lblName = new Label();
-                                Label lblValue = new Label();
-                                panel.Controls.Add(lblValue);
-                                panel.Controls.Add(lblName);
-                                lblName.Text = prop.Name;
-                                lblName.Dock = DockStyle.Left;
-                                lblName.ForeColor = Program.colorFont;
-                                lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblName.AutoSize = true;
-                                try {
-                                    lblValue.Text = ((Texture)prop.GetValue(b)).Name;
-                                } catch {
-                                    lblValue.Text = "None";
-                                }
-                                lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                                lblValue.BackColor = Program.HareColorToNETColor(new Color(0.5f, 0.5f, 0.5f, 0.5f));
-                                lblValue.Dock = DockStyle.Fill;
-                                lblValue.Click += (o, e) => {
-                                    ImagePrompt.Prompt(lblName.Text, (tex) => {
+                                panel.Text = prop.Name;
+                                panel.FontColor = Program.colorFont;
+                                panel.Texture = ((Texture)prop.GetValue(b)).FilePath;
+                                panel.Click += (o, e) => {
+                                    ImagePrompt.Prompt(panel.Text, (tex) => {
                                         Texture texture = HareEngine.Asset.Get<Texture>(tex);
                                         if (texture != null) {
                                             prop.SetValue(b, texture);
-                                            lblValue.Text = texture.Name;
-                                            Reload();
+                                            panel.Texture = texture.FilePath;
                                         } else {
                                             MessageBox.Show(tex);
                                         }
@@ -495,7 +429,8 @@ namespace HareEditor {
                                 //TODO handle different types
                             });
                         ts.Switch(prop.GetValue(b).GetType());
-                    } catch {
+                    } catch (Exception e){
+                        Debug.Error(e.Message);
                     }
                 }
             }

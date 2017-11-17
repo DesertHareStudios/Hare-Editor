@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Deployment.Application;
 using System.Reflection;
+using HareEngine;
 
 namespace HareEditor {
 
@@ -58,6 +59,20 @@ namespace HareEditor {
             OpenTK.Toolkit.Init();
             EditorPrefs.Instance.Load();
             ReloadColors();
+            Debug.Register((type, msg) => {
+                string head = "";
+                switch (type) {
+                    case Debug.MessageType.Error:
+                        head = "ERROR: ";
+                        break;
+                    case Debug.MessageType.Warning:
+                        head = "Warning: ";
+                        break;
+                }
+                System.Console.WriteLine(head + msg);
+                Console.messages.Add(new Debug.Message(type, msg));
+                Console.Instance.Reload();
+            });
             Application.Run(new Welcome());
         }
 

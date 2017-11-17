@@ -184,15 +184,17 @@ namespace HareEditor {
             Init();
         }
 
-    private void PlayButton_Click(object sender, EventArgs e)
-    {
+        private void PlayButton_Click(object sender, EventArgs e) {
 
+        }
+
+        private void PauseButton_Click(object sender, EventArgs e) {
+
+        }
+
+        private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e) {
+            Console.Instance.Show();
+        }
     }
-
-    private void PauseButton_Click(object sender, EventArgs e)
-    {
-
-    }
-  }
 
 }

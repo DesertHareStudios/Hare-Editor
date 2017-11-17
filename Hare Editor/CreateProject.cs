@@ -18,9 +18,7 @@ namespace HareEditor {
             DoubleBuffered = true;
             BackColor = Program.colorSecondary;
             Appbar.BackColor = Program.colorPrimary;
-            btnBack.BackColor = Program.colorAccentDark;
             btnBack.ForeColor = Program.colorAccentFont;
-            btnCreate.BackColor = Program.colorAccentDark;
             btnCreate.ForeColor = Program.colorAccentFont;
             btnBrowse.BackColor = Program.colorAccentDark;
             btnBrowse.ForeColor = Program.colorAccentFont;

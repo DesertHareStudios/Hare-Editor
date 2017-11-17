@@ -16,9 +16,7 @@ namespace HareEditor {
         public void Init() {
             BackColor = Program.colorSecondary;
             Appbar.BackColor = Program.colorPrimary;
-            btnNew.BackColor = Program.colorAccentDark;
             btnNew.ForeColor = Program.colorAccentFont;
-            btnOpen.BackColor = Program.colorAccentDark;
             btnOpen.ForeColor = Program.colorAccentFont;
             lblTitle.ForeColor = Program.colorAccentFont;
             try {

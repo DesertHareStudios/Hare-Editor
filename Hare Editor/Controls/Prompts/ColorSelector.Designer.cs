@@ -40,6 +40,8 @@
             this.pnlAlpha = new HareEditor.DBPanel();
             this.lblAlpha = new System.Windows.Forms.Label();
             this.tbxAlpha = new System.Windows.Forms.NumericUpDown();
+            this.Pallette = new HareEditor.DBPanel();
+            this.pnlColorAlphaPreview = new HareEditor.DBPanel();
             this.pnlRed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbxRed)).BeginInit();
             this.pnlGreen.SuspendLayout();
@@ -48,38 +50,51 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).BeginInit();
             this.pnlAlpha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbxAlpha)).BeginInit();
+            this.Pallette.SuspendLayout();
             this.SuspendLayout();
             // 
             // Alpha
             // 
-            this.Alpha.Location = new System.Drawing.Point(12, 163);
+            this.Alpha.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Alpha.Location = new System.Drawing.Point(0, 210);
             this.Alpha.Name = "Alpha";
-            this.Alpha.Size = new System.Drawing.Size(210, 56);
+            this.Alpha.Size = new System.Drawing.Size(234, 24);
             this.Alpha.TabIndex = 7;
             this.Alpha.Paint += new System.Windows.Forms.PaintEventHandler(this.Alpha_Paint);
             this.Alpha.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Alpha_MouseDown);
+            this.Alpha.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Alpha_MouseMove);
+            this.Alpha.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Alpha_MouseUp);
             // 
             // Hue
             // 
-            this.Hue.Location = new System.Drawing.Point(159, 12);
+            this.Hue.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Hue.Location = new System.Drawing.Point(210, 0);
             this.Hue.Name = "Hue";
-            this.Hue.Size = new System.Drawing.Size(63, 121);
+            this.Hue.Size = new System.Drawing.Size(24, 210);
             this.Hue.TabIndex = 6;
+            this.Hue.Paint += new System.Windows.Forms.PaintEventHandler(this.Hue_Paint);
+            this.Hue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Hue_MouseDown);
+            this.Hue.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Hue_MouseMove);
+            this.Hue.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Hue_MouseUp);
             // 
             // MainColors
             // 
-            this.MainColors.Location = new System.Drawing.Point(12, 12);
+            this.MainColors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainColors.Location = new System.Drawing.Point(0, 0);
             this.MainColors.Name = "MainColors";
-            this.MainColors.Size = new System.Drawing.Size(130, 121);
+            this.MainColors.Size = new System.Drawing.Size(210, 210);
             this.MainColors.TabIndex = 5;
             this.MainColors.Paint += new System.Windows.Forms.PaintEventHandler(this.MainColors_Paint);
+            this.MainColors.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainColors_MouseDown);
+            this.MainColors.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainColors_MouseMove);
+            this.MainColors.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainColors_MouseUp);
             // 
             // pnlColorPreview
             // 
             this.pnlColorPreview.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlColorPreview.Location = new System.Drawing.Point(0, 253);
+            this.pnlColorPreview.Location = new System.Drawing.Point(0, 249);
             this.pnlColorPreview.Name = "pnlColorPreview";
-            this.pnlColorPreview.Size = new System.Drawing.Size(234, 28);
+            this.pnlColorPreview.Size = new System.Drawing.Size(234, 24);
             this.pnlColorPreview.TabIndex = 4;
             // 
             // pnlRed
@@ -218,16 +233,34 @@
             this.tbxAlpha.TabIndex = 0;
             this.tbxAlpha.ValueChanged += new System.EventHandler(this.ValueChanged);
             // 
+            // Pallette
+            // 
+            this.Pallette.Controls.Add(this.MainColors);
+            this.Pallette.Controls.Add(this.Hue);
+            this.Pallette.Controls.Add(this.Alpha);
+            this.Pallette.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Pallette.Location = new System.Drawing.Point(0, 0);
+            this.Pallette.Name = "Pallette";
+            this.Pallette.Size = new System.Drawing.Size(234, 234);
+            this.Pallette.TabIndex = 8;
+            // 
+            // pnlColorAlphaPreview
+            // 
+            this.pnlColorAlphaPreview.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlColorAlphaPreview.Location = new System.Drawing.Point(0, 273);
+            this.pnlColorAlphaPreview.Name = "pnlColorAlphaPreview";
+            this.pnlColorAlphaPreview.Size = new System.Drawing.Size(234, 8);
+            this.pnlColorAlphaPreview.TabIndex = 5;
+            // 
             // ColorSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(234, 361);
-            this.Controls.Add(this.Alpha);
-            this.Controls.Add(this.Hue);
-            this.Controls.Add(this.MainColors);
+            this.Controls.Add(this.Pallette);
             this.Controls.Add(this.pnlColorPreview);
+            this.Controls.Add(this.pnlColorAlphaPreview);
             this.Controls.Add(this.pnlRed);
             this.Controls.Add(this.pnlGreen);
             this.Controls.Add(this.pnlBlue);
@@ -240,6 +273,7 @@
             this.Name = "ColorSelector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ColorSelector";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ColorSelector_FormClosed);
             this.pnlRed.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbxRed)).EndInit();
             this.pnlGreen.ResumeLayout(false);
@@ -248,6 +282,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbxBlue)).EndInit();
             this.pnlAlpha.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbxAlpha)).EndInit();
+            this.Pallette.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -270,5 +305,7 @@
     private DBPanel MainColors;
     private DBPanel Hue;
     private DBPanel Alpha;
-  }
+        private DBPanel Pallette;
+        private DBPanel pnlColorAlphaPreview;
+    }
 }

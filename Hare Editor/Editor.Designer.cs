@@ -74,6 +74,7 @@
             this.lightToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hybridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HierarchyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CopyMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,7 +118,7 @@
             this.Inspector = new HareEditor.Inspector();
             this.lblInspector = new System.Windows.Forms.Label();
             this.Appbar = new HareEditor.DBPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.PauseButton = new System.Windows.Forms.Button();
             this.PlayButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -136,7 +137,7 @@
             this.hierarchyPanel.SuspendLayout();
             this.inspectorPanel.SuspendLayout();
             this.Appbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuStrip
@@ -409,7 +410,7 @@
             // createEmptyToolStripMenuItem
             // 
             this.createEmptyToolStripMenuItem.Name = "createEmptyToolStripMenuItem";
-            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.createEmptyToolStripMenuItem.Text = "Create Empty";
             this.createEmptyToolStripMenuItem.Click += new System.EventHandler(this.createEmptyToolStripMenuItem_Click);
             // 
@@ -419,7 +420,7 @@
             this.sphereToolStripMenuItem,
             this.cubeToolStripMenuItem});
             this.dObjectToolStripMenuItem.Name = "dObjectToolStripMenuItem";
-            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem.Text = "3D Object";
             // 
             // sphereToolStripMenuItem
@@ -439,7 +440,7 @@
             this.dObjectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteToolStripMenuItem});
             this.dObjectToolStripMenuItem1.Name = "dObjectToolStripMenuItem1";
-            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem1.Text = "2D Object";
             // 
             // spriteToolStripMenuItem
@@ -452,19 +453,19 @@
             // lightToolStripMenuItem
             // 
             this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            this.lightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.lightToolStripMenuItem.Text = "Light";
             // 
             // audioToolStripMenuItem
             // 
             this.audioToolStripMenuItem.Name = "audioToolStripMenuItem";
-            this.audioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.audioToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.audioToolStripMenuItem.Text = "Audio";
             // 
             // cameraToolStripMenuItem1
             // 
             this.cameraToolStripMenuItem1.Name = "cameraToolStripMenuItem1";
-            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.cameraToolStripMenuItem1.Text = "Camera";
             // 
             // componentToolStripMenuItem
@@ -476,7 +477,8 @@
             // windowToolStripMenuItem
             // 
             this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.themeToolStripMenuItem});
+            this.themeToolStripMenuItem,
+            this.showConsoleToolStripMenuItem});
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
             this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.windowToolStripMenuItem.Text = "Window";
@@ -488,7 +490,7 @@
             this.darkToolStripMenuItem,
             this.hybridToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightToolStripMenuItem1
@@ -511,6 +513,13 @@
             this.hybridToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.hybridToolStripMenuItem.Text = "Hybrid";
             this.hybridToolStripMenuItem.Click += new System.EventHandler(this.hybridToolStripMenuItem_Click);
+            // 
+            // showConsoleToolStripMenuItem
+            // 
+            this.showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
+            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.showConsoleToolStripMenuItem.Text = "Show Console";
+            this.showConsoleToolStripMenuItem.Click += new System.EventHandler(this.showConsoleToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -874,7 +883,7 @@
             // Appbar
             // 
             this.Appbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.Appbar.Controls.Add(this.pictureBox1);
+            this.Appbar.Controls.Add(this.pbxLogo);
             this.Appbar.Controls.Add(this.PauseButton);
             this.Appbar.Controls.Add(this.PlayButton);
             this.Appbar.Controls.Add(this.button5);
@@ -888,107 +897,112 @@
             this.Appbar.Size = new System.Drawing.Size(784, 56);
             this.Appbar.TabIndex = 0;
             // 
-            // pictureBox1
+            // pbxLogo
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
-            this.pictureBox1.Location = new System.Drawing.Point(733, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.pbxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxLogo.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pbxLogo.Location = new System.Drawing.Point(736, 8);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(40, 40);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 7;
+            this.pbxLogo.TabStop = false;
             // 
             // PauseButton
             // 
-            this.PauseButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.PauseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.PauseButton.BackgroundImage = global::HareEditor.Properties.Resources.pause;
             this.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PauseButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
             this.PauseButton.FlatAppearance.BorderSize = 2;
             this.PauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PauseButton.Location = new System.Drawing.Point(368, 10);
+            this.PauseButton.Location = new System.Drawing.Point(392, 8);
             this.PauseButton.Margin = new System.Windows.Forms.Padding(0);
-            this.PauseButton.MaximumSize = new System.Drawing.Size(36, 36);
-            this.PauseButton.MinimumSize = new System.Drawing.Size(36, 36);
             this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(36, 36);
+            this.PauseButton.Size = new System.Drawing.Size(40, 40);
             this.PauseButton.TabIndex = 6;
             this.PauseButton.UseVisualStyleBackColor = false;
             this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
             // PlayButton
             // 
-            this.PlayButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.PlayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.PlayButton.BackgroundImage = global::HareEditor.Properties.Resources.play;
             this.PlayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PlayButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
             this.PlayButton.FlatAppearance.BorderSize = 2;
             this.PlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayButton.Location = new System.Drawing.Point(332, 10);
+            this.PlayButton.Location = new System.Drawing.Point(352, 8);
             this.PlayButton.Margin = new System.Windows.Forms.Padding(0);
-            this.PlayButton.MaximumSize = new System.Drawing.Size(36, 36);
-            this.PlayButton.MinimumSize = new System.Drawing.Size(36, 36);
             this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(36, 36);
+            this.PlayButton.Size = new System.Drawing.Size(40, 40);
             this.PlayButton.TabIndex = 5;
             this.PlayButton.UseVisualStyleBackColor = false;
             this.PlayButton.Click += new System.EventHandler(this.PlayButton_Click);
             // 
             // button5
             // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.button5.BackgroundImage = global::HareEditor.Properties.Resources.Transform;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
             this.button5.FlatAppearance.BorderSize = 2;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(164, 10);
+            this.button5.Location = new System.Drawing.Point(168, 8);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(36, 36);
+            this.button5.Size = new System.Drawing.Size(40, 40);
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Visible = false;
             // 
             // ScaleButton
             // 
+            this.ScaleButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ScaleButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.ScaleButton.BackgroundImage = global::HareEditor.Properties.Resources.resize;
             this.ScaleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ScaleButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
             this.ScaleButton.FlatAppearance.BorderSize = 2;
             this.ScaleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ScaleButton.Location = new System.Drawing.Point(128, 10);
+            this.ScaleButton.Location = new System.Drawing.Point(128, 8);
             this.ScaleButton.Margin = new System.Windows.Forms.Padding(0);
             this.ScaleButton.Name = "ScaleButton";
-            this.ScaleButton.Size = new System.Drawing.Size(36, 36);
+            this.ScaleButton.Size = new System.Drawing.Size(40, 40);
             this.ScaleButton.TabIndex = 3;
             this.ScaleButton.UseVisualStyleBackColor = false;
             this.ScaleButton.Visible = false;
             // 
             // RotateButton
             // 
+            this.RotateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.RotateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.RotateButton.BackgroundImage = global::HareEditor.Properties.Resources.reload;
             this.RotateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.RotateButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
             this.RotateButton.FlatAppearance.BorderSize = 2;
             this.RotateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RotateButton.Location = new System.Drawing.Point(93, 10);
+            this.RotateButton.Location = new System.Drawing.Point(88, 8);
             this.RotateButton.Margin = new System.Windows.Forms.Padding(0);
             this.RotateButton.Name = "RotateButton";
-            this.RotateButton.Size = new System.Drawing.Size(36, 36);
+            this.RotateButton.Size = new System.Drawing.Size(40, 40);
             this.RotateButton.TabIndex = 2;
             this.RotateButton.UseVisualStyleBackColor = false;
             this.RotateButton.Visible = false;
             // 
             // MoveBoutton
             // 
+            this.MoveBoutton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.MoveBoutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.MoveBoutton.BackgroundImage = global::HareEditor.Properties.Resources.directions;
             this.MoveBoutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -996,10 +1010,10 @@
             this.MoveBoutton.FlatAppearance.BorderSize = 2;
             this.MoveBoutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MoveBoutton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.MoveBoutton.Location = new System.Drawing.Point(57, 10);
+            this.MoveBoutton.Location = new System.Drawing.Point(48, 8);
             this.MoveBoutton.Margin = new System.Windows.Forms.Padding(0);
             this.MoveBoutton.Name = "MoveBoutton";
-            this.MoveBoutton.Size = new System.Drawing.Size(36, 36);
+            this.MoveBoutton.Size = new System.Drawing.Size(40, 40);
             this.MoveBoutton.TabIndex = 1;
             this.MoveBoutton.UseMnemonic = false;
             this.MoveBoutton.UseVisualStyleBackColor = false;
@@ -1007,16 +1021,18 @@
             // 
             // GrapButton
             // 
+            this.GrapButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.GrapButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.GrapButton.BackgroundImage = global::HareEditor.Properties.Resources.grab2;
             this.GrapButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.GrapButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
             this.GrapButton.FlatAppearance.BorderSize = 2;
             this.GrapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GrapButton.Location = new System.Drawing.Point(21, 10);
+            this.GrapButton.Location = new System.Drawing.Point(8, 8);
             this.GrapButton.Margin = new System.Windows.Forms.Padding(0);
             this.GrapButton.Name = "GrapButton";
-            this.GrapButton.Size = new System.Drawing.Size(36, 36);
+            this.GrapButton.Size = new System.Drawing.Size(40, 40);
             this.GrapButton.TabIndex = 0;
             this.GrapButton.UseVisualStyleBackColor = false;
             this.GrapButton.Visible = false;
@@ -1052,7 +1068,7 @@
             this.hierarchyPanel.ResumeLayout(false);
             this.inspectorPanel.ResumeLayout(false);
             this.Appbar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1127,7 +1143,7 @@
         public Assets Assets;
         public Hierarchy Hierarchy;
     private System.Windows.Forms.ContextMenuStrip HierarchyMenu;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.PictureBox pbxLogo;
     private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem CopyMenu;
     private System.Windows.Forms.ToolStripMenuItem PasteMenu;
@@ -1160,5 +1176,6 @@
     private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem hybridToolStripMenuItem;
-  }
+        private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
+    }
 }
