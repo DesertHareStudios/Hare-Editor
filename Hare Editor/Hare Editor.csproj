@@ -47,7 +47,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>DHSLogo.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -131,7 +132,7 @@
     <Compile Include="Controls\Fields\QuaternionField.Designer.cs">
       <DependentUpon>QuaternionField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Game.cs">
+    <Compile Include="Controls\Sceneview.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\GrowLabel.cs">
@@ -168,6 +169,12 @@
       <DependentUpon>Editor.cs</DependentUpon>
     </Compile>
     <Compile Include="EditorPrefs.cs" />
+    <Compile Include="Gameview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gameview.Designer.cs">
+      <DependentUpon>Gameview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Controls\Prompts\ColorSelector.cs">
       <SubType>Form</SubType>
@@ -219,6 +226,9 @@
     <EmbeddedResource Include="Controls\Prompts\ColorSelector.resx">
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gameview.resx">
+      <DependentUpon>Gameview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -252,9 +262,6 @@
       <Project>{a799a7e2-c1d5-4c78-8096-e8520fe8a6ee}</Project>
       <Name>Hare Engine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DHSLogo[1].png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\grab.png" />
@@ -296,7 +303,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DHSLogo.ico" />
+    <None Include="Resources\Hare Editor Logo.ico" />
+    <None Include="Resources\Hare Editor Logo.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

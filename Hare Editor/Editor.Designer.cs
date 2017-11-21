@@ -105,7 +105,7 @@
             this.wrapperPanel = new HareEditor.DBPanel();
             this.renderPanel = new HareEditor.DBPanel();
             this.gameViewPanel = new HareEditor.DBPanel();
-            this.Gameview = new HareEditor.Game();
+            this.Sceneview = new HareEditor.Sceneview();
             this.lblGame = new System.Windows.Forms.Label();
             this.dataPanel = new HareEditor.DBPanel();
             this.assetsPanel = new HareEditor.DBPanel();
@@ -176,7 +176,7 @@
             // 
             this.NewSceneMenu.Name = "NewSceneMenu";
             this.NewSceneMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.NewSceneMenu.Size = new System.Drawing.Size(220, 22);
+            this.NewSceneMenu.Size = new System.Drawing.Size(234, 22);
             this.NewSceneMenu.Text = "New Scene";
             this.NewSceneMenu.Click += new System.EventHandler(this.NewSceneMenu_Click);
             // 
@@ -184,14 +184,14 @@
             // 
             this.OpenSceneMenu.Name = "OpenSceneMenu";
             this.OpenSceneMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenSceneMenu.Size = new System.Drawing.Size(220, 22);
+            this.OpenSceneMenu.Size = new System.Drawing.Size(234, 22);
             this.OpenSceneMenu.Text = "Open Scene";
             // 
             // SaveSceneMenu
             // 
             this.SaveSceneMenu.Name = "SaveSceneMenu";
             this.SaveSceneMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.SaveSceneMenu.Size = new System.Drawing.Size(220, 22);
+            this.SaveSceneMenu.Size = new System.Drawing.Size(234, 22);
             this.SaveSceneMenu.Text = "Save Scene";
             // 
             // SaveASSceneMenu
@@ -199,39 +199,39 @@
             this.SaveASSceneMenu.Name = "SaveASSceneMenu";
             this.SaveASSceneMenu.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.SaveASSceneMenu.Size = new System.Drawing.Size(220, 22);
+            this.SaveASSceneMenu.Size = new System.Drawing.Size(234, 22);
             this.SaveASSceneMenu.Text = "Save Scene As";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(217, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(231, 6);
             // 
             // BuildSettingsMenu
             // 
             this.BuildSettingsMenu.Name = "BuildSettingsMenu";
             this.BuildSettingsMenu.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.B)));
-            this.BuildSettingsMenu.Size = new System.Drawing.Size(220, 22);
+            this.BuildSettingsMenu.Size = new System.Drawing.Size(234, 22);
             this.BuildSettingsMenu.Text = "Build Settings";
             // 
             // BuildRunMenu
             // 
             this.BuildRunMenu.Name = "BuildRunMenu";
             this.BuildRunMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.BuildRunMenu.Size = new System.Drawing.Size(220, 22);
+            this.BuildRunMenu.Size = new System.Drawing.Size(234, 22);
             this.BuildRunMenu.Text = "Build && Run";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(217, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(231, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
             this.exitToolStripMenuItem.Text = "Close Project";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -259,63 +259,63 @@
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(175, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(189, 6);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(175, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(189, 6);
             // 
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(175, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(189, 6);
             // 
             // playToolStripMenuItem
             // 
             this.playToolStripMenuItem.Name = "playToolStripMenuItem";
             this.playToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.playToolStripMenuItem.Text = "Play";
             // 
             // pauseToolStripMenuItem
@@ -323,20 +323,20 @@
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
             this.pauseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(175, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(189, 6);
             // 
             // projectSettingsToolStripMenuItem
             // 
             this.projectSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.physicsToolStripMenuItem});
             this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
-            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.projectSettingsToolStripMenuItem.Text = "Project Settings";
             // 
             // physicsToolStripMenuItem
@@ -739,7 +739,7 @@
             // gameViewPanel
             // 
             this.gameViewPanel.BackColor = System.Drawing.Color.Transparent;
-            this.gameViewPanel.Controls.Add(this.Gameview);
+            this.gameViewPanel.Controls.Add(this.Sceneview);
             this.gameViewPanel.Controls.Add(this.lblGame);
             this.gameViewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameViewPanel.Location = new System.Drawing.Point(0, 0);
@@ -747,14 +747,14 @@
             this.gameViewPanel.Size = new System.Drawing.Size(384, 481);
             this.gameViewPanel.TabIndex = 0;
             // 
-            // Gameview
+            // Sceneview
             // 
-            this.Gameview.BackColor = System.Drawing.Color.Black;
-            this.Gameview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Gameview.Location = new System.Drawing.Point(0, 28);
-            this.Gameview.Name = "Gameview";
-            this.Gameview.Size = new System.Drawing.Size(384, 453);
-            this.Gameview.TabIndex = 4;
+            this.Sceneview.BackColor = System.Drawing.Color.Black;
+            this.Sceneview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Sceneview.Location = new System.Drawing.Point(0, 28);
+            this.Sceneview.Name = "Sceneview";
+            this.Sceneview.Size = new System.Drawing.Size(384, 453);
+            this.Sceneview.TabIndex = 4;
             // 
             // lblGame
             // 
@@ -903,11 +903,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxLogo.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pbxLogo.Image = global::HareEditor.Properties.Resources.Hare_Editor_Logo;
             this.pbxLogo.Location = new System.Drawing.Point(736, 8);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(40, 40);
-            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxLogo.TabIndex = 7;
             this.pbxLogo.TabStop = false;
             // 
@@ -1139,43 +1139,43 @@
         private System.Windows.Forms.Button PlayButton;
         private System.Windows.Forms.ToolStripMenuItem spriteToolStripMenuItem;
         public Inspector Inspector;
-        public Game Gameview;
+        public Sceneview Sceneview;
         public Assets Assets;
         public Hierarchy Hierarchy;
-    private System.Windows.Forms.ContextMenuStrip HierarchyMenu;
-    private System.Windows.Forms.PictureBox pbxLogo;
-    private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem1;
-    private System.Windows.Forms.ToolStripMenuItem CopyMenu;
-    private System.Windows.Forms.ToolStripMenuItem PasteMenu;
-    private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
-    private System.Windows.Forms.ToolStripMenuItem RenameMenu;
-    private System.Windows.Forms.ToolStripMenuItem DuplicateMenu;
-    private System.Windows.Forms.ToolStripMenuItem DeleteMenu;
-    private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
-    private System.Windows.Forms.ToolStripMenuItem CreateEmptyMenu;
-    private System.Windows.Forms.ToolStripMenuItem TObjectMenu;
-    private System.Windows.Forms.ToolStripMenuItem TwObjectMenu;
-    private System.Windows.Forms.ToolStripMenuItem LightMenu;
-    private System.Windows.Forms.ToolStripMenuItem AudioMenu;
-    private System.Windows.Forms.ToolStripMenuItem CameraMenu;
-    private System.Windows.Forms.ToolStripMenuItem sphereToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem cubeToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem SphereMenu;
-    private System.Windows.Forms.ToolStripMenuItem CubeMenu;
-    private System.Windows.Forms.ToolStripMenuItem SpriteMenu;
-    private System.Windows.Forms.ContextMenuStrip AssetsMenu;
-    private System.Windows.Forms.ToolStripMenuItem CreateMenu;
-    private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem cScriptToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem sceneToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem ShwExpMenu;
-    private System.Windows.Forms.ToolStripMenuItem OpenMenu;
-    private System.Windows.Forms.ToolStripMenuItem DeleteAsstMenu;
-    private System.Windows.Forms.ToolStripMenuItem RefreshMenu;
-    private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem1;
-    private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem hybridToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip HierarchyMenu;
+        private System.Windows.Forms.PictureBox pbxLogo;
+        private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem CopyMenu;
+        private System.Windows.Forms.ToolStripMenuItem PasteMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem RenameMenu;
+        private System.Windows.Forms.ToolStripMenuItem DuplicateMenu;
+        private System.Windows.Forms.ToolStripMenuItem DeleteMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripMenuItem CreateEmptyMenu;
+        private System.Windows.Forms.ToolStripMenuItem TObjectMenu;
+        private System.Windows.Forms.ToolStripMenuItem TwObjectMenu;
+        private System.Windows.Forms.ToolStripMenuItem LightMenu;
+        private System.Windows.Forms.ToolStripMenuItem AudioMenu;
+        private System.Windows.Forms.ToolStripMenuItem CameraMenu;
+        private System.Windows.Forms.ToolStripMenuItem sphereToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cubeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SphereMenu;
+        private System.Windows.Forms.ToolStripMenuItem CubeMenu;
+        private System.Windows.Forms.ToolStripMenuItem SpriteMenu;
+        private System.Windows.Forms.ContextMenuStrip AssetsMenu;
+        private System.Windows.Forms.ToolStripMenuItem CreateMenu;
+        private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cScriptToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sceneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ShwExpMenu;
+        private System.Windows.Forms.ToolStripMenuItem OpenMenu;
+        private System.Windows.Forms.ToolStripMenuItem DeleteAsstMenu;
+        private System.Windows.Forms.ToolStripMenuItem RefreshMenu;
+        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hybridToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
     }
 }

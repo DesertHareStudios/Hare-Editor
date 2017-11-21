@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace HareEditor {
 
-    public class Game : DBPanel {
+    public class Sceneview : DBPanel {
 
         private GLControl glcontrol;
         private Scene backUpScene;

@@ -56,7 +56,7 @@ namespace HareEditor {
             Text = "Hare Editor v" + Program.CurrentVersion + " - " +
                 currentScene.Name + " - " + Project.Name;
             //TODO load project contents
-            Gameview.Init();
+            Sceneview.Init();
             Assets.Reload();
             Hierarchy.Reload();
             Inspector.Reload();

@@ -60,7 +60,7 @@
             // 
             this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxLogo.Image = global::HareEditor.Properties.Resources.DHSLogo_1_;
+            this.pbxLogo.Image = global::HareEditor.Properties.Resources.Hare_Editor_Logo;
             this.pbxLogo.Location = new System.Drawing.Point(8, 8);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(40, 40);
@@ -138,6 +138,6 @@
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label lblTitle;
         private DBPanel wrapperPanel;
-    private System.Windows.Forms.PictureBox pbxLogo;
-  }
+        private System.Windows.Forms.PictureBox pbxLogo;
+    }
 }
