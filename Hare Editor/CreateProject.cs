@@ -52,6 +52,7 @@ namespace HareEditor {
                 if (!string.IsNullOrEmpty(tbxProjectName.Text) &&
                     tbxProjectName.Text.IndexOfAny(System.IO.Path.GetInvalidFileNameChars()) < 0) {
                     this.Hide();
+                    SplashScreen.ShowSplash();
                     ProjectHolder project = new ProjectHolder(tbxProjectName.Text, Path);
                     Directory.CreateDirectory(Path);
                     Directory.CreateDirectory(Path + "\\Assets");
@@ -66,6 +67,7 @@ namespace HareEditor {
                     Program.editor.Project = project;
                     Program.editor.Init();
                     Program.editor.Show();
+                    SplashScreen.HideSplash();
                 } else {
                     MessageBox.Show(
                         "Invalid Project Name",

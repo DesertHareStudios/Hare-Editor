@@ -76,21 +76,27 @@ namespace HareEditor {
                 panel.ResumeLayout(false);
                 panel.Click += (o, args) => {
                     this.Hide();
+                    SplashScreen.ShowSplash();
                     Program.editor.Project = ph;
                     Program.editor.Init();
                     Program.editor.Show();
+                    SplashScreen.HideSplash();
                 };
                 name.Click += (o, args) => {
                     this.Hide();
+                    SplashScreen.ShowSplash();
                     Program.editor.Project = ph;
                     Program.editor.Init();
                     Program.editor.Show();
+                    SplashScreen.HideSplash();
                 };
                 path.Click += (o, args) => {
                     this.Hide();
+                    SplashScreen.ShowSplash();
                     Program.editor.Project = ph;
                     Program.editor.Init();
                     Program.editor.Show();
+                    SplashScreen.HideSplash();
                 };
                 btnDel.Click += (o, args) => {
                     wrapperPanel.Controls.Remove(panel);
@@ -142,12 +148,14 @@ namespace HareEditor {
                 }
                 if (valid) {
                     this.Hide();
+                    SplashScreen.ShowSplash();
                     ProjectHolder project = new ProjectHolder(name, dialog.FileName);
                     Program.recentProjects.Add(project);
                     Program.SaveProjectList();
                     Program.editor.Project = project;
                     Program.editor.Init();
                     Program.editor.Show();
+                    SplashScreen.HideSplash();
                 } else {
                     MessageBox.Show(
                         "Selected folder is not a valid Hare Project",
