@@ -164,16 +164,16 @@ namespace HareEditor {
                 glcontrol.KeyDown += (o, e) => {
                     Vector3 translator = new Vector3();
                     if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up) {
-                        translator.Y -= 0.1618f;
-                    }
-                    if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) {
-                        translator.X += 0.1618f;
-                    }
-                    if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down) {
                         translator.Y += 0.1618f;
                     }
-                    if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
+                    if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) {
                         translator.X -= 0.1618f;
+                    }
+                    if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down) {
+                        translator.Y -= 0.1618f;
+                    }
+                    if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
+                        translator.X += 0.1618f;
                     }
                     sceneCamera.transform.Translate(translator);
                     HareEngine.Debug.Log(sceneCamera.transform.position.ToString());
