@@ -52,7 +52,7 @@ namespace HareEditor {
         }
 
         public void OnValueChanged(object sender, EventArgs e) {
-            ValueChanged?.Invoke(sender, e);
+            ValueChanged?.Invoke(this, e);
         }
 
         private void VectorField_Resize(object sender, EventArgs e) {

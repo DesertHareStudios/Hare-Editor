@@ -101,17 +101,23 @@
     <Compile Include="Controls\Fields\ColorField.Designer.cs">
       <DependentUpon>ColorField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Fields\NumberField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\NumberField.Designer.cs">
+      <DependentUpon>NumberField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Fields\StringField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\Fields\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Fields\NumberField.cs">
+    <Compile Include="Controls\Fields\RangedNumberField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Fields\NumberField.Designer.cs">
-      <DependentUpon>NumberField.cs</DependentUpon>
+    <Compile Include="Controls\Fields\RangedNumberField.Designer.cs">
+      <DependentUpon>RangedNumberField.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Fields\TextureField.cs">
       <SubType>UserControl</SubType>
@@ -182,6 +188,12 @@
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="TypeSwitch.cs" />
     <Compile Include="Welcome.cs">
       <SubType>Form</SubType>
@@ -195,11 +207,14 @@
     <EmbeddedResource Include="Controls\Fields\ColorField.resx">
       <DependentUpon>ColorField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\NumberField.resx">
+      <DependentUpon>NumberField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Fields\NumberField.resx">
-      <DependentUpon>NumberField.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Fields\RangedNumberField.resx">
+      <DependentUpon>RangedNumberField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Fields\TextureField.resx">
       <DependentUpon>TextureField.cs</DependentUpon>
@@ -238,6 +253,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>

@@ -4,13 +4,13 @@ using System.Windows.Forms;
 
 namespace HareEditor {
 
-    public partial class NumberField : UserControl {
+    public partial class RangedNumberField : UserControl {
 
         public event EventHandler ValueChanged;
 
-        public decimal Value {
-            get => tbxValue.Value;
-            set => tbxValue.Value = value;
+        public float Value {
+            get => tbrValue.Value;
+            set => tbrValue.Value = (int)value;
         }
 
         public override string Text {
@@ -23,11 +23,11 @@ namespace HareEditor {
             set => lblText.ForeColor = value;
         }
 
-        public NumberField() {
+        public RangedNumberField(HareEngine.Range range) {
             InitializeComponent();
-            tbxValue.DecimalPlaces = 8;
-            tbxValue.Minimum = decimal.MinValue;
-            tbxValue.Maximum = decimal.MaxValue;
+            tbrValue.Minimum = (int)range.Min;
+            tbrValue.Maximum = (int)range.Max;
+            tbrValue.BackColor = Program.colorSecondary;
         }
 
         private void tbxValue_ValueChanged(object sender, EventArgs e) {

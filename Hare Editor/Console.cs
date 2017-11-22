@@ -37,7 +37,7 @@ namespace HareEditor {
                 if (msg.Type == Debug.MessageType.Error && cbxError.Checked ||
                     msg.Type == Debug.MessageType.Log && cbxLog.Checked ||
                     msg.Type == Debug.MessageType.Warning && cbxWarning.Checked) {
-                    if (tbxSearch.Text == "" || msg.Text.ToLower().Contains(tbxSearch.Text.ToLower())) {
+                    if (tbxSearch.Text == "" || msg.Text.ToLower().Contains(tbxSearch.Text.ToLower()) || msg.Text != "") {
                         GrowLabel lbl = new GrowLabel();
                         lbl.Dock = DockStyle.Top;
                         lbl.Text = msg.Text;
@@ -53,6 +53,11 @@ namespace HareEditor {
                                 lbl.ForeColor = Program.colorFont;
                                 break;
                         }
+                        DBPanel margin = new DBPanel();
+                        margin.Dock = DockStyle.Top;
+                        margin.Height = 1;
+                        margin.BackColor = System.Drawing.Color.Black;
+                        Wrapper.Controls.Add(margin);
                         Wrapper.Controls.Add(lbl);
                     }
                 }

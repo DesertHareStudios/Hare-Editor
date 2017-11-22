@@ -17,21 +17,15 @@ namespace HareEditor {
         private Scene backUpScene;
         private Thread t;
         private int sleep = 0;
+        private GameObject sceneCamera;
 
-        private int attrib_pos;
-        private int attrib_col;
-        private int uniform_mview;
-
-        private int vbo_pos;
-        private int vbo_col;
-        private int vbo_mview;
         private int ibo_elements;
 
         Vector3[] vertdata;
         Vector4[] coldata;
         int[] indicedata;
 
-        private int ProgramID;
+        private ShaderProgram SProgram;
 
         public bool isRunning = false;
 
@@ -59,31 +53,23 @@ namespace HareEditor {
                 glcontrol.Resize += (o, e) => {
                     Hare.window.Width = Width;
                     Hare.window.Height = Height;
-                    GL.Viewport(Location.X, Location.Y, Width, Height);
-                    GL.Ortho(-glcontrol.Width / 2, glcontrol.Width / 2, -glcontrol.Height / 2, glcontrol.Height / 2, -1, 1);
-                    glcontrol.SwapBuffers();
+                    GL.Viewport(0, 0, Width, Height);
                 };
                 Controls.Add(glcontrol);
-                GL.Viewport(Location.X, Location.Y, Width, Height);
-                GL.Ortho(-glcontrol.Width / 2, glcontrol.Width / 2, -glcontrol.Height / 2, glcontrol.Height / 2, -1, 1);
+                GL.Viewport(0, 0, Width, Height);
                 if (t != null) {
                     t.Abort();
                 }
                 if (scene != null) {
                     scene.Preload?.Invoke();
                 }
-                ProgramID = GL.CreateProgram();
-                Shader.DefaultVertexShader.Attach(ProgramID);
-                Shader.DefaultFragmentShader.Attach(ProgramID);
-                attrib_pos = GL.GetAttribLocation(ProgramID, "position");
-                attrib_col = GL.GetAttribLocation(ProgramID, "color");
-                uniform_mview = GL.GetUniformLocation(ProgramID, "modelview");
-
-                GL.GenBuffers(1, out vbo_pos);
-                GL.GenBuffers(1, out vbo_col);
-                GL.GenBuffers(1, out vbo_mview);
                 GL.GenBuffers(1, out ibo_elements);
+                SProgram = new ShaderProgram(Shader.DefaultVertexShader, Shader.DefaultFragmentShader);
 
+                sceneCamera = new GameObject("Scene Camera");
+                sceneCamera.AddBehaviour(new Camera(sceneCamera));
+                sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
+                sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
 
                 t = new Thread(() => {
                     while (true) {
@@ -107,7 +93,7 @@ namespace HareEditor {
                             List<Vector4> colors = new List<Vector4>();
 
                             int vertcount = 0;
-                            scene.ForEachRenderer((r) => {
+                            scene.ForEachBehaviour<Renderer>((r) => {
                                 verts.AddRange(r.GetVerts().ToList());
                                 inds.AddRange(r.GetIndices(vertcount).ToList());
                                 colors.AddRange(r.GetColors().ToList());
@@ -118,57 +104,90 @@ namespace HareEditor {
                             indicedata = inds.ToArray();
                             coldata = colors.ToArray();
 
-                            GL.BindBuffer(BufferTarget.ArrayBuffer, vbo_pos);
+                            GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("position"));
                             GL.BufferData<Vector3>(BufferTarget.ArrayBuffer, (IntPtr)(vertdata.Length * Vector3.SizeInBytes), vertdata, BufferUsageHint.StaticDraw);
-                            GL.VertexAttribPointer(attrib_pos, 3, VertexAttribPointerType.Float, false, 0, 0);
+                            GL.VertexAttribPointer(SProgram.GetAttribute("position"), 3, VertexAttribPointerType.Float, false, 0, 0);
 
-                            GL.BindBuffer(BufferTarget.ArrayBuffer, vbo_col);
-                            GL.BufferData<Vector4>(BufferTarget.ArrayBuffer, (IntPtr)(coldata.Length * Vector4.SizeInBytes), coldata, BufferUsageHint.StaticDraw);
-                            GL.VertexAttribPointer(attrib_col, 3, VertexAttribPointerType.Float, true, 0, 0);
+                            if (SProgram.GetAttribute("tint") != -1) {
+                                GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("tint"));
+                                GL.BufferData<Vector4>(BufferTarget.ArrayBuffer, (IntPtr)(coldata.Length * Vector4.SizeInBytes), coldata, BufferUsageHint.StaticDraw);
+                                GL.VertexAttribPointer(SProgram.GetAttribute("tint"), 3, VertexAttribPointerType.Float, true, 0, 0);
+                            }
 
-                            GL.UseProgram(ProgramID);
+                            GL.UseProgram(SProgram.ID);
                             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+
                             GL.BindBuffer(BufferTarget.ElementArrayBuffer, ibo_elements);
                             GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indicedata.Length * sizeof(int)), indicedata, BufferUsageHint.StaticDraw);
 
                             //Render
-                            GL.Viewport(Location.X, Location.Y, Width, Height);
 
                             GL.Enable(EnableCap.DepthTest);
 
-                            GL.EnableVertexAttribArray(attrib_pos);
-                            GL.EnableVertexAttribArray(attrib_col);
-
-                            int indiceat = 0;
-
-                            scene.ForEachCamera((cam) => {
+                            SProgram.EnableVertexAttribArrays();
+                            //Camera cam = sceneCamera.GetComponent<Camera>();
+                            scene.ForEachBehaviour<Camera>((cam) => {
                                 Hare.clearColor = cam.clearColor;
-                                scene.ForEachRenderer((r) => {
-                                    Matrix4 mvp = r.MVPMatrix(cam);
-                                    GL.UniformMatrix4(uniform_mview, false, ref mvp);
+                                int indiceat = 0;
+                                scene.ForEachBehaviour<Renderer>((r) => {
+                                    r.SetMVPMatrix(cam);
+                                    GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
                                     GL.DrawElements(BeginMode.Triangles, r.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
                                     indiceat += r.IndiceCount;
                                 });
                             });
 
-                            GL.DisableVertexAttribArray(attrib_pos);
-                            GL.DisableVertexAttribArray(attrib_col);
+                            SProgram.DisableVertexAttribArrays();
 
                             GL.Flush();
 
                             glcontrol.SwapBuffers();
+                            Time.deltaTime = sw.ElapsedMilliseconds / 1000f;
                             int delta = (int)(((float)sw.ElapsedMilliseconds / 1000f) / 1000f);
                             sw.Stop();
                             sleep = (1000 / 10) - delta;
                         }
                     } catch (Exception ex) {
-                        HareEngine.Debug.Error(ex.Message + "\n" + ex.StackTrace);
+                        HareEngine.Debug.Exception(ex);
                     }
                 };
+
+                glcontrol.KeyDown += (o, e) => {
+                    Vector3 translator = new Vector3();
+                    if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up) {
+                        translator.Y += 0.1618f;
+                    }
+                    if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) {
+                        translator.X -= 0.1618f;
+                    }
+                    if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down) {
+                        translator.Y -= 0.1618f;
+                    }
+                    if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
+                        translator.X += 0.1618f;
+                    }
+                    sceneCamera.transform.Translate(translator);
+                    HareEngine.Debug.Log(sceneCamera.transform.position.ToString());
+                };
+
+                glcontrol.Scroll += (o, e) => {
+                    switch (e.ScrollOrientation) {
+                        case ScrollOrientation.VerticalScroll:
+                            Camera cam = sceneCamera.GetComponent<Camera>();
+                            if (cam.viewmode == Viewmode.Perspective) {
+                                cam.fov.Value = Mathf.Clamp(cam.fov.Value + (e.NewValue - e.OldValue), 1f, 179f);
+                                HareEngine.Debug.Log(cam.fov.ToString());
+                            }
+                            break;
+                        case ScrollOrientation.HorizontalScroll:
+                            break;
+                    }
+                };
+
                 t.IsBackground = true;
                 t.Start();
             } catch (Exception e) {
-                HareEngine.Debug.Error(e.Message + "\n" + e.StackTrace);
+                HareEngine.Debug.Exception(e);
             }
         }
 

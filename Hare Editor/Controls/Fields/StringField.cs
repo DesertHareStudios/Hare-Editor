@@ -28,7 +28,7 @@ namespace HareEditor {
         }
 
         private void tbxValue_ValueChanged(object sender, EventArgs e) {
-            ValueChanged?.Invoke(sender, e);
+            ValueChanged?.Invoke(this, e);
         }
 
     }

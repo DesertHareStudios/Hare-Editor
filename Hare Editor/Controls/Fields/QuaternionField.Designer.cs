@@ -83,6 +83,7 @@
             this.tbxZ.Name = "tbxZ";
             this.tbxZ.Size = new System.Drawing.Size(49, 20);
             this.tbxZ.TabIndex = 0;
+            this.tbxZ.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblZ
             // 
@@ -112,6 +113,7 @@
             this.tbxY.Name = "tbxY";
             this.tbxY.Size = new System.Drawing.Size(49, 20);
             this.tbxY.TabIndex = 0;
+            this.tbxY.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblY
             // 
@@ -141,6 +143,7 @@
             this.tbxX.Name = "tbxX";
             this.tbxX.Size = new System.Drawing.Size(49, 20);
             this.tbxX.TabIndex = 0;
+            this.tbxX.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblX
             // 

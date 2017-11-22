@@ -43,15 +43,22 @@ namespace HareEditor {
                 GameObject camera = new GameObject("Main Camera");
                 camera.AddBehaviour(new Camera(camera));
                 camera.AddBehaviour(new AudioListener(camera));
-                camera.transform.position = new Vector3(0f, 0f, -1f);
+                camera.transform.position = new Vector3(0f, 0f, 5f);
 
                 GameObject sprite = new GameObject("Sprite");
                 sprite.AddBehaviour(new SpriteRenderer(sprite));
 
+                GameObject Cube = new GameObject("Cube");
+                Cube.AddBehaviour(new CubeRenderer(Cube));
+                Cube.transform.rotation = new Quaternion(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
+                Cube.transform.position = new Vector3(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
+
                 currentScene.gameObjects.Add(camera);
                 currentScene.gameObjects.Add(sprite);
+                currentScene.gameObjects.Add(Cube);
 
                 SelectedGameObject = camera;
+
             }
             Text = "Hare Editor v" + Program.CurrentVersion + " - " +
                 currentScene.Name + " - " + Project.Name;

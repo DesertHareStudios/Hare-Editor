@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using System.Collections.Generic;
-using OpenTK;
 using HareEngine;
 using System.Reflection;
 using System;
@@ -203,12 +202,25 @@ namespace HareEditor {
                                 };
                                 toAdd.Add(panel);
                             })
+                            .Case<Range>(() => {
+                                RangedNumberField panel = new RangedNumberField((Range)prop.GetValue(b));
+                                panel.Dock = DockStyle.Top;
+                                panel.Text = prop.Name;
+                                panel.Value = (float)((Range)prop.GetValue(b)).Value;
+                                panel.FontColor = Program.colorFont;
+                                panel.ValueChanged += (o, e) => {
+                                    ((Range)prop.GetValue(b)).Value = (float)(panel.Value);
+                                };
+                                toAdd.Add(panel);
+                            })
                             .Default(() => {
                                 //TODO handle different types
                             });
                         ts.Switch(prop.GetValue(b).GetType());
                     } catch (Exception e) {
-                        Debug.Error(e.Message);
+                        if (prop.GetValue(b) != null) {
+                            Debug.Exception(e);
+                        }
                     }
                 }
             }

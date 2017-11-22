@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using OpenTK;
+using HareEngine;
 
 namespace HareEditor {
 
@@ -12,16 +12,16 @@ namespace HareEditor {
         public Quaternion Value {
             get {
                 return Quaternion.FromEulerAngles(
-                    (float)tbxX.Value,
-                    (float)tbxY.Value,
-                    (float)tbxZ.Value
+                    Mathf.ToRadians((float)tbxX.Value),
+                    Mathf.ToRadians((float)tbxY.Value),
+                    Mathf.ToRadians((float)tbxZ.Value)
                     );
             }
             set {
-                //TODO get euler angles
-                tbxX.Value = (decimal)value.X;
-                tbxY.Value = (decimal)value.Y;
-                tbxZ.Value = (decimal)value.Z;
+                Vector3 v = Mathf.GetEulerAngles(value);
+                tbxX.Value = (decimal)v.X;
+                tbxY.Value = (decimal)v.Y;
+                tbxZ.Value = (decimal)v.Z;
             }
         }
 
@@ -30,7 +30,7 @@ namespace HareEditor {
             set => lblText.Text = value;
         }
 
-        public Color FontColor {
+        public System.Drawing.Color FontColor {
             get {
                 return lblText.ForeColor;
             }
@@ -53,7 +53,7 @@ namespace HareEditor {
         }
 
         public void OnValueChanged(object sender, EventArgs e) {
-            ValueChanged?.Invoke(sender, e);
+            ValueChanged?.Invoke(this, e);
         }
 
         private void QuaternionField_Resize(object sender, EventArgs e) {
