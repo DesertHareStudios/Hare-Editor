@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Deployment.Application;
 using System.Reflection;
 using HareEngine;
+using OpenTK;
 
 namespace HareEditor {
 
@@ -74,6 +75,27 @@ namespace HareEditor {
                 Console.Instance.Reload();
             });
             Application.Run(new Welcome());
+            //Hare.Init(400, 400, "test");
+            //Hare.window.currentScene = new Scene("Untitled");
+
+            //GameObject camera = new GameObject("Main Camera");
+            //camera.AddBehaviour(new Camera(camera));
+            //camera.AddBehaviour(new AudioListener(camera));
+            //camera.transform.position = new Vector3(0f, 0f, 5f);
+
+            //GameObject sprite = new GameObject("Sprite");
+            //sprite.AddBehaviour(new SpriteRenderer(sprite));
+
+            //GameObject Cube = new GameObject("Cube");
+            //Cube.AddBehaviour(new CubeRenderer(Cube));
+            //Cube.transform.rotation = new Quaternion(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
+            //Cube.transform.position = new Vector3(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
+
+            //Hare.window.currentScene.gameObjects.Add(camera);
+            //Hare.window.currentScene.gameObjects.Add(sprite);
+            //Hare.window.currentScene.gameObjects.Add(Cube);
+
+            //Hare.Run();
         }
 
         public static void ReloadColors() {

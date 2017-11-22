@@ -48,14 +48,8 @@ namespace HareEditor {
                 GameObject sprite = new GameObject("Sprite");
                 sprite.AddBehaviour(new SpriteRenderer(sprite));
 
-                GameObject Cube = new GameObject("Cube");
-                Cube.AddBehaviour(new CubeRenderer(Cube));
-                Cube.transform.rotation = new Quaternion(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
-                Cube.transform.position = new Vector3(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
-
                 currentScene.gameObjects.Add(camera);
                 currentScene.gameObjects.Add(sprite);
-                currentScene.gameObjects.Add(Cube);
 
                 SelectedGameObject = camera;
 
@@ -201,6 +195,12 @@ namespace HareEditor {
 
         private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e) {
             Console.Instance.Show();
+        }
+
+        private void CubeMenu_Click(object sender, EventArgs e) {
+            GameObject Cube = new GameObject("Cube");
+            Cube.AddBehaviour(new CubeRenderer(Cube));
+            currentScene.gameObjects.Add(Cube);
         }
     }
 

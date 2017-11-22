@@ -54,6 +54,7 @@
             this.tbxValue.Name = "tbxValue";
             this.tbxValue.Size = new System.Drawing.Size(100, 20);
             this.tbxValue.TabIndex = 0;
+            this.tbxValue.TextChanged += new System.EventHandler(this.tbxValue_ValueChanged);
             // 
             // StringField
             // 

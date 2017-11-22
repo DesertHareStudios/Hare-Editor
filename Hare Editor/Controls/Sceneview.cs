@@ -22,8 +22,8 @@ namespace HareEditor {
         private int ibo_elements;
 
         Vector3[] vertdata;
-        Vector4[] coldata;
         int[] indicedata;
+        Vector2[] texdata;
 
         private ShaderProgram SProgram;
 
@@ -64,12 +64,14 @@ namespace HareEditor {
                     scene.Preload?.Invoke();
                 }
                 GL.GenBuffers(1, out ibo_elements);
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 SProgram = new ShaderProgram(Shader.DefaultVertexShader, Shader.DefaultFragmentShader);
 
-                sceneCamera = new GameObject("Scene Camera");
-                sceneCamera.AddBehaviour(new Camera(sceneCamera));
-                sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
-                sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
+                //sceneCamera = new GameObject("Scene Camera");
+                //sceneCamera.AddBehaviour(new Camera(sceneCamera));
+                //sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
+                //sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
 
                 t = new Thread(() => {
                     while (true) {
@@ -83,35 +85,34 @@ namespace HareEditor {
                     try {
                         Stopwatch sw = Stopwatch.StartNew();
                         if (scene != null) {
-                            GL.ClearColor(Hare.clearColor.r, Hare.clearColor.g, Hare.clearColor.b, 1f);
-                            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
                             float dump = HareEngine.Random.Value;
                             //Update
 
                             List<Vector3> verts = new List<Vector3>();
                             List<int> inds = new List<int>();
                             List<Vector4> colors = new List<Vector4>();
+                            List<Vector2> uvs = new List<Vector2>();
 
                             int vertcount = 0;
                             scene.ForEachBehaviour<Renderer>((r) => {
                                 verts.AddRange(r.GetVerts().ToList());
                                 inds.AddRange(r.GetIndices(vertcount).ToList());
-                                colors.AddRange(r.GetColors().ToList());
+                                uvs.AddRange(r.GetUVs().ToList());
                                 vertcount += r.VertCount;
                             });
 
                             vertdata = verts.ToArray();
                             indicedata = inds.ToArray();
-                            coldata = colors.ToArray();
+                            texdata = uvs.ToArray();
 
                             GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("position"));
                             GL.BufferData<Vector3>(BufferTarget.ArrayBuffer, (IntPtr)(vertdata.Length * Vector3.SizeInBytes), vertdata, BufferUsageHint.StaticDraw);
                             GL.VertexAttribPointer(SProgram.GetAttribute("position"), 3, VertexAttribPointerType.Float, false, 0, 0);
 
-                            if (SProgram.GetAttribute("tint") != -1) {
-                                GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("tint"));
-                                GL.BufferData<Vector4>(BufferTarget.ArrayBuffer, (IntPtr)(coldata.Length * Vector4.SizeInBytes), coldata, BufferUsageHint.StaticDraw);
-                                GL.VertexAttribPointer(SProgram.GetAttribute("tint"), 3, VertexAttribPointerType.Float, true, 0, 0);
+                            if (SProgram.GetAttribute("texcoord") != -1) {
+                                GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("texcoord"));
+                                GL.BufferData<Vector2>(BufferTarget.ArrayBuffer, (IntPtr)(texdata.Length * Vector2.SizeInBytes), texdata, BufferUsageHint.StaticDraw);
+                                GL.VertexAttribPointer(SProgram.GetAttribute("texcoord"), 2, VertexAttribPointerType.Float, true, 0, 0);
                             }
 
                             GL.UseProgram(SProgram.ID);
@@ -121,6 +122,8 @@ namespace HareEditor {
                             GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indicedata.Length * sizeof(int)), indicedata, BufferUsageHint.StaticDraw);
 
                             //Render
+                            GL.ClearColor(Hare.clearColor.r, Hare.clearColor.g, Hare.clearColor.b, 1f);
+                            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
                             GL.Enable(EnableCap.DepthTest);
 
@@ -131,7 +134,14 @@ namespace HareEditor {
                                 int indiceat = 0;
                                 scene.ForEachBehaviour<Renderer>((r) => {
                                     r.SetMVPMatrix(cam);
+                                    r.MVPMatrix = r.ModelMatrix;
+                                    GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
                                     GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
+
+                                    if (SProgram.GetAttribute("maintexture") != -1) {
+                                        GL.Uniform1(SProgram.GetAttribute("maintexture"), r.texture.ID);
+                                    }
+
                                     GL.DrawElements(BeginMode.Triangles, r.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
                                     indiceat += r.IndiceCount;
                                 });
@@ -166,22 +176,8 @@ namespace HareEditor {
                     if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
                         translator.X += 0.1618f;
                     }
-                    sceneCamera.transform.Translate(translator);
-                    HareEngine.Debug.Log(sceneCamera.transform.position.ToString());
-                };
-
-                glcontrol.Scroll += (o, e) => {
-                    switch (e.ScrollOrientation) {
-                        case ScrollOrientation.VerticalScroll:
-                            Camera cam = sceneCamera.GetComponent<Camera>();
-                            if (cam.viewmode == Viewmode.Perspective) {
-                                cam.fov.Value = Mathf.Clamp(cam.fov.Value + (e.NewValue - e.OldValue), 1f, 179f);
-                                HareEngine.Debug.Log(cam.fov.ToString());
-                            }
-                            break;
-                        case ScrollOrientation.HorizontalScroll:
-                            break;
-                    }
+                    //sceneCamera.transform.Translate(translator);
+                    //HareEngine.Debug.Log(sceneCamera.transform.position.ToString());
                 };
 
                 t.IsBackground = true;

@@ -12,9 +12,9 @@ namespace HareEditor {
         public Quaternion Value {
             get {
                 return Quaternion.FromEulerAngles(
-                    Mathf.ToRadians((float)tbxX.Value),
+                    Mathf.ToRadians((float)tbxZ.Value),
                     Mathf.ToRadians((float)tbxY.Value),
-                    Mathf.ToRadians((float)tbxZ.Value)
+                    Mathf.ToRadians((float)tbxX.Value)
                     );
             }
             set {

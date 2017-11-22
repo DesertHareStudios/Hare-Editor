@@ -25,6 +25,7 @@ namespace HareEditor {
                 name.Text = "Name";
                 name.ValueChanged += (o, e) => {
                     Program.editor.SelectedGameObject.Name = name.Value;
+                    Program.editor.Hierarchy.Reload();
                 };
 
                 tag.Dock = DockStyle.Top;
