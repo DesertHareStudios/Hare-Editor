@@ -68,10 +68,10 @@ namespace HareEditor {
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 SProgram = new ShaderProgram(Shader.DefaultVertexShader, Shader.DefaultFragmentShader);
 
-                //sceneCamera = new GameObject("Scene Camera");
-                //sceneCamera.AddBehaviour(new Camera(sceneCamera));
-                //sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
-                //sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
+                sceneCamera = new GameObject("Scene Camera");
+                sceneCamera.AddBehaviour(new Camera(sceneCamera));
+                sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
+                sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
 
                 t = new Thread(() => {
                     while (true) {
@@ -128,24 +128,23 @@ namespace HareEditor {
                             GL.Enable(EnableCap.DepthTest);
 
                             SProgram.EnableVertexAttribArrays();
-                            //Camera cam = sceneCamera.GetComponent<Camera>();
-                            scene.ForEachBehaviour<Camera>((cam) => {
-                                Hare.clearColor = cam.clearColor;
-                                int indiceat = 0;
-                                scene.ForEachBehaviour<Renderer>((r) => {
-                                    r.SetMVPMatrix(cam);
-                                    r.MVPMatrix = r.ModelMatrix;
-                                    GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
-                                    GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
+                            Camera cam = sceneCamera.GetComponent<Camera>();
+                            //scene.ForEachBehaviour<Camera>((cam) => {
+                            Hare.clearColor = cam.clearColor;
+                            int indiceat = 0;
+                            scene.ForEachBehaviour<Renderer>((r) => {
+                                r.SetMVPMatrix(cam);
+                                GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
+                                GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
 
-                                    if (SProgram.GetAttribute("maintexture") != -1) {
-                                        GL.Uniform1(SProgram.GetAttribute("maintexture"), r.texture.ID);
-                                    }
+                                if (SProgram.GetAttribute("maintexture") != -1) {
+                                    GL.Uniform1(SProgram.GetAttribute("maintexture"), r.texture.ID);
+                                }
 
-                                    GL.DrawElements(BeginMode.Triangles, r.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
-                                    indiceat += r.IndiceCount;
-                                });
+                                GL.DrawElements(BeginMode.Triangles, r.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
+                                indiceat += r.IndiceCount;
                             });
+                            //});
 
                             SProgram.DisableVertexAttribArrays();
 
@@ -165,19 +164,19 @@ namespace HareEditor {
                 glcontrol.KeyDown += (o, e) => {
                     Vector3 translator = new Vector3();
                     if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up) {
-                        translator.Y += 0.1618f;
-                    }
-                    if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) {
-                        translator.X -= 0.1618f;
-                    }
-                    if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down) {
                         translator.Y -= 0.1618f;
                     }
-                    if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
+                    if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) {
                         translator.X += 0.1618f;
                     }
-                    //sceneCamera.transform.Translate(translator);
-                    //HareEngine.Debug.Log(sceneCamera.transform.position.ToString());
+                    if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down) {
+                        translator.Y += 0.1618f;
+                    }
+                    if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
+                        translator.X -= 0.1618f;
+                    }
+                    sceneCamera.transform.Translate(translator);
+                    HareEngine.Debug.Log(sceneCamera.transform.position.ToString());
                 };
 
                 t.IsBackground = true;
