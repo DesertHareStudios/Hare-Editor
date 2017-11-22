@@ -27,11 +27,9 @@ namespace HareEditor {
 
         private ShaderProgram SProgram;
 
-        public bool isRunning = false;
-
         private Scene scene {
             get {
-                if (isRunning) {
+                if (Program.editor.isRunning) {
                     if (backUpScene == null) {
                         backUpScene = Program.editor.currentScene;
                     }
@@ -75,9 +73,11 @@ namespace HareEditor {
 
                 t = new Thread(() => {
                     while (true) {
-                        glcontrol.Invalidate();
-                        if (sleep > 0) {
-                            Thread.Sleep(sleep);
+                        if (!Program.editor.isRunning) {
+                            glcontrol.Invalidate();
+                            if (sleep > 0) {
+                                Thread.Sleep(sleep);
+                            }
                         }
                     }
                 });
@@ -134,7 +134,9 @@ namespace HareEditor {
                             int indiceat = 0;
                             scene.ForEachBehaviour<Renderer>((r) => {
                                 r.SetMVPMatrix(cam);
-                                GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
+                                if (r.texture != null) {
+                                    GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
+                                }
                                 GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
 
                                 if (SProgram.GetAttribute("maintexture") != -1) {
@@ -176,7 +178,6 @@ namespace HareEditor {
                         translator.X += 0.1618f;
                     }
                     sceneCamera.transform.Translate(translator);
-                    HareEngine.Debug.Log(sceneCamera.transform.position.ToString());
                 };
 
                 t.IsBackground = true;

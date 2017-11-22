@@ -410,7 +410,7 @@
             // createEmptyToolStripMenuItem
             // 
             this.createEmptyToolStripMenuItem.Name = "createEmptyToolStripMenuItem";
-            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.createEmptyToolStripMenuItem.Text = "Create Empty";
             this.createEmptyToolStripMenuItem.Click += new System.EventHandler(this.createEmptyToolStripMenuItem_Click);
             // 
@@ -420,19 +420,19 @@
             this.sphereToolStripMenuItem,
             this.cubeToolStripMenuItem});
             this.dObjectToolStripMenuItem.Name = "dObjectToolStripMenuItem";
-            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem.Text = "3D Object";
             // 
             // sphereToolStripMenuItem
             // 
             this.sphereToolStripMenuItem.Name = "sphereToolStripMenuItem";
-            this.sphereToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sphereToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.sphereToolStripMenuItem.Text = "Sphere";
             // 
             // cubeToolStripMenuItem
             // 
             this.cubeToolStripMenuItem.Name = "cubeToolStripMenuItem";
-            this.cubeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cubeToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.cubeToolStripMenuItem.Text = "Cube";
             this.cubeToolStripMenuItem.Click += new System.EventHandler(this.CubeMenu_Click);
             // 
@@ -441,7 +441,7 @@
             this.dObjectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteToolStripMenuItem});
             this.dObjectToolStripMenuItem1.Name = "dObjectToolStripMenuItem1";
-            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem1.Text = "2D Object";
             // 
             // spriteToolStripMenuItem
@@ -454,19 +454,19 @@
             // lightToolStripMenuItem
             // 
             this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            this.lightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.lightToolStripMenuItem.Text = "Light";
             // 
             // audioToolStripMenuItem
             // 
             this.audioToolStripMenuItem.Name = "audioToolStripMenuItem";
-            this.audioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.audioToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.audioToolStripMenuItem.Text = "Audio";
             // 
             // cameraToolStripMenuItem1
             // 
             this.cameraToolStripMenuItem1.Name = "cameraToolStripMenuItem1";
-            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.cameraToolStripMenuItem1.Text = "Camera";
             // 
             // componentToolStripMenuItem
@@ -608,13 +608,13 @@
             // SphereMenu
             // 
             this.SphereMenu.Name = "SphereMenu";
-            this.SphereMenu.Size = new System.Drawing.Size(152, 22);
+            this.SphereMenu.Size = new System.Drawing.Size(110, 22);
             this.SphereMenu.Text = "Sphere";
             // 
             // CubeMenu
             // 
             this.CubeMenu.Name = "CubeMenu";
-            this.CubeMenu.Size = new System.Drawing.Size(152, 22);
+            this.CubeMenu.Size = new System.Drawing.Size(110, 22);
             this.CubeMenu.Text = "Cube";
             this.CubeMenu.Click += new System.EventHandler(this.CubeMenu_Click);
             // 
@@ -768,7 +768,7 @@
             this.lblGame.Name = "lblGame";
             this.lblGame.Size = new System.Drawing.Size(384, 28);
             this.lblGame.TabIndex = 3;
-            this.lblGame.Text = "Game";
+            this.lblGame.Text = "Scene";
             this.lblGame.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dataPanel

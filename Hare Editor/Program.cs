@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Deployment.Application;
 using System.Reflection;
 using HareEngine;
-using OpenTK;
 
 namespace HareEditor {
 
@@ -19,6 +18,20 @@ namespace HareEditor {
                     _editor = new Editor();
                 }
                 return _editor;
+            }
+        }
+
+        private static Gameview _game;
+
+        public static Gameview Gameview {
+            get {
+                if (_game == null) {
+                    _game = new Gameview();
+                }
+                return _game;
+            }
+            set {
+                _game = value;
             }
         }
 
@@ -75,27 +88,6 @@ namespace HareEditor {
                 Console.Instance.Reload();
             });
             Application.Run(new Welcome());
-            //Hare.Init(400, 400, "test");
-            //Hare.window.currentScene = new Scene("Untitled");
-
-            //GameObject camera = new GameObject("Main Camera");
-            //camera.AddBehaviour(new Camera(camera));
-            //camera.AddBehaviour(new AudioListener(camera));
-            //camera.transform.position = new Vector3(0f, 0f, 5f);
-
-            //GameObject sprite = new GameObject("Sprite");
-            //sprite.AddBehaviour(new SpriteRenderer(sprite));
-
-            //GameObject Cube = new GameObject("Cube");
-            //Cube.AddBehaviour(new CubeRenderer(Cube));
-            //Cube.transform.rotation = new Quaternion(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
-            //Cube.transform.position = new Vector3(HareEngine.Random.Value, HareEngine.Random.Value, HareEngine.Random.Value);
-
-            //Hare.window.currentScene.gameObjects.Add(camera);
-            //Hare.window.currentScene.gameObjects.Add(sprite);
-            //Hare.window.currentScene.gameObjects.Add(Cube);
-
-            //Hare.Run();
         }
 
         public static void ReloadColors() {
@@ -140,17 +132,17 @@ namespace HareEditor {
             }
         }
 
-        public static System.Drawing.Color HareColorToNETColor(HareEngine.Color color) {
+        public static System.Drawing.Color HareColorToNETColor(Color color) {
             return System.Drawing.Color.FromArgb(
-                    (int)HareEngine.Mathf.Clamp(color.a * 255, 0, 255),
-                    (int)HareEngine.Mathf.Clamp(color.r * 255, 0, 255),
-                    (int)HareEngine.Mathf.Clamp(color.g * 255, 0, 255),
-                    (int)HareEngine.Mathf.Clamp(color.b * 255, 0, 255)
+                    (int)Mathf.Clamp(color.a * 255, 0, 255),
+                    (int)Mathf.Clamp(color.r * 255, 0, 255),
+                    (int)Mathf.Clamp(color.g * 255, 0, 255),
+                    (int)Mathf.Clamp(color.b * 255, 0, 255)
                 );
         }
 
-        public static HareEngine.Color NETColorToHareColor(System.Drawing.Color color) {
-            return new HareEngine.Color(
+        public static Color NETColorToHareColor(System.Drawing.Color color) {
+            return new Color(
                     (float)color.R / 255f,
                     (float)color.G / 255f,
                     (float)color.B / 255f,

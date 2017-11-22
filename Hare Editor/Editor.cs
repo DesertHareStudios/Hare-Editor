@@ -10,6 +10,8 @@ namespace HareEditor {
 
         public ProjectHolder Project;
         public Scene currentScene;
+        public bool isRunning = false;
+        public bool isPaused = false;
         private GameObject selectedGameObject;
 
         public GameObject SelectedGameObject {
@@ -186,11 +188,22 @@ namespace HareEditor {
         }
 
         private void PlayButton_Click(object sender, EventArgs e) {
-
+            isRunning = !isRunning;
+            if (isRunning) {
+                Program.Gameview = null;
+                Program.Gameview.scene = currentScene;
+                Program.Gameview.Init();
+                Program.Gameview.Show();
+            } else {
+                Program.Gameview.Close();
+                Program.Gameview = null;
+            }
         }
 
         private void PauseButton_Click(object sender, EventArgs e) {
-
+            if (isRunning) {
+                isPaused = !isPaused;
+            }
         }
 
         private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -198,9 +211,12 @@ namespace HareEditor {
         }
 
         private void CubeMenu_Click(object sender, EventArgs e) {
-            GameObject Cube = new GameObject("Cube");
-            Cube.AddBehaviour(new CubeRenderer(Cube));
-            currentScene.gameObjects.Add(Cube);
+            if (currentScene != null) {
+                GameObject Cube = new GameObject("Cube");
+                Cube.AddBehaviour(new CubeRenderer(Cube));
+                currentScene.gameObjects.Add(Cube);
+                Hierarchy.Reload();
+            }
         }
     }
 

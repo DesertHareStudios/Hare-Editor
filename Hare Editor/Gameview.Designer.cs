@@ -35,6 +35,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Gameview";
             this.Text = "Gameview";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Gameview_FormClosed);
             this.ResumeLayout(false);
 
         }
