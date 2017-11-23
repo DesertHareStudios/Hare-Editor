@@ -2,6 +2,7 @@
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,9 +14,8 @@ namespace HareEditor {
 
     public partial class Gameview : Form {
 
-        private GLControl glcontrol;
+        public GLControl glcontrol;
         private Thread t;
-        private Thread UpdateThread;
         private bool init = true;
 
         private int ibo_elements;
@@ -38,7 +38,6 @@ namespace HareEditor {
         public void Init() {
             try {
                 Hare.Init(Width, Height, "Hare Editor");
-                OpenTK.Toolkit.Init();
                 Controls.Clear();
                 glcontrol = new GLControl(GraphicsMode.Default, 3, 0, GraphicsContextFlags.ForwardCompatible);
                 glcontrol.Dock = DockStyle.Fill;
@@ -50,6 +49,7 @@ namespace HareEditor {
                 };
                 Controls.Add(glcontrol);
                 GL.Viewport(0, 0, Width, Height);
+
                 if (t != null) {
                     t.Abort();
                 }
@@ -63,58 +63,56 @@ namespace HareEditor {
 
                 t = new Thread(() => {
                     while (true) {
+                        Input.UpdateData();
                         glcontrol.Invalidate();
-                    }
-                });
-
-                UpdateThread = new Thread(() => {
-                    float dump = HareEngine.Random.Value;
-                    Stopwatch sw = Stopwatch.StartNew();
-                    if (scene != null) {
-                        scene.FixedUpdate();
-                        List<Vector3> verts = new List<Vector3>();
-                        List<int> inds = new List<int>();
-                        List<Vector4> colors = new List<Vector4>();
-                        List<Vector2> uvs = new List<Vector2>();
-
-                        int vertcount = 0;
-                        scene.ForEachBehaviour<Renderer>((r) => {
-                            verts.AddRange(r.GetVerts().ToList());
-                            inds.AddRange(r.GetIndices(vertcount).ToList());
-                            uvs.AddRange(r.GetUVs().ToList());
-                            vertcount += r.VertCount;
-                        });
-
-                        vertdata = verts.ToArray();
-                        indicedata = inds.ToArray();
-                        texdata = uvs.ToArray();
-
-                        GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("position"));
-                        GL.BufferData<Vector3>(BufferTarget.ArrayBuffer, (IntPtr)(vertdata.Length * Vector3.SizeInBytes), vertdata, BufferUsageHint.StaticDraw);
-                        GL.VertexAttribPointer(SProgram.GetAttribute("position"), 3, VertexAttribPointerType.Float, false, 0, 0);
-
-                        if (SProgram.GetAttribute("texcoord") != -1) {
-                            GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("texcoord"));
-                            GL.BufferData<Vector2>(BufferTarget.ArrayBuffer, (IntPtr)(texdata.Length * Vector2.SizeInBytes), texdata, BufferUsageHint.StaticDraw);
-                            GL.VertexAttribPointer(SProgram.GetAttribute("texcoord"), 2, VertexAttribPointerType.Float, true, 0, 0);
-                        }
-
-                        GL.UseProgram(SProgram.ID);
-                        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-
-                        GL.BindBuffer(BufferTarget.ElementArrayBuffer, ibo_elements);
-                        GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indicedata.Length * sizeof(int)), indicedata, BufferUsageHint.StaticDraw);
-
-                        Time.deltaTime = sw.ElapsedMilliseconds / 1000f;
                     }
                 });
 
                 glcontrol.Paint += (o, e) => {
                     try {
-                        Stopwatch sw = Stopwatch.StartNew();
                         if (scene != null) {
                             float dump = HareEngine.Random.Value;
+                            Stopwatch fsw = Stopwatch.StartNew();
+
+                            scene.FixedUpdate();
+                            List<Vector3> verts = new List<Vector3>();
+                            List<int> inds = new List<int>();
+                            List<Vector4> colors = new List<Vector4>();
+                            List<Vector2> uvs = new List<Vector2>();
+
+                            int vertcount = 0;
+                            scene.ForEachBehaviour<Renderer>((r) => {
+                                verts.AddRange(r.GetVerts().ToList());
+                                inds.AddRange(r.GetIndices(vertcount).ToList());
+                                uvs.AddRange(r.GetUVs().ToList());
+                                vertcount += r.VertCount;
+                            });
+
+                            vertdata = verts.ToArray();
+                            indicedata = inds.ToArray();
+                            texdata = uvs.ToArray();
+
+                            GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("position"));
+                            GL.BufferData<Vector3>(BufferTarget.ArrayBuffer, (IntPtr)(vertdata.Length * Vector3.SizeInBytes), vertdata, BufferUsageHint.StaticDraw);
+                            GL.VertexAttribPointer(SProgram.GetAttribute("position"), 3, VertexAttribPointerType.Float, false, 0, 0);
+
+                            if (SProgram.GetAttribute("texcoord") != -1) {
+                                GL.BindBuffer(BufferTarget.ArrayBuffer, SProgram.GetBuffer("texcoord"));
+                                GL.BufferData<Vector2>(BufferTarget.ArrayBuffer, (IntPtr)(texdata.Length * Vector2.SizeInBytes), texdata, BufferUsageHint.StaticDraw);
+                                GL.VertexAttribPointer(SProgram.GetAttribute("texcoord"), 2, VertexAttribPointerType.Float, true, 0, 0);
+                            }
+
+                            GL.UseProgram(SProgram.ID);
+                            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+
+                            GL.BindBuffer(BufferTarget.ElementArrayBuffer, ibo_elements);
+                            GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indicedata.Length * sizeof(int)), indicedata, BufferUsageHint.StaticDraw);
+
+                            Time.fixedDeltaTime = fsw.ElapsedMilliseconds / 1000f;
+                            int delta = (int)(((float)fsw.ElapsedMilliseconds / 1000f) / 1000f);
+                            fsw.Stop();
                             //Render
+                            Stopwatch sw = Stopwatch.StartNew();
                             GL.ClearColor(Hare.clearColor.r, Hare.clearColor.g, Hare.clearColor.b, 1f);
                             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
@@ -130,20 +128,22 @@ namespace HareEditor {
 
                             SProgram.EnableVertexAttribArrays();
                             scene.ForEachBehaviour<Camera>((cam) => {
-                                Hare.clearColor = cam.clearColor;
-                                int indiceat = 0;
-                                scene.ForEachBehaviour<Renderer>((r) => {
-                                    r.SetMVPMatrix(cam);
-                                    GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
-                                    GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
+                                if (cam.Render) {
+                                    Hare.clearColor = cam.clearColor;
+                                    int indiceat = 0;
+                                    scene.ForEachBehaviour<Renderer>((r) => {
+                                        r.SetMVPMatrix(cam);
+                                        GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
+                                        GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
 
-                                    if (SProgram.GetAttribute("maintexture") != -1) {
-                                        GL.Uniform1(SProgram.GetAttribute("maintexture"), r.texture.ID);
-                                    }
+                                        if (SProgram.GetAttribute("maintexture") != -1) {
+                                            GL.Uniform1(SProgram.GetAttribute("maintexture"), r.texture.ID);
+                                        }
 
-                                    GL.DrawElements(BeginMode.Triangles, r.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
-                                    indiceat += r.IndiceCount;
-                                });
+                                        GL.DrawElements(BeginMode.Triangles, r.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
+                                        indiceat += r.IndiceCount;
+                                    });
+                                }
                             });
 
                             SProgram.DisableVertexAttribArrays();
@@ -159,9 +159,6 @@ namespace HareEditor {
                         HareEngine.Debug.Exception(ex);
                     }
                 };
-
-                glcontrol.KeyDown += (o, e) => { };
-
                 t.IsBackground = true;
                 t.Start();
             } catch (Exception e) {
@@ -171,6 +168,7 @@ namespace HareEditor {
 
         private void Gameview_FormClosed(object sender, FormClosedEventArgs e) {
             Program.editor.isRunning = false;
+            Program.editor.Sceneview.MakeCurrent();
         }
     }
 

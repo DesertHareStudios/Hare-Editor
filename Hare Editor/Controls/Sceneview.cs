@@ -13,7 +13,7 @@ namespace HareEditor {
 
     public class Sceneview : DBPanel {
 
-        private GLControl glcontrol;
+        public GLControl glcontrol;
         private Scene backUpScene;
         private Thread t;
         private int sleep = 0;
@@ -40,10 +40,18 @@ namespace HareEditor {
             }
         }
 
+        public void MakeCurrent() {
+            if (glcontrol != null) {
+                glcontrol.MakeCurrent();
+                Hare.window.Width = Width;
+                Hare.window.Height = Height;
+                GL.Viewport(0, 0, Width, Height);
+            }
+        }
+
         public void Init() {
             try {
                 Hare.Init(Width, Height, "Hare Editor");
-                OpenTK.Toolkit.Init();
                 Controls.Clear();
                 glcontrol = new GLControl(GraphicsMode.Default, 3, 0, GraphicsContextFlags.ForwardCompatible);
                 glcontrol.Dock = DockStyle.Fill;
@@ -68,17 +76,17 @@ namespace HareEditor {
 
                 sceneCamera = new GameObject("Scene Camera");
                 sceneCamera.AddBehaviour(new Camera(sceneCamera));
+                sceneCamera.GetComponent<Camera>().Render = false;
                 sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
                 sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
 
                 t = new Thread(() => {
                     while (true) {
-                        if (!Program.editor.isRunning) {
-                            glcontrol.Invalidate();
-                            if (sleep > 0) {
-                                Thread.Sleep(sleep);
-                            }
+                        glcontrol.Invalidate();
+                        if (sleep > 0) {
+                            Thread.Sleep(sleep);
                         }
+                        glcontrol.Visible = !Program.editor.isRunning;
                     }
                 });
                 glcontrol.Paint += (o, e) => {

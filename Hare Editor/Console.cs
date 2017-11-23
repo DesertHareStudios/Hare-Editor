@@ -57,8 +57,10 @@ namespace HareEditor {
                         margin.Dock = DockStyle.Top;
                         margin.Height = 1;
                         margin.BackColor = System.Drawing.Color.Black;
-                        Wrapper.Controls.Add(margin);
-                        Wrapper.Controls.Add(lbl);
+                        if (lbl.Height > 0) {
+                            Wrapper.Controls.Add(margin);
+                            Wrapper.Controls.Add(lbl);
+                        }
                     }
                 }
             }

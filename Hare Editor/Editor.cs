@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using OpenTK;
 using HareEngine;
 using System.Diagnostics;
+using System.Threading;
+using OpenTK.Graphics;
 
 namespace HareEditor {
 
@@ -26,6 +28,7 @@ namespace HareEditor {
 
         public Editor() {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         public void Init() {
@@ -193,10 +196,12 @@ namespace HareEditor {
                 Program.Gameview = null;
                 Program.Gameview.scene = currentScene;
                 Program.Gameview.Init();
+                Program.Gameview.Size = this.Sceneview.Size;
                 Program.Gameview.Show();
             } else {
                 Program.Gameview.Close();
                 Program.Gameview = null;
+                Sceneview.MakeCurrent();
             }
         }
 

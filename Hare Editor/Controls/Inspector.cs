@@ -134,6 +134,7 @@ namespace HareEditor {
                             .Case<bool>(() => {
                                 DBPanel panel = new DBPanel();
                                 panel.Dock = DockStyle.Top;
+                                panel.Height = 24;
                                 CheckBox cbxValue = new CheckBox();
                                 panel.Controls.Add(cbxValue);
                                 cbxValue.Text = prop.Name;
