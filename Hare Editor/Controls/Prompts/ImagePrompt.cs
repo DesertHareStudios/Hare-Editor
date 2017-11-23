@@ -47,7 +47,7 @@ namespace HareEditor {
                             ip.ois?.Invoke(ip.AssetName);
                         }
                     };
-                    ip.pnlWrapper.Controls.Add(ipi);
+                    ip.Controls.Add(ipi);
                     ipi.Dock = DockStyle.Top;
                 } catch {
                     //Not an image asset

@@ -107,6 +107,7 @@
             this.renderPanel = new HareEditor.DBPanel();
             this.gameViewPanel = new HareEditor.DBPanel();
             this.Sceneview = new HareEditor.Sceneview();
+            this.lblScene = new System.Windows.Forms.Label();
             this.dataPanel = new HareEditor.DBPanel();
             this.assetsPanel = new HareEditor.DBPanel();
             this.Assets = new HareEditor.Assets();
@@ -115,6 +116,7 @@
             this.Hierarchy = new HareEditor.Hierarchy();
             this.lblHierarchy = new System.Windows.Forms.Label();
             this.inspectorPanel = new HareEditor.DBPanel();
+            this.bntAddComponent = new System.Windows.Forms.Button();
             this.Inspector = new HareEditor.Inspector();
             this.lblInspector = new System.Windows.Forms.Label();
             this.Appbar = new HareEditor.DBPanel();
@@ -126,7 +128,6 @@
             this.RotateButton = new System.Windows.Forms.Button();
             this.MoveBoutton = new System.Windows.Forms.Button();
             this.GrabButton = new System.Windows.Forms.Button();
-            this.lblScene = new System.Windows.Forms.Label();
             this.MenuStrip.SuspendLayout();
             this.HierarchyMenu.SuspendLayout();
             this.AssetsMenu.SuspendLayout();
@@ -767,6 +768,19 @@
             this.Sceneview.Size = new System.Drawing.Size(384, 453);
             this.Sceneview.TabIndex = 4;
             // 
+            // lblScene
+            // 
+            this.lblScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblScene.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblScene.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScene.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblScene.Location = new System.Drawing.Point(0, 0);
+            this.lblScene.Name = "lblScene";
+            this.lblScene.Size = new System.Drawing.Size(384, 28);
+            this.lblScene.TabIndex = 2;
+            this.lblScene.Text = "Scene";
+            this.lblScene.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // dataPanel
             // 
             this.dataPanel.Controls.Add(this.assetsPanel);
@@ -848,6 +862,7 @@
             // inspectorPanel
             // 
             this.inspectorPanel.BackColor = System.Drawing.Color.Transparent;
+            this.inspectorPanel.Controls.Add(this.bntAddComponent);
             this.inspectorPanel.Controls.Add(this.Inspector);
             this.inspectorPanel.Controls.Add(this.lblInspector);
             this.inspectorPanel.Dock = System.Windows.Forms.DockStyle.Right;
@@ -855,6 +870,21 @@
             this.inspectorPanel.Name = "inspectorPanel";
             this.inspectorPanel.Size = new System.Drawing.Size(200, 481);
             this.inspectorPanel.TabIndex = 3;
+            // 
+            // bntAddComponent
+            // 
+            this.bntAddComponent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.bntAddComponent.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bntAddComponent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.bntAddComponent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntAddComponent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.bntAddComponent.Location = new System.Drawing.Point(0, 449);
+            this.bntAddComponent.Name = "bntAddComponent";
+            this.bntAddComponent.Size = new System.Drawing.Size(200, 32);
+            this.bntAddComponent.TabIndex = 0;
+            this.bntAddComponent.Text = "Add Behaviour";
+            this.bntAddComponent.UseVisualStyleBackColor = false;
+            this.bntAddComponent.Click += new System.EventHandler(this.bntAddComponent_Click);
             // 
             // Inspector
             // 
@@ -1035,19 +1065,6 @@
             this.GrabButton.UseVisualStyleBackColor = false;
             this.GrabButton.Visible = false;
             // 
-            // lblScene
-            // 
-            this.lblScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblScene.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblScene.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScene.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lblScene.Location = new System.Drawing.Point(0, 0);
-            this.lblScene.Name = "lblScene";
-            this.lblScene.Size = new System.Drawing.Size(384, 28);
-            this.lblScene.TabIndex = 2;
-            this.lblScene.Text = "Scene";
-            this.lblScene.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1189,5 +1206,6 @@
         private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sceneCameraPropertiesToolStripMenuItem;
         private System.Windows.Forms.Label lblScene;
+        private System.Windows.Forms.Button bntAddComponent;
     }
 }

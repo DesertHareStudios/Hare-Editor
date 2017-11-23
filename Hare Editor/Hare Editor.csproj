@@ -96,6 +96,12 @@
     <Compile Include="Controls\Assets.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Fields\BehaviourField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\BehaviourField.Designer.cs">
+      <DependentUpon>BehaviourField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Fields\ColorField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +149,12 @@
     </Compile>
     <Compile Include="Controls\Fields\QuaternionField.Designer.cs">
       <DependentUpon>QuaternionField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Prompts\BehaviourPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Prompts\BehaviourPrompt.Designer.cs">
+      <DependentUpon>BehaviourPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Sceneview.cs">
       <SubType>Component</SubType>
@@ -217,6 +229,9 @@
     <EmbeddedResource Include="Console.resx">
       <DependentUpon>Console.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\BehaviourField.resx">
+      <DependentUpon>BehaviourField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Fields\ColorField.resx">
       <DependentUpon>ColorField.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ImagePromptItem.resx">
       <DependentUpon>ImagePromptItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Prompts\BehaviourPrompt.resx">
+      <DependentUpon>BehaviourPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Prompts\ImagePrompt.resx">
       <DependentUpon>ImagePrompt.cs</DependentUpon>

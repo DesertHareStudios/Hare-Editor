@@ -3,8 +3,6 @@ using System.Windows.Forms;
 using OpenTK;
 using HareEngine;
 using System.Diagnostics;
-using System.Threading;
-using OpenTK.Graphics;
 
 namespace HareEditor {
 
@@ -36,6 +34,8 @@ namespace HareEditor {
             Appbar.BackColor = Program.colorPrimary;
             lblAssets.BackColor = Program.colorAccentDark;
             lblAssets.ForeColor = Program.colorAccentFont;
+            bntAddComponent.BackColor = Program.colorAccentDark;
+            bntAddComponent.ForeColor = Program.colorAccentFont;
             lblHierarchy.BackColor = Program.colorAccentDark;
             lblHierarchy.ForeColor = Program.colorAccentFont;
             lblScene.BackColor = Program.colorAccentDark;
@@ -52,8 +52,6 @@ namespace HareEditor {
 
                 GameObject sprite = new GameObject("Sprite");
                 sprite.AddBehaviour(new SpriteRenderer(sprite));
-                sprite.AddBehaviour(new Rigidbody(sprite));
-                sprite.AddBehaviour(new PlatformerInput(sprite));
 
                 currentScene.gameObjects.Add(camera);
                 currentScene.gameObjects.Add(sprite);
@@ -230,6 +228,17 @@ namespace HareEditor {
 
         private void sceneCameraPropertiesToolStripMenuItem_Click(object sender, EventArgs e) {
             SceneCamera.Instance.Show();
+        }
+
+        private void bntAddComponent_Click(object sender, EventArgs e) {
+            if (selectedGameObject != null) {
+                BehaviourPrompt.Prompt((t) => {
+                    if (t != null) {
+                        selectedGameObject.AddBehaviour((Behaviour)Activator.CreateInstance(t, selectedGameObject));
+                        Inspector.Reload();
+                    }
+                });
+            }
         }
     }
 

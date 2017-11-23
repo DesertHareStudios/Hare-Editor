@@ -1,5 +1,5 @@
 ﻿namespace HareEditor {
-    partial class ImagePrompt {
+    partial class BehaviourPrompt {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,24 +23,27 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImagePrompt));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BehaviourPrompt));
             this.SuspendLayout();
             // 
-            // ImagePrompt
+            // BehaviourPrompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(234, 361);
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(250, 400);
             this.MinimizeBox = false;
-            this.Name = "ImagePrompt";
+            this.MinimumSize = new System.Drawing.Size(250, 400);
+            this.Name = "BehaviourPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ImagePrompt";
+            this.Text = "Behaviour";
             this.ResumeLayout(false);
 
         }

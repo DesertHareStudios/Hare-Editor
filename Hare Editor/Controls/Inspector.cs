@@ -77,14 +77,36 @@ namespace HareEditor {
         private void PrintBehaviours() {
             if (Program.editor.SelectedGameObject != null) {
                 foreach (Behaviour b in Program.editor.SelectedGameObject.behaviours) {
-                    Label label = new Label();
-                    label.Text = b.GetType().Name;
-                    label.ForeColor = Program.colorFont;
-                    label.BackColor = Program.colorAccent;
-                    label.Dock = DockStyle.Top;
-                    label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                    label.Height = 24;
-                    toAdd.Add(label);
+                    //Label label = new Label();
+                    //label.Text = b.GetType().Name;
+                    //label.ForeColor = Program.colorAccentFont;
+                    //label.BackColor = Program.colorAccent;
+                    //label.Dock = DockStyle.Top;
+                    //label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                    //label.Height = 24;
+
+                    BehaviourField bf = new BehaviourField();
+                    bf.Text = b.GetType().Name;
+                    bf.FontColor = Program.colorAccentFont;
+                    bf.BackColor = Program.colorAccentDark;
+                    bf.Dock = DockStyle.Top;
+                    bf.Active = b.Active;
+                    bf.ActiveChanged += (active) => {
+                        b.Active = active;
+                    };
+                    bf.Delete += () => {
+                        if (DialogResult.Yes == MessageBox.Show(
+                                "Are you sure you want to remove this behaviour?",
+                                "Removing " + b.GetType().Name,
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question
+                            )) {
+                            Program.editor.SelectedGameObject.behaviours.Remove(b);
+                            Reload();
+                        }
+                    };
+
+                    toAdd.Add(bf);
                     foreach (FieldInfo prop in b.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public)) {
                         try {
                             TypeSwitch ts = new TypeSwitch()
