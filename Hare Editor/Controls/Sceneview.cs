@@ -17,7 +17,8 @@ namespace HareEditor {
         private Scene backUpScene;
         private Thread t;
         private int sleep = 0;
-        private GameObject sceneCamera;
+
+        public GameObject sceneCamera;
 
         private int ibo_elements;
 
@@ -172,20 +173,22 @@ namespace HareEditor {
                 };
 
                 glcontrol.KeyDown += (o, e) => {
-                    Vector3 translator = new Vector3();
-                    if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up) {
-                        translator.Y += 0.1618f;
+                    if (!Program.editor.isRunning) {
+                        Vector3 translator = new Vector3();
+                        if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up) {
+                            translator.Y += 0.1618f;
+                        }
+                        if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) {
+                            translator.X -= 0.1618f;
+                        }
+                        if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down) {
+                            translator.Y -= 0.1618f;
+                        }
+                        if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
+                            translator.X += 0.1618f;
+                        }
+                        sceneCamera.transform.Translate(translator);
                     }
-                    if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) {
-                        translator.X -= 0.1618f;
-                    }
-                    if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down) {
-                        translator.Y -= 0.1618f;
-                    }
-                    if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) {
-                        translator.X += 0.1618f;
-                    }
-                    sceneCamera.transform.Translate(translator);
                 };
 
                 t.IsBackground = true;

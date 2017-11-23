@@ -63,7 +63,6 @@ namespace HareEditor {
 
                 t = new Thread(() => {
                     while (true) {
-                        Input.UpdateData();
                         glcontrol.Invalidate();
                     }
                 });
@@ -71,8 +70,9 @@ namespace HareEditor {
                 glcontrol.Paint += (o, e) => {
                     try {
                         if (scene != null) {
-                            float dump = HareEngine.Random.Value;
                             Stopwatch fsw = Stopwatch.StartNew();
+                            float dump = HareEngine.Random.Value;
+                            Input.UpdateData();
 
                             scene.FixedUpdate();
                             List<Vector3> verts = new List<Vector3>();

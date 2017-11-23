@@ -106,7 +106,6 @@
             this.renderPanel = new HareEditor.DBPanel();
             this.gameViewPanel = new HareEditor.DBPanel();
             this.Sceneview = new HareEditor.Sceneview();
-            this.lblGame = new System.Windows.Forms.Label();
             this.dataPanel = new HareEditor.DBPanel();
             this.assetsPanel = new HareEditor.DBPanel();
             this.Assets = new HareEditor.Assets();
@@ -125,7 +124,8 @@
             this.ScaleButton = new System.Windows.Forms.Button();
             this.RotateButton = new System.Windows.Forms.Button();
             this.MoveBoutton = new System.Windows.Forms.Button();
-            this.GrapButton = new System.Windows.Forms.Button();
+            this.GrabButton = new System.Windows.Forms.Button();
+            this.sceneCameraPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.HierarchyMenu.SuspendLayout();
             this.AssetsMenu.SuspendLayout();
@@ -479,7 +479,8 @@
             // 
             this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.themeToolStripMenuItem,
-            this.showConsoleToolStripMenuItem});
+            this.showConsoleToolStripMenuItem,
+            this.sceneCameraPropertiesToolStripMenuItem});
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
             this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.windowToolStripMenuItem.Text = "Window";
@@ -491,7 +492,7 @@
             this.darkToolStripMenuItem,
             this.hybridToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightToolStripMenuItem1
@@ -518,7 +519,7 @@
             // showConsoleToolStripMenuItem
             // 
             this.showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
-            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.showConsoleToolStripMenuItem.Text = "Show Console";
             this.showConsoleToolStripMenuItem.Click += new System.EventHandler(this.showConsoleToolStripMenuItem_Click);
             // 
@@ -742,7 +743,6 @@
             // 
             this.gameViewPanel.BackColor = System.Drawing.Color.Transparent;
             this.gameViewPanel.Controls.Add(this.Sceneview);
-            this.gameViewPanel.Controls.Add(this.lblGame);
             this.gameViewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameViewPanel.Location = new System.Drawing.Point(0, 0);
             this.gameViewPanel.Name = "gameViewPanel";
@@ -753,23 +753,10 @@
             // 
             this.Sceneview.BackColor = System.Drawing.Color.Black;
             this.Sceneview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sceneview.Location = new System.Drawing.Point(0, 28);
+            this.Sceneview.Location = new System.Drawing.Point(0, 0);
             this.Sceneview.Name = "Sceneview";
-            this.Sceneview.Size = new System.Drawing.Size(384, 453);
+            this.Sceneview.Size = new System.Drawing.Size(384, 481);
             this.Sceneview.TabIndex = 4;
-            // 
-            // lblGame
-            // 
-            this.lblGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblGame.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lblGame.Location = new System.Drawing.Point(0, 0);
-            this.lblGame.Name = "lblGame";
-            this.lblGame.Size = new System.Drawing.Size(384, 28);
-            this.lblGame.TabIndex = 3;
-            this.lblGame.Text = "Scene";
-            this.lblGame.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dataPanel
             // 
@@ -892,7 +879,7 @@
             this.Appbar.Controls.Add(this.ScaleButton);
             this.Appbar.Controls.Add(this.RotateButton);
             this.Appbar.Controls.Add(this.MoveBoutton);
-            this.Appbar.Controls.Add(this.GrapButton);
+            this.Appbar.Controls.Add(this.GrabButton);
             this.Appbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.Appbar.Location = new System.Drawing.Point(0, 24);
             this.Appbar.Name = "Appbar";
@@ -1021,23 +1008,30 @@
             this.MoveBoutton.UseVisualStyleBackColor = false;
             this.MoveBoutton.Visible = false;
             // 
-            // GrapButton
+            // GrabButton
             // 
-            this.GrapButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.GrabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.GrapButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.GrapButton.BackgroundImage = global::HareEditor.Properties.Resources.grab2;
-            this.GrapButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GrapButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            this.GrapButton.FlatAppearance.BorderSize = 2;
-            this.GrapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GrapButton.Location = new System.Drawing.Point(8, 8);
-            this.GrapButton.Margin = new System.Windows.Forms.Padding(0);
-            this.GrapButton.Name = "GrapButton";
-            this.GrapButton.Size = new System.Drawing.Size(40, 40);
-            this.GrapButton.TabIndex = 0;
-            this.GrapButton.UseVisualStyleBackColor = false;
-            this.GrapButton.Visible = false;
+            this.GrabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.GrabButton.BackgroundImage = global::HareEditor.Properties.Resources.grab2;
+            this.GrabButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GrabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.GrabButton.FlatAppearance.BorderSize = 2;
+            this.GrabButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GrabButton.Location = new System.Drawing.Point(8, 8);
+            this.GrabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.GrabButton.Name = "GrabButton";
+            this.GrabButton.Size = new System.Drawing.Size(40, 40);
+            this.GrabButton.TabIndex = 0;
+            this.GrabButton.UseVisualStyleBackColor = false;
+            this.GrabButton.Visible = false;
+            // 
+            // sceneCameraPropertiesToolStripMenuItem
+            // 
+            this.sceneCameraPropertiesToolStripMenuItem.Name = "sceneCameraPropertiesToolStripMenuItem";
+            this.sceneCameraPropertiesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.sceneCameraPropertiesToolStripMenuItem.Text = "Scene Camera Properties";
+            this.sceneCameraPropertiesToolStripMenuItem.Click += new System.EventHandler(this.sceneCameraPropertiesToolStripMenuItem_Click);
             // 
             // Editor
             // 
@@ -1128,12 +1122,11 @@
         private System.Windows.Forms.Label lblAssets;
         private System.Windows.Forms.Label lblHierarchy;
         private System.Windows.Forms.Label lblInspector;
-        private System.Windows.Forms.Label lblGame;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button ScaleButton;
         private System.Windows.Forms.Button RotateButton;
         private System.Windows.Forms.Button MoveBoutton;
-        private System.Windows.Forms.Button GrapButton;
+        private System.Windows.Forms.Button GrabButton;
         private System.Windows.Forms.ToolStripMenuItem componentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -1179,5 +1172,6 @@
         private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hybridToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sceneCameraPropertiesToolStripMenuItem;
     }
 }

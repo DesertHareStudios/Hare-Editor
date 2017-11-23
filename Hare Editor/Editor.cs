@@ -38,8 +38,8 @@ namespace HareEditor {
             lblAssets.ForeColor = Program.colorAccentFont;
             lblHierarchy.BackColor = Program.colorAccentDark;
             lblHierarchy.ForeColor = Program.colorAccentFont;
-            lblGame.BackColor = Program.colorAccentDark;
-            lblGame.ForeColor = Program.colorAccentFont;
+            //lblGame.BackColor = Program.colorAccentDark;
+            //lblGame.ForeColor = Program.colorAccentFont;
             lblInspector.BackColor = Program.colorAccentDark;
             lblInspector.ForeColor = Program.colorAccentFont;
             if (currentScene == null) {
@@ -52,6 +52,8 @@ namespace HareEditor {
 
                 GameObject sprite = new GameObject("Sprite");
                 sprite.AddBehaviour(new SpriteRenderer(sprite));
+                sprite.AddBehaviour(new Rigidbody(sprite));
+                sprite.AddBehaviour(new PlatformerInput(sprite));
 
                 currentScene.gameObjects.Add(camera);
                 currentScene.gameObjects.Add(sprite);
@@ -66,10 +68,6 @@ namespace HareEditor {
             Assets.Reload();
             Hierarchy.Reload();
             Inspector.Reload();
-        }
-
-        private void Editor_FormClosed(object sender, FormClosedEventArgs e) {
-            Application.Exit();
         }
 
         private void Editor_Resize(object sender, EventArgs e) {
@@ -92,6 +90,12 @@ namespace HareEditor {
                         MessageBoxIcon.Question
                     );
             }
+        }
+
+        private void Editor_FormClosed(object sender, FormClosedEventArgs e) {
+            Program.Gameview.Close();
+            Program.Gameview = null;
+            Application.Exit();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -222,6 +226,10 @@ namespace HareEditor {
                 currentScene.gameObjects.Add(Cube);
                 Hierarchy.Reload();
             }
+        }
+
+        private void sceneCameraPropertiesToolStripMenuItem_Click(object sender, EventArgs e) {
+            SceneCamera.Instance.Show();
         }
     }
 

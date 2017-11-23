@@ -1,10 +1,5 @@
 ﻿using HareEngine;
 using OpenTK;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HareEditor {
 
@@ -20,11 +15,24 @@ namespace HareEditor {
 
         public override void Update() {
             if (rb != null) {
-                Vector3 moveSpeed = new Vector3();
 
+                if (transform.position.Y < 0f) {
+                    transform.position.Y = 0f;
+                }
 
+                if (Input.GetButton(OpenTK.Input.Key.Left) || Input.GetButton(OpenTK.Input.Key.A)) {
+                    rb.Translate(-(Speed * Time.deltaTime * Time.timeScale), 0f);
+                    transform.scale.X = -Mathf.Abs(transform.scale.X);
+                }
 
-                rb.AddForce(moveSpeed);
+                if (Input.GetButton(OpenTK.Input.Key.Right) || Input.GetButton(OpenTK.Input.Key.D)) {
+                    rb.Translate(Speed * Time.deltaTime * Time.timeScale, 0f);
+                    transform.scale.X = Mathf.Abs(transform.scale.X);
+                }
+
+                if (Input.GetButtonDown(OpenTK.Input.Key.Space) || Input.GetButton(OpenTK.Input.Key.W)) {
+                    rb.AddForce(0f, 32f, 0f);
+                }
             }
         }
 

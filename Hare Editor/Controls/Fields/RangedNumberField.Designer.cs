@@ -56,6 +56,7 @@
             this.tbrValue.Name = "tbrValue";
             this.tbrValue.Size = new System.Drawing.Size(100, 24);
             this.tbrValue.TabIndex = 0;
+            this.tbrValue.ValueChanged += new System.EventHandler(this.tbxValue_ValueChanged);
             // 
             // RangedNumberField
             // 
