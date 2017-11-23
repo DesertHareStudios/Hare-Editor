@@ -38,8 +38,8 @@ namespace HareEditor {
             lblAssets.ForeColor = Program.colorAccentFont;
             lblHierarchy.BackColor = Program.colorAccentDark;
             lblHierarchy.ForeColor = Program.colorAccentFont;
-            //lblGame.BackColor = Program.colorAccentDark;
-            //lblGame.ForeColor = Program.colorAccentFont;
+            lblScene.BackColor = Program.colorAccentDark;
+            lblScene.ForeColor = Program.colorAccentFont;
             lblInspector.BackColor = Program.colorAccentDark;
             lblInspector.ForeColor = Program.colorAccentFont;
             if (currentScene == null) {

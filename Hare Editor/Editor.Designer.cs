@@ -102,6 +102,7 @@
             this.OpenMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteAsstMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.RefreshMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.sceneCameraPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wrapperPanel = new HareEditor.DBPanel();
             this.renderPanel = new HareEditor.DBPanel();
             this.gameViewPanel = new HareEditor.DBPanel();
@@ -125,7 +126,7 @@
             this.RotateButton = new System.Windows.Forms.Button();
             this.MoveBoutton = new System.Windows.Forms.Button();
             this.GrabButton = new System.Windows.Forms.Button();
-            this.sceneCameraPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblScene = new System.Windows.Forms.Label();
             this.MenuStrip.SuspendLayout();
             this.HierarchyMenu.SuspendLayout();
             this.AssetsMenu.SuspendLayout();
@@ -718,6 +719,13 @@
             this.RefreshMenu.Text = "Refresh";
             this.RefreshMenu.Click += new System.EventHandler(this.RefreshMenu_Click);
             // 
+            // sceneCameraPropertiesToolStripMenuItem
+            // 
+            this.sceneCameraPropertiesToolStripMenuItem.Name = "sceneCameraPropertiesToolStripMenuItem";
+            this.sceneCameraPropertiesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.sceneCameraPropertiesToolStripMenuItem.Text = "Scene Camera Properties";
+            this.sceneCameraPropertiesToolStripMenuItem.Click += new System.EventHandler(this.sceneCameraPropertiesToolStripMenuItem_Click);
+            // 
             // wrapperPanel
             // 
             this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
@@ -743,6 +751,7 @@
             // 
             this.gameViewPanel.BackColor = System.Drawing.Color.Transparent;
             this.gameViewPanel.Controls.Add(this.Sceneview);
+            this.gameViewPanel.Controls.Add(this.lblScene);
             this.gameViewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameViewPanel.Location = new System.Drawing.Point(0, 0);
             this.gameViewPanel.Name = "gameViewPanel";
@@ -753,9 +762,9 @@
             // 
             this.Sceneview.BackColor = System.Drawing.Color.Black;
             this.Sceneview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sceneview.Location = new System.Drawing.Point(0, 0);
+            this.Sceneview.Location = new System.Drawing.Point(0, 28);
             this.Sceneview.Name = "Sceneview";
-            this.Sceneview.Size = new System.Drawing.Size(384, 481);
+            this.Sceneview.Size = new System.Drawing.Size(384, 453);
             this.Sceneview.TabIndex = 4;
             // 
             // dataPanel
@@ -1026,12 +1035,18 @@
             this.GrabButton.UseVisualStyleBackColor = false;
             this.GrabButton.Visible = false;
             // 
-            // sceneCameraPropertiesToolStripMenuItem
+            // lblScene
             // 
-            this.sceneCameraPropertiesToolStripMenuItem.Name = "sceneCameraPropertiesToolStripMenuItem";
-            this.sceneCameraPropertiesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.sceneCameraPropertiesToolStripMenuItem.Text = "Scene Camera Properties";
-            this.sceneCameraPropertiesToolStripMenuItem.Click += new System.EventHandler(this.sceneCameraPropertiesToolStripMenuItem_Click);
+            this.lblScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblScene.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblScene.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScene.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblScene.Location = new System.Drawing.Point(0, 0);
+            this.lblScene.Name = "lblScene";
+            this.lblScene.Size = new System.Drawing.Size(384, 28);
+            this.lblScene.TabIndex = 2;
+            this.lblScene.Text = "Scene";
+            this.lblScene.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Editor
             // 
@@ -1173,5 +1188,6 @@
         private System.Windows.Forms.ToolStripMenuItem hybridToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sceneCameraPropertiesToolStripMenuItem;
+        private System.Windows.Forms.Label lblScene;
     }
 }
