@@ -28,7 +28,10 @@ namespace HareEditor {
 
         public Color FontColor {
             get => lblText.ForeColor;
-            set => lblText.ForeColor = value;
+            set {
+                lblText.ForeColor = value;
+                btnRemove.ForeColor = value;
+            }
         }
 
         private void cbxActive_CheckedChanged(object sender, EventArgs e) {

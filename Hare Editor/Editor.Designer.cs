@@ -404,7 +404,7 @@
             // createEmptyToolStripMenuItem
             // 
             this.createEmptyToolStripMenuItem.Name = "createEmptyToolStripMenuItem";
-            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createEmptyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.createEmptyToolStripMenuItem.Text = "Create Empty";
             this.createEmptyToolStripMenuItem.Click += new System.EventHandler(this.CreateEmptyMenu_Click);
             // 
@@ -414,19 +414,19 @@
             this.sphereToolStripMenuItem,
             this.cubeToolStripMenuItem});
             this.dObjectToolStripMenuItem.Name = "dObjectToolStripMenuItem";
-            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem.Text = "3D Object";
             // 
             // sphereToolStripMenuItem
             // 
             this.sphereToolStripMenuItem.Name = "sphereToolStripMenuItem";
-            this.sphereToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sphereToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.sphereToolStripMenuItem.Text = "Sphere";
             // 
             // cubeToolStripMenuItem
             // 
             this.cubeToolStripMenuItem.Name = "cubeToolStripMenuItem";
-            this.cubeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cubeToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.cubeToolStripMenuItem.Text = "Cube";
             this.cubeToolStripMenuItem.Click += new System.EventHandler(this.CubeMenu_Click);
             // 
@@ -435,32 +435,32 @@
             this.dObjectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteToolStripMenuItem});
             this.dObjectToolStripMenuItem1.Name = "dObjectToolStripMenuItem1";
-            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.dObjectToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.dObjectToolStripMenuItem1.Text = "2D Object";
             // 
             // spriteToolStripMenuItem
             // 
             this.spriteToolStripMenuItem.Name = "spriteToolStripMenuItem";
-            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.spriteToolStripMenuItem.Text = "Sprite";
             this.spriteToolStripMenuItem.Click += new System.EventHandler(this.SpriteMenu_Click);
             // 
             // lightToolStripMenuItem
             // 
             this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            this.lightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.lightToolStripMenuItem.Text = "Light";
             // 
             // audioToolStripMenuItem
             // 
             this.audioToolStripMenuItem.Name = "audioToolStripMenuItem";
-            this.audioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.audioToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.audioToolStripMenuItem.Text = "Audio";
             // 
             // cameraToolStripMenuItem1
             // 
             this.cameraToolStripMenuItem1.Name = "cameraToolStripMenuItem1";
-            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cameraToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.cameraToolStripMenuItem1.Text = "Camera";
             this.cameraToolStripMenuItem1.Click += new System.EventHandler(this.CameraMenu_Click);
             // 
@@ -487,21 +487,21 @@
             // lightToolStripMenuItem1
             // 
             this.lightToolStripMenuItem1.Name = "lightToolStripMenuItem1";
-            this.lightToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.lightToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
             this.lightToolStripMenuItem1.Text = "Light";
             this.lightToolStripMenuItem1.Click += new System.EventHandler(this.lightToolStripMenuItem1_Click);
             // 
             // darkToolStripMenuItem
             // 
             this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.darkToolStripMenuItem.Text = "Dark";
             this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
             // 
             // hybridToolStripMenuItem
             // 
             this.hybridToolStripMenuItem.Name = "hybridToolStripMenuItem";
-            this.hybridToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hybridToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.hybridToolStripMenuItem.Text = "Hybrid";
             this.hybridToolStripMenuItem.Click += new System.EventHandler(this.hybridToolStripMenuItem_Click);
             // 
@@ -541,49 +541,49 @@
             this.AudioMenu,
             this.CameraMenu});
             this.HierarchyMenu.Name = "contextMenuStrip1";
-            this.HierarchyMenu.Size = new System.Drawing.Size(153, 258);
+            this.HierarchyMenu.Size = new System.Drawing.Size(146, 236);
             // 
             // CopyMenu
             // 
             this.CopyMenu.Name = "CopyMenu";
-            this.CopyMenu.Size = new System.Drawing.Size(152, 22);
+            this.CopyMenu.Size = new System.Drawing.Size(145, 22);
             this.CopyMenu.Text = "Copy";
             this.CopyMenu.Click += new System.EventHandler(this.CopyMenu_Click);
             // 
             // PasteMenu
             // 
             this.PasteMenu.Name = "PasteMenu";
-            this.PasteMenu.Size = new System.Drawing.Size(152, 22);
+            this.PasteMenu.Size = new System.Drawing.Size(145, 22);
             this.PasteMenu.Text = "Paste";
             this.PasteMenu.Click += new System.EventHandler(this.PasteMenu_Click);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(142, 6);
             // 
             // DuplicateMenu
             // 
             this.DuplicateMenu.Name = "DuplicateMenu";
-            this.DuplicateMenu.Size = new System.Drawing.Size(152, 22);
+            this.DuplicateMenu.Size = new System.Drawing.Size(145, 22);
             this.DuplicateMenu.Text = "Duplicate";
             // 
             // DeleteMenu
             // 
             this.DeleteMenu.Name = "DeleteMenu";
-            this.DeleteMenu.Size = new System.Drawing.Size(152, 22);
+            this.DeleteMenu.Size = new System.Drawing.Size(145, 22);
             this.DeleteMenu.Text = "Delete";
             this.DeleteMenu.Click += new System.EventHandler(this.DeleteMenu_Click);
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(142, 6);
             // 
             // CreateEmptyMenu
             // 
             this.CreateEmptyMenu.Name = "CreateEmptyMenu";
-            this.CreateEmptyMenu.Size = new System.Drawing.Size(152, 22);
+            this.CreateEmptyMenu.Size = new System.Drawing.Size(145, 22);
             this.CreateEmptyMenu.Text = "Create Empty";
             this.CreateEmptyMenu.Click += new System.EventHandler(this.CreateEmptyMenu_Click);
             // 
@@ -593,7 +593,7 @@
             this.SphereMenu,
             this.CubeMenu});
             this.TObjectMenu.Name = "TObjectMenu";
-            this.TObjectMenu.Size = new System.Drawing.Size(152, 22);
+            this.TObjectMenu.Size = new System.Drawing.Size(145, 22);
             this.TObjectMenu.Text = "3D Object";
             // 
             // SphereMenu
@@ -614,32 +614,32 @@
             this.TwObjectMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SpriteMenu});
             this.TwObjectMenu.Name = "TwObjectMenu";
-            this.TwObjectMenu.Size = new System.Drawing.Size(152, 22);
+            this.TwObjectMenu.Size = new System.Drawing.Size(145, 22);
             this.TwObjectMenu.Text = "2D Object";
             // 
             // SpriteMenu
             // 
             this.SpriteMenu.Name = "SpriteMenu";
-            this.SpriteMenu.Size = new System.Drawing.Size(152, 22);
+            this.SpriteMenu.Size = new System.Drawing.Size(104, 22);
             this.SpriteMenu.Text = "Sprite";
             this.SpriteMenu.Click += new System.EventHandler(this.SpriteMenu_Click);
             // 
             // LightMenu
             // 
             this.LightMenu.Name = "LightMenu";
-            this.LightMenu.Size = new System.Drawing.Size(152, 22);
+            this.LightMenu.Size = new System.Drawing.Size(145, 22);
             this.LightMenu.Text = "Light";
             // 
             // AudioMenu
             // 
             this.AudioMenu.Name = "AudioMenu";
-            this.AudioMenu.Size = new System.Drawing.Size(152, 22);
+            this.AudioMenu.Size = new System.Drawing.Size(145, 22);
             this.AudioMenu.Text = "Audio";
             // 
             // CameraMenu
             // 
             this.CameraMenu.Name = "CameraMenu";
-            this.CameraMenu.Size = new System.Drawing.Size(152, 22);
+            this.CameraMenu.Size = new System.Drawing.Size(145, 22);
             this.CameraMenu.Text = "Camera";
             this.CameraMenu.Click += new System.EventHandler(this.CameraMenu_Click);
             // 
@@ -789,8 +789,8 @@
             // inspectorPanel
             // 
             this.inspectorPanel.BackColor = System.Drawing.Color.Transparent;
-            this.inspectorPanel.Controls.Add(this.bntAddComponent);
             this.inspectorPanel.Controls.Add(this.Inspector);
+            this.inspectorPanel.Controls.Add(this.bntAddComponent);
             this.inspectorPanel.Controls.Add(this.lblInspector);
             this.inspectorPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.inspectorPanel.Location = new System.Drawing.Point(584, 0);
@@ -819,7 +819,7 @@
             this.Inspector.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Inspector.Location = new System.Drawing.Point(0, 28);
             this.Inspector.Name = "Inspector";
-            this.Inspector.Size = new System.Drawing.Size(200, 429);
+            this.Inspector.Size = new System.Drawing.Size(200, 397);
             this.Inspector.TabIndex = 5;
             // 
             // lblInspector

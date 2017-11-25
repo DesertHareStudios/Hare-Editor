@@ -57,6 +57,7 @@ namespace HareEditor {
                     Directory.CreateDirectory(Path);
                     Directory.CreateDirectory(Path + "\\Assets");
                     Directory.CreateDirectory(Path + "\\ProjectSettings");
+                    Directory.CreateDirectory(Path + "\\Temp");
                     Directory.CreateDirectory(Path + "\\Build");
                     File.WriteAllText(Path + "\\.gitignore", "/[Tt]emp/\n/[Bb]uild/\n/[Bb]uilds/\n*.apk");
                     Asset ProjectDetails = new Asset();

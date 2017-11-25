@@ -36,7 +36,7 @@ namespace HareEditor {
             });
         }
 
-        public void Init() {
+        public void SoftReload() {
             BackColor = Program.colorSecondary;
             Appbar.BackColor = Program.colorPrimary;
             lblAssets.BackColor = Program.colorAccentDark;
@@ -49,6 +49,15 @@ namespace HareEditor {
             lblScene.ForeColor = Program.colorAccentFont;
             lblInspector.BackColor = Program.colorAccentDark;
             lblInspector.ForeColor = Program.colorAccentFont;
+            Text = "Hare Editor v" + Program.CurrentVersion + " - " +
+                currentScene.Name + " - " + Project.Name;
+            lblScene.Text = currentScene.Name;
+            Hierarchy.Reload();
+            Inspector.Reload();
+            Assets.SoftReload();
+        }
+
+        public void Init() {
             if (currentScene == null) {
                 currentScene = new Scene("Untitled");
 
@@ -62,14 +71,10 @@ namespace HareEditor {
                 SelectedGameObject = camera;
 
             }
-            Text = "Hare Editor v" + Program.CurrentVersion + " - " +
-                currentScene.Name + " - " + Project.Name;
-            lblScene.Text = currentScene.Name;
-            //TODO load project contents
             Sceneview.Init();
+            SoftReload();
+            //TODO load project contents
             Assets.Reload();
-            Hierarchy.Reload();
-            Inspector.Reload();
         }
 
         private void Editor_Resize(object sender, EventArgs e) {
@@ -143,25 +148,26 @@ namespace HareEditor {
             camera.AddBehaviour(new AudioListener(camera));
             newScene.gameObjects.Add(camera);
             currentScene = newScene;
-            Hierarchy.Reload();
+            SelectedGameObject = null;
+            SoftReload();
         }
 
         private void lightToolStripMenuItem1_Click(object sender, EventArgs e) {
             EditorPrefs.Instance.theme = Theme.Light;
             Program.ReloadColors();
-            Init();
+            SoftReload();
         }
 
         private void darkToolStripMenuItem_Click(object sender, EventArgs e) {
             EditorPrefs.Instance.theme = Theme.Dark;
             Program.ReloadColors();
-            Init();
+            SoftReload();
         }
 
         private void hybridToolStripMenuItem_Click(object sender, EventArgs e) {
             EditorPrefs.Instance.theme = Theme.Hybrid;
             Program.ReloadColors();
-            Init();
+            SoftReload();
         }
 
         private void CameraMenu_Click(object sender, EventArgs e) {
@@ -173,7 +179,7 @@ namespace HareEditor {
                 ContextGO = null;
             }
             currentScene.gameObjects.Add(camera);
-            Hierarchy.Reload();
+            SoftReload();
         }
 
         private void CreateEmptyMenu_Click(object sender, EventArgs e) {
@@ -184,7 +190,7 @@ namespace HareEditor {
                     ContextGO = null;
                 }
                 currentScene.gameObjects.Add(go);
-                Hierarchy.Reload();
+                SoftReload();
             }
         }
 
@@ -197,7 +203,7 @@ namespace HareEditor {
                     ContextGO = null;
                 }
                 currentScene.gameObjects.Add(sprite);
-                Hierarchy.Reload();
+                SoftReload();
             }
         }
 
@@ -243,7 +249,7 @@ namespace HareEditor {
                     ContextGO = null;
                 }
                 currentScene.gameObjects.Add(Cube);
-                Hierarchy.Reload();
+                SoftReload();
             }
         }
 
@@ -267,12 +273,16 @@ namespace HareEditor {
                 SaveASSceneMenu_Click(sender, e);
             } else {
                 try {
-                    File.WriteAllText(scenePath, JsonConvert.SerializeObject(currentScene,
-                        new JsonSerializerSettings {
-                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                            PreserveReferencesHandling = PreserveReferencesHandling.None
-                        }));
-                    Assets.SoftReload();
+                    JsonSerializerSettings settings = new JsonSerializerSettings();
+                    settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    settings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+                    settings.TypeNameHandling = TypeNameHandling.All;
+                    settings.Converters.Add(new Vector2Converter());
+                    settings.Converters.Add(new Vector3Converter());
+                    settings.Converters.Add(new Vector4Converter());
+                    settings.Converters.Add(new QuaternionConverter());
+                    File.WriteAllText(scenePath, JsonConvert.SerializeObject(currentScene, settings));
+                    SoftReload();
                 } catch (Exception ex) {
                     HareEngine.Debug.Exception(ex);
                     MessageBox.Show(
@@ -292,6 +302,20 @@ namespace HareEditor {
             sfd.InitialDirectory = Project.Path + "\\Assets";
             sfd.ShowDialog();
             if (sfd.FileName != "") {
+                string[] ss = sfd.FileName.Split('\\');
+                string s = ss[ss.Length - 1];
+                string[] sParts = s.Split('.');
+                string name = "";
+                for (int i = 0; i < sParts.Length - 1; i++) {
+                    name += sParts[i];
+                    if (i < sParts.Length - 2) {
+                        name += ".";
+                    }
+                }
+                currentScene.Name = name;
+                Text = "Hare Editor v" + Program.CurrentVersion + " - " +
+                    currentScene.Name + " - " + Project.Name;
+                lblScene.Text = currentScene.Name;
                 scenePath = sfd.FileName;
                 SaveSceneMenu_Click(sender, e);
             }
@@ -322,11 +346,19 @@ namespace HareEditor {
                 SaveSceneMenu_Click(sender, e);
             }
             try {
-                Scene o = JsonConvert.DeserializeObject<Scene>(File.ReadAllText(path));
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                settings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+                settings.TypeNameHandling = TypeNameHandling.All;
+                settings.Converters.Add(new Vector2Converter());
+                settings.Converters.Add(new Vector3Converter());
+                settings.Converters.Add(new Vector4Converter());
+                settings.Converters.Add(new QuaternionConverter());
+                Scene o = JsonConvert.DeserializeObject<Scene>(File.ReadAllText(path), settings);
+                scenePath = path;
                 currentScene = o;
-                Text = "Hare Editor v" + Program.CurrentVersion + " - " +
-                    currentScene.Name + " - " + Project.Name;
-                lblScene.Text = currentScene.Name;
+                SelectedGameObject = null;
+                SoftReload();
             } catch (Exception ex) {
                 HareEngine.Debug.Exception(ex);
                 MessageBox.Show(
@@ -345,6 +377,8 @@ namespace HareEditor {
         private void DeleteMenu_Click(object sender, EventArgs e) {
             if (((Control)sender).Tag.GetType() == typeof(GameObject)) {
                 currentScene.gameObjects.Remove((GameObject)((Control)sender).Tag);
+                SelectedGameObject = null;
+                SoftReload();
             }
         }
     }

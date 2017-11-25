@@ -67,9 +67,6 @@ namespace HareEditor {
                 if (t != null) {
                     t.Abort();
                 }
-                if (scene != null) {
-                    scene.Preload?.Invoke();
-                }
                 GL.GenBuffers(1, out ibo_elements);
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);

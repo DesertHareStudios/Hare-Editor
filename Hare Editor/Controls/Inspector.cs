@@ -12,6 +12,7 @@ namespace HareEditor {
 
         public void Reload() {
             Controls.Clear();
+            AutoScroll = true;
             if (Program.editor.SelectedGameObject != null) {
                 StringField name = new StringField();
                 StringField tag = new StringField();

@@ -26,7 +26,7 @@ namespace HareEditor {
 
         private ShaderProgram SProgram;
 
-        public Scene scene;
+        public Scene scene { get; set; }
 
         public Gameview() {
             InitializeComponent();
@@ -52,9 +52,6 @@ namespace HareEditor {
 
                 if (t != null) {
                     t.Abort();
-                }
-                if (scene != null) {
-                    scene.Preload?.Invoke();
                 }
                 GL.GenBuffers(1, out ibo_elements);
                 GL.Enable(EnableCap.Blend);
@@ -118,7 +115,6 @@ namespace HareEditor {
 
                             if (init) {
                                 init = false;
-                                scene.Preload?.Invoke();
                                 scene.Awake();
                                 scene.Start();
                             }

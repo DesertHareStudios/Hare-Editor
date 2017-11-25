@@ -14,9 +14,17 @@ namespace HareEditor {
         private List<Label> toAdd = new List<Label>();
         private List<string> filesToCompile = new List<string>();
         private AppDomain userDll;
+        private string customPath = "";
+
+        public Assets() {
+            CheckForIllegalCrossThreadCalls = false;
+        }
 
         public void SoftReload() {
-            RecursiveFiles(Program.editor.Project.Path + "\\Assets\\");
+            if (customPath == "") {
+                customPath = Program.editor.Project.Path + "\\Assets\\";
+            }
+            RecursiveFiles(customPath);
         }
 
         private void RecursiveFiles(string path) {
@@ -64,6 +72,11 @@ namespace HareEditor {
                 label.DoubleClick += OnDoubleClick;
             } else {
                 //TODO check for extension for proper handling
+                switch (extension) {
+                    case "hare":
+                        label.DoubleClick += (o, e) => { Program.editor.OpenScene(fullPath); };
+                        break;
+                }
             }
             label.Click += (o, e) => {
                 foreach (Control c in Controls) {
@@ -107,6 +120,7 @@ namespace HareEditor {
                     parameters.ReferencedAssemblies.Add(Directory.GetCurrentDirectory() + "\\OpenTK.dll");
                     parameters.GenerateExecutable = false;
                     parameters.GenerateInMemory = false;
+                    parameters.OutputAssembly = Program.editor.Project.Path + "\\Temp\\user.dll";
                     CompilerResults results = provider.CompileAssemblyFromFile(parameters, filesToCompile.ToArray());
                     foreach (CompilerError error in results.Errors) {
                         if (error.IsWarning) {

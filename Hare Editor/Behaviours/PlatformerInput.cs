@@ -1,5 +1,6 @@
 ﻿using HareEngine;
 using OpenTK;
+using OpenTK.Input;
 
 namespace HareEditor {
 
@@ -21,17 +22,17 @@ namespace HareEditor {
                     rb.speed.Y = 0f;
                 }
 
-                if (Input.GetButton(OpenTK.Input.Key.Left) || Input.GetButton(OpenTK.Input.Key.A)) {
+                if (Input.GetButton(Key.Left) || Input.GetButton(Key.A)) {
                     rb.Translate(-(Speed * Time.deltaTime * Time.timeScale), 0f);
                     transform.scale.X = -Mathf.Abs(transform.scale.X);
                 }
 
-                if (Input.GetButton(OpenTK.Input.Key.Right) || Input.GetButton(OpenTK.Input.Key.D)) {
+                if (Input.GetButton(Key.Right) || Input.GetButton(Key.D)) {
                     rb.Translate(Speed * Time.deltaTime * Time.timeScale, 0f);
                     transform.scale.X = Mathf.Abs(transform.scale.X);
                 }
 
-                if (Input.GetButtonDown(OpenTK.Input.Key.Space) || Input.GetButtonDown(OpenTK.Input.Key.W)) {
+                if (Input.GetButtonDown(Key.Space) || Input.GetButtonDown(Key.W)) {
                     rb.AddForce(0f, 32f, 0f);
                 }
             }
