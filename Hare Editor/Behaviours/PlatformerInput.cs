@@ -7,10 +7,12 @@ namespace HareEditor {
     public class PlatformerInput : Behaviour {
 
         public float Speed;
+        public float JumpForce;
         private Rigidbody rb;
 
         public PlatformerInput(GameObject gameObject) : base(gameObject) {
             Speed = 3.14159f;
+            JumpForce = 64f;
             rb = GetComponent<Rigidbody>();
         }
 
@@ -33,7 +35,7 @@ namespace HareEditor {
                 }
 
                 if (Input.GetButtonDown(Key.Space) || Input.GetButtonDown(Key.W)) {
-                    rb.AddForce(0f, 32f, 0f);
+                    rb.AddForce(0f, JumpForce, 0f);
                 }
             }
         }
