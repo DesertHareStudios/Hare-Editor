@@ -60,8 +60,8 @@
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mono.CSharp.4.0.0.143\lib\4.5\Mono.CSharp.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.2.0.0\lib\net20\OpenTK.dll</HintPath>
@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset.cs" />
+    <Compile Include="Behaviours\PlatformerCamera.cs" />
     <Compile Include="Behaviours\PlatformerInput.cs" />
     <Compile Include="Console.cs">
       <SubType>Form</SubType>
@@ -138,6 +139,18 @@
     <Compile Include="Controls\Fields\TextureField.Designer.cs">
       <DependentUpon>TextureField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Fields\ActiveBehaviourField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\ActiveBehaviourField.Designer.cs">
+      <DependentUpon>ActiveBehaviourField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Fields\TransformField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\TransformField.Designer.cs">
+      <DependentUpon>TransformField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Fields\VectorField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +162,18 @@
     </Compile>
     <Compile Include="Controls\Fields\QuaternionField.Designer.cs">
       <DependentUpon>QuaternionField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Prompts\ActiveBehaviourPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Prompts\ActiveBehaviourPrompt.Designer.cs">
+      <DependentUpon>ActiveBehaviourPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Prompts\TransformPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Prompts\TransformPrompt.Designer.cs">
+      <DependentUpon>TransformPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Prompts\BehaviourPrompt.cs">
       <SubType>Form</SubType>
@@ -250,6 +275,12 @@
     <EmbeddedResource Include="Controls\Fields\TextureField.resx">
       <DependentUpon>TextureField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\ActiveBehaviourField.resx">
+      <DependentUpon>ActiveBehaviourField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\TransformField.resx">
+      <DependentUpon>TransformField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Fields\VectorField.resx">
       <DependentUpon>VectorField.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ImagePromptItem.resx">
       <DependentUpon>ImagePromptItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Prompts\ActiveBehaviourPrompt.resx">
+      <DependentUpon>ActiveBehaviourPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Prompts\TransformPrompt.resx">
+      <DependentUpon>TransformPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Prompts\BehaviourPrompt.resx">
       <DependentUpon>BehaviourPrompt.cs</DependentUpon>

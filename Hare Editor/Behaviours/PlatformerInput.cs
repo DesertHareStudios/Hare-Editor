@@ -18,6 +18,7 @@ namespace HareEditor {
 
                 if (transform.position.Y < 0f) {
                     transform.position.Y = 0f;
+                    rb.speed.Y = 0f;
                 }
 
                 if (Input.GetButton(OpenTK.Input.Key.Left) || Input.GetButton(OpenTK.Input.Key.A)) {
@@ -30,7 +31,7 @@ namespace HareEditor {
                     transform.scale.X = Mathf.Abs(transform.scale.X);
                 }
 
-                if (Input.GetButtonDown(OpenTK.Input.Key.Space) || Input.GetButton(OpenTK.Input.Key.W)) {
+                if (Input.GetButtonDown(OpenTK.Input.Key.Space) || Input.GetButtonDown(OpenTK.Input.Key.W)) {
                     rb.AddForce(0f, 32f, 0f);
                 }
             }

@@ -142,7 +142,7 @@ namespace HareEditor {
                             Hare.clearColor = cam.clearColor;
                             int indiceat = 0;
                             scene.ForEachBehaviour<Renderer>((r) => {
-                                r.SetMVPMatrix(cam);
+                                r.MVPMatrix = r.transform.SetMVPMatrix(cam);
                                 if (r.texture != null) {
                                     GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
                                 }

@@ -77,13 +77,6 @@ namespace HareEditor {
         private void PrintBehaviours() {
             if (Program.editor.SelectedGameObject != null) {
                 foreach (Behaviour b in Program.editor.SelectedGameObject.behaviours) {
-                    //Label label = new Label();
-                    //label.Text = b.GetType().Name;
-                    //label.ForeColor = Program.colorAccentFont;
-                    //label.BackColor = Program.colorAccent;
-                    //label.Dock = DockStyle.Top;
-                    //label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                    //label.Height = 24;
 
                     BehaviourField bf = new BehaviourField();
                     bf.Text = b.GetType().Name;
@@ -238,6 +231,17 @@ namespace HareEditor {
                                     };
                                     toAdd.Add(panel);
                                 })
+                                .Case<Transform>(() => {
+                                    TransformField panel = new TransformField();
+                                    panel.Dock = DockStyle.Top;
+                                    panel.Text = prop.Name;
+                                    panel.ValueText = ((Transform)prop.GetValue(b)).gameObject.Name;
+                                    panel.FontColor = Program.colorFont;
+                                    panel.TransformSelected += (t) => {
+                                        prop.SetValue(b, t);
+                                    };
+                                    toAdd.Add(panel);
+                                })
                                 .Default(() => {
                                     //TODO handle different types
                                     if (prop.GetValue(b).GetType().IsEnum) {
@@ -254,6 +258,20 @@ namespace HareEditor {
                                             }
                                         };
                                         toAdd.Add(panel);
+                                    } else if (prop.GetValue(b).GetType().IsSubclassOf(typeof(Behaviour))) {
+                                        try {
+                                            ActiveBehaviourField panel = new ActiveBehaviourField(prop.GetValue(b).GetType());
+                                            panel.Dock = DockStyle.Top;
+                                            panel.Text = prop.Name;
+                                            panel.ValueText = ((Behaviour)prop.GetValue(b)).gameObject.Name;
+                                            panel.FontColor = Program.colorFont;
+                                            panel.ABehaviourSelected += (t) => {
+                                                prop.SetValue(b, t);
+                                            };
+                                            toAdd.Add(panel);
+                                        } catch (Exception e) {
+                                            Debug.Exception(e);
+                                        }
                                     }
                                 });
                             ts.Switch(prop.GetValue(b).GetType());

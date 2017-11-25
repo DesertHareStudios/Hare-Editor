@@ -71,6 +71,7 @@ namespace HareEditor {
         }
 
         private void btnClear_Click(object sender, EventArgs e) {
+            Debug.Log("");
             messages.Clear();
             Wrapper.Controls.Clear();
         }

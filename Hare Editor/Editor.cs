@@ -1,8 +1,10 @@
 using System;
+using System.IO;
 using System.Windows.Forms;
 using OpenTK;
 using HareEngine;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace HareEditor {
 
@@ -12,7 +14,9 @@ namespace HareEditor {
         public Scene currentScene;
         public bool isRunning = false;
         public bool isPaused = false;
+        public string scenePath = "";
         private GameObject selectedGameObject;
+        public GameObject ContextGO;
 
         public GameObject SelectedGameObject {
             get {
@@ -27,6 +31,9 @@ namespace HareEditor {
         public Editor() {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            HareEngine.Debug.Register((type, msg) => {
+                lblLastLog.Text = msg;
+            });
         }
 
         public void Init() {
@@ -48,19 +55,16 @@ namespace HareEditor {
                 GameObject camera = new GameObject("Main Camera");
                 camera.AddBehaviour(new Camera(camera));
                 camera.AddBehaviour(new AudioListener(camera));
-                camera.transform.position = new Vector3(0f, 0f, 5f);
-
-                GameObject sprite = new GameObject("Sprite");
-                sprite.AddBehaviour(new SpriteRenderer(sprite));
+                camera.transform.position = new Vector3(0f, 0f, 10f);
 
                 currentScene.gameObjects.Add(camera);
-                currentScene.gameObjects.Add(sprite);
 
                 SelectedGameObject = camera;
 
             }
             Text = "Hare Editor v" + Program.CurrentVersion + " - " +
                 currentScene.Name + " - " + Project.Name;
+            lblScene.Text = currentScene.Name;
             //TODO load project contents
             Sceneview.Init();
             Assets.Reload();
@@ -81,12 +85,19 @@ namespace HareEditor {
         private void Editor_FormClosing(object sender, FormClosingEventArgs e) {
             EditorPrefs.Instance.Save();
             if (Visible) {
-                e.Cancel = DialogResult.No == MessageBox.Show(
-                        "Do you really want to exit? Any unsaved changes will be lost.",
-                        "Warning",
-                        MessageBoxButtons.YesNo,
+                switch (MessageBox.Show(
+                        "Save changes before closing?",
+                        "Save changes",
+                        MessageBoxButtons.YesNoCancel,
                         MessageBoxIcon.Question
-                    );
+                    )) {
+                    case DialogResult.Yes:
+                        SaveSceneMenu_Click(sender, e);
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                }
             }
         }
 
@@ -108,22 +119,6 @@ namespace HareEditor {
             }
         }
 
-        private void createEmptyToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (currentScene != null) {
-                currentScene.gameObjects.Add(new GameObject("New GameObject"));
-                Hierarchy.Reload();
-            }
-        }
-
-        private void spriteToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (currentScene != null) {
-                GameObject sprite = new GameObject("New Sprite");
-                sprite.AddBehaviour(new SpriteRenderer(sprite));
-                currentScene.gameObjects.Add(sprite);
-                Hierarchy.Reload();
-            }
-        }
-
         private void CopyMenu_Click(object sender, EventArgs e) {
 
         }
@@ -133,6 +128,15 @@ namespace HareEditor {
         }
 
         private void NewSceneMenu_Click(object sender, EventArgs e) {
+            if (DialogResult.Yes == MessageBox.Show(
+                    "Do you want to save the current scene?",
+                    "Save current scene",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+
+                )) {
+                SaveSceneMenu_Click(sender, e);
+            }
             Scene newScene = new Scene("Untitled");
             GameObject camera = new GameObject("Main Camera");
             camera.AddBehaviour(new Camera(camera));
@@ -164,13 +168,22 @@ namespace HareEditor {
             GameObject camera = new GameObject("Camera");
             camera.AddBehaviour(new Camera(camera));
             camera.AddBehaviour(new AudioListener(camera));
+            if (ContextGO != null) {
+                camera.transform.parent = ContextGO.transform;
+                ContextGO = null;
+            }
             currentScene.gameObjects.Add(camera);
             Hierarchy.Reload();
         }
 
         private void CreateEmptyMenu_Click(object sender, EventArgs e) {
             if (currentScene != null) {
-                currentScene.gameObjects.Add(new GameObject("New GameObject"));
+                GameObject go = new GameObject("New GameObject");
+                if (ContextGO != null) {
+                    go.transform.parent = ContextGO.transform;
+                    ContextGO = null;
+                }
+                currentScene.gameObjects.Add(go);
                 Hierarchy.Reload();
             }
         }
@@ -179,6 +192,10 @@ namespace HareEditor {
             if (currentScene != null) {
                 GameObject sprite = new GameObject("New Sprite");
                 sprite.AddBehaviour(new SpriteRenderer(sprite));
+                if (ContextGO != null) {
+                    sprite.transform.parent = ContextGO.transform;
+                    ContextGO = null;
+                }
                 currentScene.gameObjects.Add(sprite);
                 Hierarchy.Reload();
             }
@@ -221,6 +238,10 @@ namespace HareEditor {
             if (currentScene != null) {
                 GameObject Cube = new GameObject("Cube");
                 Cube.AddBehaviour(new CubeRenderer(Cube));
+                if (ContextGO != null) {
+                    Cube.transform.parent = ContextGO.transform;
+                    ContextGO = null;
+                }
                 currentScene.gameObjects.Add(Cube);
                 Hierarchy.Reload();
             }
@@ -238,6 +259,92 @@ namespace HareEditor {
                         Inspector.Reload();
                     }
                 });
+            }
+        }
+
+        private void SaveSceneMenu_Click(object sender, EventArgs e) {
+            if (scenePath == "") {
+                SaveASSceneMenu_Click(sender, e);
+            } else {
+                try {
+                    File.WriteAllText(scenePath, JsonConvert.SerializeObject(currentScene,
+                        new JsonSerializerSettings {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                            PreserveReferencesHandling = PreserveReferencesHandling.None
+                        }));
+                    Assets.SoftReload();
+                } catch (Exception ex) {
+                    HareEngine.Debug.Exception(ex);
+                    MessageBox.Show(
+                        "Could not save scene. See console(Window/Show Console) for details.",
+                        "Error saving file",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                        );
+                }
+            }
+        }
+
+        private void SaveASSceneMenu_Click(object sender, EventArgs e) {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Hare Scene|*.hare";
+            sfd.Title = "Save Scene As...";
+            sfd.InitialDirectory = Project.Path + "\\Assets";
+            sfd.ShowDialog();
+            if (sfd.FileName != "") {
+                scenePath = sfd.FileName;
+                SaveSceneMenu_Click(sender, e);
+            }
+        }
+
+        private void OpenSceneMenu_Click(object sender, EventArgs e) {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = Project.Path + "\\Assets";
+            ofd.Title = "Open Scene";
+            ofd.Filter = "Hare Scene|*.hare";
+            ofd.ShowDialog();
+            if (ofd.FileName != "") {
+                OpenScene(ofd.FileName, sender, e);
+            }
+        }
+
+        public void OpenScene(string path) {
+            OpenScene(path, this, null);
+        }
+
+        public void OpenScene(string path, object sender, EventArgs e) {
+            if (DialogResult.Yes == MessageBox.Show(
+                    "Do you want to save this scene before?",
+                    "Save Scene",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                )) {
+                SaveSceneMenu_Click(sender, e);
+            }
+            try {
+                Scene o = JsonConvert.DeserializeObject<Scene>(File.ReadAllText(path));
+                currentScene = o;
+                Text = "Hare Editor v" + Program.CurrentVersion + " - " +
+                    currentScene.Name + " - " + Project.Name;
+                lblScene.Text = currentScene.Name;
+            } catch (Exception ex) {
+                HareEngine.Debug.Exception(ex);
+                MessageBox.Show(
+                    "Could not open scene. See console(Window/Show Console) for details.",
+                    "Error opening file",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+            }
+        }
+
+        private void lblLastLog_DoubleClick(object sender, EventArgs e) {
+            Console.Instance.Show();
+        }
+
+        private void DeleteMenu_Click(object sender, EventArgs e) {
+            if (((Control)sender).Tag.GetType() == typeof(GameObject)) {
+                currentScene.gameObjects.Remove((GameObject)((Control)sender).Tag);
             }
         }
     }

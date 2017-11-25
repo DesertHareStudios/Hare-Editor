@@ -39,6 +39,12 @@ namespace HareEditor {
             label.Text = x + go.Name;
             label.Dock = DockStyle.Top;
             label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label.MouseDown += (o, e) => {
+                if (e.Button == MouseButtons.Right) {
+                    Program.editor.ContextGO = go;
+                }
+            };
+            label.ContextMenu = this.ContextMenu;
             label.Click += (o, e) => {
                 Program.editor.SelectedGameObject = go;
                 this.Reload();

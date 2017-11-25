@@ -1,25 +1,24 @@
 ﻿using HareEngine;
 using System;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace HareEditor {
 
-    public partial class BehaviourPrompt : Form {
+    public partial class ActiveBehaviourPrompt : Form {
 
-        public delegate void OnBehaviourSelected(Type t);
+        public delegate void OnABehaviourSelected(Behaviour t);
 
-        private BehaviourPrompt() {
+        private ActiveBehaviourPrompt() {
             InitializeComponent();
         }
 
-        public static void Prompt(OnBehaviourSelected obs) {
-            BehaviourPrompt bp = new BehaviourPrompt();
+        public static void Prompt(Type type, OnABehaviourSelected obs) {
+            ActiveBehaviourPrompt bp = new ActiveBehaviourPrompt();
             bp.BackColor = Program.colorSecondary;
-            foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
-                foreach (Type t in a.GetTypes()) {
-                    if (t.IsSubclassOf(typeof(Behaviour))) {
+            foreach (GameObject t in Program.editor.currentScene.gameObjects) {
+                foreach (Behaviour b in t.behaviours) {
+                    if (b.GetType() == type || b.GetType().IsSubclassOf(type)) {
                         Label label = new Label();
                         label.ForeColor = Program.colorFont;
                         label.Text = t.Name;
@@ -27,7 +26,7 @@ namespace HareEditor {
                         label.Height = 32;
                         label.TextAlign = ContentAlignment.MiddleLeft;
                         label.DoubleClick += (o, e) => {
-                            obs?.Invoke(t);
+                            obs?.Invoke(b);
                             bp.Close();
                         };
                         label.Click += (o, e) => {
