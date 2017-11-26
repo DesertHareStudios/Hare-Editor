@@ -108,7 +108,9 @@ namespace HareEditor {
                                     StringField panel = new StringField();
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
-                                    panel.Value = (string)prop.GetValue(b);
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Value = (string)prop.GetValue(b);
+                                    }
                                     panel.FontColor = Program.colorFont;
                                     panel.ValueChanged += (o, e) => {
                                         prop.SetValue(b, panel.Value);
@@ -119,7 +121,9 @@ namespace HareEditor {
                                     NumberField panel = new NumberField();
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
-                                    panel.Value = (int)prop.GetValue(b);
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Value = (int)prop.GetValue(b);
+                                    }
                                     panel.FontColor = Program.colorFont;
                                     panel.ValueChanged += (o, e) => {
                                         prop.SetValue(b, (int)panel.Value);
@@ -130,7 +134,9 @@ namespace HareEditor {
                                     NumberField panel = new NumberField();
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
-                                    panel.Value = (decimal)(float)prop.GetValue(b);
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Value = (decimal)(float)prop.GetValue(b);
+                                    }
                                     panel.FontColor = Program.colorFont;
                                     panel.ValueChanged += (o, e) => {
                                         prop.SetValue(b, (float)panel.Value);
@@ -141,7 +147,9 @@ namespace HareEditor {
                                     NumberField panel = new NumberField();
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
-                                    panel.Value = (decimal)(double)prop.GetValue(b);
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Value = (decimal)(double)prop.GetValue(b);
+                                    }
                                     panel.FontColor = Program.colorFont;
                                     panel.ValueChanged += (o, e) => {
                                         prop.SetValue(b, (double)panel.Value);
@@ -155,7 +163,9 @@ namespace HareEditor {
                                     CheckBox cbxValue = new CheckBox();
                                     panel.Controls.Add(cbxValue);
                                     cbxValue.Text = prop.Name;
-                                    cbxValue.Checked = (bool)prop.GetValue(b);
+                                    if (prop.GetValue(b) != null) {
+                                        cbxValue.Checked = (bool)prop.GetValue(b);
+                                    }
                                     cbxValue.AutoSize = false;
                                     cbxValue.Dock = DockStyle.Fill;
                                     cbxValue.ForeColor = Program.colorFont;
@@ -171,7 +181,9 @@ namespace HareEditor {
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
                                     panel.FontColor = Program.colorFont;
-                                    panel.Color = Program.HareColorToNETColor((Color)prop.GetValue(b));
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Color = Program.HareColorToNETColor((Color)prop.GetValue(b));
+                                    }
                                     panel.Click += (o, e) => {
                                         ColorSelector.Prompt(panel.Text, panel.Color, (color) => {
                                             prop.SetValue(b, color);
@@ -185,7 +197,9 @@ namespace HareEditor {
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
                                     panel.FontColor = Program.colorFont;
-                                    panel.Texture = ((Texture)prop.GetValue(b)).FilePath;
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Texture = ((Texture)prop.GetValue(b)).FilePath;
+                                    }
                                     panel.Click += (o, e) => {
                                         ImagePrompt.Prompt(panel.Text, (tex) => {
                                             Texture texture = HareEngine.Asset.Get<Texture>(tex);
@@ -204,7 +218,9 @@ namespace HareEditor {
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
                                     panel.FontColor = Program.colorFont;
-                                    panel.Value = (OpenTK.Vector3)prop.GetValue(b);
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Value = (OpenTK.Vector3)prop.GetValue(b);
+                                    }
                                     panel.ValueChanged += (o, e) => {
                                         prop.SetValue(b, panel.Value);
                                     };
@@ -215,7 +231,11 @@ namespace HareEditor {
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
                                     panel.FontColor = Program.colorFont;
-                                    panel.Value = (OpenTK.Quaternion)prop.GetValue(b);
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Value = (OpenTK.Quaternion)prop.GetValue(b);
+                                    } else {
+                                        panel.Value = OpenTK.Quaternion.Identity;
+                                    }
                                     panel.ValueChanged += (o, e) => {
                                         prop.SetValue(b, panel.Value);
                                     };
@@ -225,7 +245,9 @@ namespace HareEditor {
                                     RangedNumberField panel = new RangedNumberField((Range)prop.GetValue(b));
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
-                                    panel.Value = (float)((Range)prop.GetValue(b)).Value;
+                                    if (prop.GetValue(b) != null) {
+                                        panel.Value = (float)((Range)prop.GetValue(b)).Value;
+                                    }
                                     panel.FontColor = Program.colorFont;
                                     panel.ValueChanged += (o, e) => {
                                         ((Range)prop.GetValue(b)).Value = (float)(panel.Value);
@@ -236,9 +258,24 @@ namespace HareEditor {
                                     TransformField panel = new TransformField();
                                     panel.Dock = DockStyle.Top;
                                     panel.Text = prop.Name;
-                                    panel.ValueText = ((Transform)prop.GetValue(b)).gameObject.Name;
+                                    if (prop.GetValue(b) != null) {
+                                        panel.ValueText = ((Transform)prop.GetValue(b)).gameObject.Name;
+                                    }
                                     panel.FontColor = Program.colorFont;
                                     panel.TransformSelected += (t) => {
+                                        prop.SetValue(b, t);
+                                    };
+                                    toAdd.Add(panel);
+                                })
+                                .Case<AudioClip>(() => {
+                                    AudioClipField panel = new AudioClipField();
+                                    panel.Dock = DockStyle.Top;
+                                    panel.Text = prop.Name;
+                                    if (prop.GetValue(b) != null) {
+                                        panel.ValueText = ((AudioClip)prop.GetValue(b)).Name;
+                                    }
+                                    panel.FontColor = Program.colorFont;
+                                    panel.ClipSelected += (t) => {
                                         prop.SetValue(b, t);
                                     };
                                     toAdd.Add(panel);
@@ -275,7 +312,8 @@ namespace HareEditor {
                                         }
                                     }
                                 });
-                            ts.Switch(prop.GetValue(b).GetType());
+                            ts.Switch(prop.FieldType);
+                            //ts.Switch(prop.GetValue(b).GetType());
                         } catch (Exception e) {
                             if (prop.GetValue(b) != null) {
                                 Debug.Exception(e);

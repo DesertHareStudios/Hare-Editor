@@ -83,8 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset.cs" />
-    <Compile Include="Behaviours\PlatformerCamera.cs" />
-    <Compile Include="Behaviours\PlatformerInput.cs" />
     <Compile Include="Console.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +143,12 @@
     <Compile Include="Controls\Fields\ActiveBehaviourField.Designer.cs">
       <DependentUpon>ActiveBehaviourField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Fields\AudioClipField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Fields\AudioClipField.Designer.cs">
+      <DependentUpon>AudioClipField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Fields\TransformField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +172,12 @@
     </Compile>
     <Compile Include="Controls\Prompts\ActiveBehaviourPrompt.Designer.cs">
       <DependentUpon>ActiveBehaviourPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Prompts\AudioClipPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Prompts\AudioClipPrompt.Designer.cs">
+      <DependentUpon>AudioClipPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Prompts\TransformPrompt.cs">
       <SubType>Form</SubType>
@@ -282,6 +292,9 @@
     <EmbeddedResource Include="Controls\Fields\ActiveBehaviourField.resx">
       <DependentUpon>ActiveBehaviourField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Fields\AudioClipField.resx">
+      <DependentUpon>AudioClipField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Fields\TransformField.resx">
       <DependentUpon>TransformField.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Prompts\ActiveBehaviourPrompt.resx">
       <DependentUpon>ActiveBehaviourPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Prompts\AudioClipPrompt.resx">
+      <DependentUpon>AudioClipPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Prompts\TransformPrompt.resx">
       <DependentUpon>TransformPrompt.cs</DependentUpon>
