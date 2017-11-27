@@ -19,9 +19,9 @@ namespace HareEditor {
             }
             set {
                 Vector3 v = Mathf.GetEulerAngles(value);
-                tbxX.Value = (decimal)v.X;
-                tbxY.Value = (decimal)v.Y;
-                tbxZ.Value = (decimal)v.Z;
+                tbxX.Value = (decimal)Mathf.Clamp(v.X, (float)decimal.MinValue, (float)decimal.MaxValue);
+                tbxY.Value = (decimal)Mathf.Clamp(v.Y, (float)decimal.MinValue, (float)decimal.MaxValue);
+                tbxZ.Value = (decimal)Mathf.Clamp(v.Z, (float)decimal.MinValue, (float)decimal.MaxValue);
             }
         }
 

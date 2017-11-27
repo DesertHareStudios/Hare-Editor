@@ -10,6 +10,7 @@ namespace HareEditor {
 
         public void Reload() {
             Controls.Clear();
+            Program.editor.ContextGO = null;
             string x = "";
             foreach (GameObject go in Program.editor.currentScene.gameObjects) {
                 if (go.transform.parent == null) {

@@ -18,6 +18,11 @@ namespace HareEditor {
         private Thread t;
         private int sleep = 0;
 
+        private System.Drawing.Point mpos;
+        private bool IsLeftDown = false;
+        private bool IsMiddleDown = false;
+        private bool IsRightDown = false;
+
         public GameObject sceneCamera;
 
         private int ibo_elements;
@@ -72,11 +77,13 @@ namespace HareEditor {
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 SProgram = new ShaderProgram(Shader.DefaultVertexShader, Shader.DefaultFragmentShader);
 
-                sceneCamera = new GameObject("Scene Camera");
-                sceneCamera.AddBehaviour(new Camera(sceneCamera));
-                sceneCamera.GetComponent<Camera>().Render = false;
-                sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
-                sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
+                if (sceneCamera == null) {
+                    sceneCamera = new GameObject("Scene Camera");
+                    sceneCamera.AddBehaviour(new Camera(sceneCamera));
+                    sceneCamera.GetComponent<Camera>().Render = false;
+                    sceneCamera.transform.position = new Vector3(0f, 0f, 5f);
+                    sceneCamera.GetComponent<Camera>().clearColor = new Color(0.618f, 0.618f, 0.618f);
+                }
 
                 t = new Thread(() => {
                     while (true) {
@@ -186,6 +193,65 @@ namespace HareEditor {
                             translator.X += 0.1618f;
                         }
                         sceneCamera.transform.Translate(translator);
+                    }
+                };
+
+                glcontrol.MouseDown += (o, e) => {
+                    mpos = e.Location;
+                    Camera cam = sceneCamera.GetComponent<Camera>();
+                    switch (e.Button) {
+                        case MouseButtons.Middle:
+                            IsMiddleDown = true;
+                            //if (cam.viewmode == Viewmode.Orthographic) {
+                            //    cam.viewmode = Viewmode.Perspective;
+                            //} else {
+                            //    cam.viewmode = Viewmode.Orthographic;
+                            //}
+                            break;
+                        case MouseButtons.Right:
+                            IsRightDown = true;
+                            break;
+                        case MouseButtons.Left:
+                            IsLeftDown = true;
+                            break;
+                    }
+                };
+
+                glcontrol.MouseUp += (o, e) => {
+                    switch (e.Button) {
+                        case MouseButtons.Left:
+                            IsLeftDown = false;
+                            break;
+                        case MouseButtons.Middle:
+                            IsMiddleDown = false;
+                            break;
+                        case MouseButtons.Right:
+                            IsRightDown = false;
+                            break;
+                    }
+                };
+
+                glcontrol.MouseMove += (o, e) => {
+                    if (IsLeftDown) { } //TODO select objects
+                    if (IsMiddleDown) {
+                        Vector3 translator = new Vector3();
+                        translator.X = ((float)mpos.X - (float)e.Location.X) / ((float)Width / 3.14159f);
+                        translator.Y = ((float)e.Location.Y - (float)mpos.Y) / ((float)Height / 3.14159f);
+                        mpos = e.Location;
+                        sceneCamera.transform.Translate(translator);
+                    }
+                    if (IsRightDown) { } //TODO rotate camera
+                };
+
+                glcontrol.MouseWheel += (o, e) => {
+                    Camera cam = sceneCamera.GetComponent<Camera>();
+                    switch (cam.viewmode) {
+                        case Viewmode.Orthographic:
+                            cam.OrthoWidth += ((float)e.Delta) / 10f;
+                            break;
+                        case Viewmode.Perspective:
+                            cam.fov.Value += ((float)e.Delta) / 10f;
+                            break;
                     }
                 };
 

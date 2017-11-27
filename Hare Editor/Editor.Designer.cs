@@ -53,6 +53,8 @@
             this.physicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.assetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.folderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,8 +120,6 @@
             this.RotateButton = new System.Windows.Forms.Button();
             this.MoveBoutton = new System.Windows.Forms.Button();
             this.GrabButton = new System.Windows.Forms.Button();
-            this.folderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.HierarchyMenu.SuspendLayout();
             this.wrapperPanel.SuspendLayout();
@@ -362,6 +362,19 @@
             this.createToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.createToolStripMenuItem.Text = "Create";
             // 
+            // folderToolStripMenuItem
+            // 
+            this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
+            this.folderToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.folderToolStripMenuItem.Text = "Folder";
+            // 
+            // cScriptToolStripMenuItem
+            // 
+            this.cScriptToolStripMenuItem.Name = "cScriptToolStripMenuItem";
+            this.cScriptToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.cScriptToolStripMenuItem.Text = "C# Script";
+            this.cScriptToolStripMenuItem.Click += new System.EventHandler(this.cScriptToolStripMenuItem_Click);
+            // 
             // showInExplorerToolStripMenuItem
             // 
             this.showInExplorerToolStripMenuItem.Name = "showInExplorerToolStripMenuItem";
@@ -572,6 +585,7 @@
             this.DuplicateMenu.Name = "DuplicateMenu";
             this.DuplicateMenu.Size = new System.Drawing.Size(145, 22);
             this.DuplicateMenu.Text = "Duplicate";
+            this.DuplicateMenu.Click += new System.EventHandler(this.DuplicateMenu_Click);
             // 
             // DeleteMenu
             // 
@@ -996,19 +1010,6 @@
             this.GrabButton.TabIndex = 0;
             this.GrabButton.UseVisualStyleBackColor = false;
             this.GrabButton.Visible = false;
-            // 
-            // folderToolStripMenuItem
-            // 
-            this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
-            this.folderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.folderToolStripMenuItem.Text = "Folder";
-            // 
-            // cScriptToolStripMenuItem
-            // 
-            this.cScriptToolStripMenuItem.Name = "cScriptToolStripMenuItem";
-            this.cScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cScriptToolStripMenuItem.Text = "C# Script";
-            this.cScriptToolStripMenuItem.Click += new System.EventHandler(this.cScriptToolStripMenuItem_Click);
             // 
             // Editor
             // 

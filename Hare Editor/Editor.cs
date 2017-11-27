@@ -179,6 +179,7 @@ namespace HareEditor {
                 ContextGO = null;
             }
             currentScene.gameObjects.Add(camera);
+            SelectedGameObject = camera;
             SoftReload();
         }
 
@@ -190,6 +191,7 @@ namespace HareEditor {
                     ContextGO = null;
                 }
                 currentScene.gameObjects.Add(go);
+                SelectedGameObject = go;
                 SoftReload();
             }
         }
@@ -203,6 +205,7 @@ namespace HareEditor {
                     ContextGO = null;
                 }
                 currentScene.gameObjects.Add(sprite);
+                SelectedGameObject = sprite;
                 SoftReload();
             }
         }
@@ -219,7 +222,7 @@ namespace HareEditor {
             isRunning = !isRunning;
             if (isRunning) {
                 Program.Gameview = null;
-                Program.Gameview.scene = currentScene;
+                Program.Gameview.scene = (Scene)currentScene.Clone();
                 Program.Gameview.Init();
                 Program.Gameview.Size = this.Sceneview.Size;
                 Program.Gameview.Show();
@@ -249,6 +252,7 @@ namespace HareEditor {
                     ContextGO = null;
                 }
                 currentScene.gameObjects.Add(Cube);
+                SelectedGameObject = Cube;
                 SoftReload();
             }
         }
@@ -375,9 +379,9 @@ namespace HareEditor {
         }
 
         private void DeleteMenu_Click(object sender, EventArgs e) {
-            if (((Control)sender).Tag.GetType() == typeof(GameObject)) {
-                currentScene.gameObjects.Remove((GameObject)((Control)sender).Tag);
-                SelectedGameObject = null;
+            if (ContextGO != null) {
+                currentScene.gameObjects.Remove(ContextGO);
+                selectedGameObject = null;
                 SoftReload();
             }
         }
@@ -421,6 +425,14 @@ namespace HareEditor {
                 code += "}";
                 File.WriteAllText(sfd.FileName, code);
                 Assets.Reload();
+            }
+        }
+
+        private void DuplicateMenu_Click(object sender, EventArgs e) {
+            if (ContextGO != null) {
+                GameObject go = (GameObject)ContextGO.Clone();
+                currentScene.gameObjects.Add(go);
+                SoftReload();
             }
         }
     }

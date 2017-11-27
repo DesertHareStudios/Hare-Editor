@@ -18,9 +18,9 @@ namespace HareEditor {
                     );
             }
             set {
-                tbxX.Value = (decimal)value.X;
-                tbxY.Value = (decimal)value.Y;
-                tbxZ.Value = (decimal)value.Z;
+                tbxX.Value = (decimal)HareEngine.Mathf.Clamp(value.X, (float)decimal.MinValue, (float)decimal.MaxValue);
+                tbxY.Value = (decimal)HareEngine.Mathf.Clamp(value.Y, (float)decimal.MinValue, (float)decimal.MaxValue);
+                tbxZ.Value = (decimal)HareEngine.Mathf.Clamp(value.Z, (float)decimal.MinValue, (float)decimal.MaxValue);
             }
         }
 
