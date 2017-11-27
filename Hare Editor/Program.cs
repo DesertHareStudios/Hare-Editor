@@ -90,6 +90,9 @@ namespace HareEditor {
             Application.Run(new Welcome());
         }
 
+        [System.Runtime.InteropServices.DllImport("Shell32.dll")]
+        private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
+
         public static void ReloadColors() {
             switch (EditorPrefs.Instance.theme) {
                 case Theme.Light:

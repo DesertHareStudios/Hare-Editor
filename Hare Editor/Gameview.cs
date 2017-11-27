@@ -1,13 +1,12 @@
 ﻿using HareEngine;
 using OpenTK;
+using OpenTK.Audio.OpenAL;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace HareEditor {
@@ -15,7 +14,6 @@ namespace HareEditor {
     public partial class Gameview : Form {
 
         public GLControl glcontrol;
-        private Thread t;
         private bool init = true;
 
         private int ibo_elements;
@@ -26,7 +24,7 @@ namespace HareEditor {
 
         private ShaderProgram SProgram;
 
-        public Scene scene { get; set; }
+        public Scene scene;
 
         public Gameview() {
             InitializeComponent();
@@ -50,26 +48,42 @@ namespace HareEditor {
                 Controls.Add(glcontrol);
                 GL.Viewport(0, 0, Width, Height);
 
-                if (t != null) {
-                    t.Abort();
-                }
                 GL.GenBuffers(1, out ibo_elements);
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 SProgram = new ShaderProgram(Shader.DefaultVertexShader, Shader.DefaultFragmentShader);
 
-                t = new Thread(() => {
-                    while (true) {
-                        glcontrol.Invalidate();
-                    }
-                });
+                var version = AL.Get(ALGetString.Version);
+                var vendor = AL.Get(ALGetString.Vendor);
+                var renderer = AL.Get(ALGetString.Renderer);
 
                 glcontrol.Paint += (o, e) => {
                     try {
                         if (scene != null) {
                             Stopwatch fsw = Stopwatch.StartNew();
                             float dump = HareEngine.Random.Value;
-                            Input.UpdateData();
+                            try {
+                                Input.UpdateData();
+                            } catch (Exception ex) {
+                                HareEngine.Debug.Exception(ex);
+                            }
+
+                            foreach (GameObject go in Hare.aboutToDestroy) {
+                                if (go != null) {
+                                    go.Active = false;
+                                    scene.gameObjects.Remove(go);
+                                    go.behaviours.Clear();
+                                }
+                            }
+                            Hare.aboutToDestroy.Clear();
+
+                            scene.ForEachBehaviour<AudioListener>((listener) => {
+                                scene.ForEachBehaviour<AudioSource>((source) => {
+                                    if (source.clip != null) {
+                                        source.SendToBuffer(listener);
+                                    }
+                                });
+                            });
 
                             scene.FixedUpdate();
                             List<Vector3> verts = new List<Vector3>();
@@ -106,8 +120,8 @@ namespace HareEditor {
                             GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indicedata.Length * sizeof(int)), indicedata, BufferUsageHint.StaticDraw);
 
                             Time.fixedDeltaTime = fsw.ElapsedMilliseconds / 1000f;
-                            int delta = (int)(((float)fsw.ElapsedMilliseconds / 1000f) / 1000f);
                             fsw.Stop();
+
                             //Render
                             Stopwatch sw = Stopwatch.StartNew();
                             GL.ClearColor(Hare.clearColor.r, Hare.clearColor.g, Hare.clearColor.b, 1f);
@@ -129,7 +143,9 @@ namespace HareEditor {
                                     int indiceat = 0;
                                     scene.ForEachBehaviour<Renderer>((r) => {
                                         r.MVPMatrix = r.transform.SetMVPMatrix(cam);
-                                        GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
+                                        if (r.texture != null) {
+                                            GL.BindTexture(TextureTarget.Texture2D, r.texture.ID);
+                                        }
                                         GL.UniformMatrix4(SProgram.GetUniform("modelview"), false, ref r.MVPMatrix);
 
                                         if (SProgram.GetAttribute("maintexture") != -1) {
@@ -150,13 +166,12 @@ namespace HareEditor {
                             Time.deltaTime = sw.ElapsedMilliseconds / 1000f;
                             Time.time += Time.deltaTime;
                             sw.Stop();
+                            glcontrol.Invalidate();
                         }
                     } catch (Exception ex) {
                         HareEngine.Debug.Exception(ex);
                     }
                 };
-                t.IsBackground = true;
-                t.Start();
             } catch (Exception e) {
                 HareEngine.Debug.Exception(e);
             }

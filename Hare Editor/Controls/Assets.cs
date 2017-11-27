@@ -114,6 +114,10 @@ namespace HareEditor {
             HareEngine.Asset.AutoRead(Program.editor.Project.Path + "\\Assets\\");
             if (filesToCompile.Count > 0) {
                 try {
+                    if (userDll != null) {
+                        AppDomain.Unload(userDll);
+                        userDll = null;
+                    }
                     CSharpCodeProvider provider = new CSharpCodeProvider();
                     CompilerParameters parameters = new CompilerParameters();
                     parameters.ReferencedAssemblies.Add(Directory.GetCurrentDirectory() + "\\Hare Engine.dll");
@@ -129,18 +133,13 @@ namespace HareEditor {
                             Debug.Error("Error (" + error.ErrorNumber + ") @" + error.FileName + ":" + error.Line + "\n" + error.ErrorText);
                         }
                     }
-                    if (!results.Errors.HasErrors) {
-                        if (userDll != null) {
-                            AppDomain.Unload(userDll);
-                            userDll = null;
-                        }
-                        userDll = AppDomain.CreateDomain("UserDll");
-                        userDll.UnhandledException += (o, e) => {
-                            Debug.Exception((Exception)e.ExceptionObject);
-                        };
-                        SimpleAssemblyLoader assemblyLoader = (SimpleAssemblyLoader)userDll.CreateInstanceAndUnwrap(typeof(SimpleAssemblyLoader).Assembly.FullName, typeof(SimpleAssemblyLoader).FullName);
-                        assemblyLoader.LoadFrom(results.CompiledAssembly.Location);
-                    }
+                    userDll = AppDomain.CreateDomain("UserDll");
+                    userDll.UnhandledException += (o, e) => {
+                        Debug.Exception((Exception)e.ExceptionObject);
+                    };
+                    userDll.Load(AssemblyName.GetAssemblyName(results.CompiledAssembly.Location));
+                    //SimpleAssemblyLoader assemblyLoader = (SimpleAssemblyLoader)userDll.CreateInstanceAndUnwrap(typeof(SimpleAssemblyLoader).Assembly.FullName, typeof(SimpleAssemblyLoader).FullName);
+                    //assemblyLoader.LoadFrom(results.CompiledAssembly.Location);
                 } catch (Exception e) {
                     Debug.Exception(e);
                 }

@@ -87,6 +87,7 @@ namespace HareEditor {
                         glcontrol.Visible = !Program.editor.isRunning;
                     }
                 });
+
                 glcontrol.Paint += (o, e) => {
                     try {
                         Stopwatch sw = Stopwatch.StartNew();

@@ -106,8 +106,8 @@
             this.Hierarchy = new HareEditor.Hierarchy();
             this.lblHierarchy = new System.Windows.Forms.Label();
             this.inspectorPanel = new HareEditor.DBPanel();
-            this.bntAddComponent = new System.Windows.Forms.Button();
             this.Inspector = new HareEditor.Inspector();
+            this.bntAddComponent = new System.Windows.Forms.Button();
             this.lblInspector = new System.Windows.Forms.Label();
             this.Appbar = new HareEditor.DBPanel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
@@ -118,6 +118,8 @@
             this.RotateButton = new System.Windows.Forms.Button();
             this.MoveBoutton = new System.Windows.Forms.Button();
             this.GrabButton = new System.Windows.Forms.Button();
+            this.folderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.HierarchyMenu.SuspendLayout();
             this.wrapperPanel.SuspendLayout();
@@ -353,6 +355,9 @@
             // 
             // createToolStripMenuItem
             // 
+            this.createToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.folderToolStripMenuItem,
+            this.cScriptToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
             this.createToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.createToolStripMenuItem.Text = "Create";
@@ -798,6 +803,15 @@
             this.inspectorPanel.Size = new System.Drawing.Size(200, 457);
             this.inspectorPanel.TabIndex = 3;
             // 
+            // Inspector
+            // 
+            this.Inspector.AutoScroll = true;
+            this.Inspector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Inspector.Location = new System.Drawing.Point(0, 28);
+            this.Inspector.Name = "Inspector";
+            this.Inspector.Size = new System.Drawing.Size(200, 397);
+            this.Inspector.TabIndex = 5;
+            // 
             // bntAddComponent
             // 
             this.bntAddComponent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -812,15 +826,6 @@
             this.bntAddComponent.Text = "Add Behaviour";
             this.bntAddComponent.UseVisualStyleBackColor = false;
             this.bntAddComponent.Click += new System.EventHandler(this.bntAddComponent_Click);
-            // 
-            // Inspector
-            // 
-            this.Inspector.AutoScroll = true;
-            this.Inspector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Inspector.Location = new System.Drawing.Point(0, 28);
-            this.Inspector.Name = "Inspector";
-            this.Inspector.Size = new System.Drawing.Size(200, 397);
-            this.Inspector.TabIndex = 5;
             // 
             // lblInspector
             // 
@@ -992,6 +997,19 @@
             this.GrabButton.UseVisualStyleBackColor = false;
             this.GrabButton.Visible = false;
             // 
+            // folderToolStripMenuItem
+            // 
+            this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
+            this.folderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.folderToolStripMenuItem.Text = "Folder";
+            // 
+            // cScriptToolStripMenuItem
+            // 
+            this.cScriptToolStripMenuItem.Name = "cScriptToolStripMenuItem";
+            this.cScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cScriptToolStripMenuItem.Text = "C# Script";
+            this.cScriptToolStripMenuItem.Click += new System.EventHandler(this.cScriptToolStripMenuItem_Click);
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1124,5 +1142,7 @@
         private System.Windows.Forms.Label lblScene;
         private System.Windows.Forms.Button bntAddComponent;
         private System.Windows.Forms.Label lblLastLog;
+        private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cScriptToolStripMenuItem;
     }
 }

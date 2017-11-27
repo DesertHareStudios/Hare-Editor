@@ -37,7 +37,7 @@ namespace HareEditor {
                 if (msg.Type == Debug.MessageType.Error && cbxError.Checked ||
                     msg.Type == Debug.MessageType.Log && cbxLog.Checked ||
                     msg.Type == Debug.MessageType.Warning && cbxWarning.Checked) {
-                    if (tbxSearch.Text == "" || msg.Text.ToLower().Contains(tbxSearch.Text.ToLower()) || msg.Text != "") {
+                    if ((tbxSearch.Text == "" || msg.Text.ToLower().Contains(tbxSearch.Text.ToLower()) || msg.Text != "") && msg.Text.Replace("\n", "").Replace(" ", "") != "") {
                         GrowLabel lbl = new GrowLabel();
                         lbl.Dock = DockStyle.Top;
                         lbl.Text = msg.Text;

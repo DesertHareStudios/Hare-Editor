@@ -381,6 +381,48 @@ namespace HareEditor {
                 SoftReload();
             }
         }
+
+        private void cScriptToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Project.Path + "\\Assets";
+            sfd.Filter = "C# Script|*.cs";
+            sfd.ShowDialog();
+            if (sfd.FileName != "") {
+                string[] ss = sfd.FileName.Split('\\');
+                string s = ss[ss.Length - 1];
+                string[] sParts = s.Split('.');
+                string name = "";
+                for (int i = 0; i < sParts.Length - 1; i++) {
+                    name += sParts[i];
+                    if (i < sParts.Length - 2) {
+                        name += ".";
+                    }
+                }
+                name = name.Replace(" ", "");
+
+                string code = "using HareEngine;\n";
+                code += "using OpenTK;\n";
+                code += "using OpenTK.Input;\n";
+                code += "\n";
+                code += "public class " + name + " : Behaviour {\n";
+                code += "\n";
+                code += "   public " + name + " (GameObject gameObject) : base(gameObject) {}\n";
+                code += "\n";
+                code += "   //Called when game starts.\n";
+                code += "   public override void Start() {\n";
+                code += "       \n";
+                code += "   }\n";
+                code += "\n";
+                code += "   //Called every frame\n";
+                code += "   public override void Update() {\n";
+                code += "       \n";
+                code += "   }\n";
+                code += "\n";
+                code += "}";
+                File.WriteAllText(sfd.FileName, code);
+                Assets.Reload();
+            }
+        }
     }
 
 }
